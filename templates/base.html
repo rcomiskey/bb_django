@@ -1,0 +1,673 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>BEST BARGAIN</title>
+    <link rel="stylesheet" href="{% static 'css/reset.css' %}"> 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="{% static 'css/nav.css' %}"> 
+	<link rel="stylesheet" href="{% static 'css/style.css' %}">
+	<script src="{% static 'js/modernizr.js' %}"></script> 
+	<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+	<script src="{% static 'js/jquery.mobile.custom.min.js' %}"></script>
+	<script src="{% static 'js/nav.js' %}"></script> 
+    
+
+
+
+
+
+	
+	
+	
+  	
+</head>
+<body>
+	<header class="cd-main-header">
+		<a class="cd-logo" href="#0"><img src="img/cd-logo.svg" alt="Logo"></a>
+
+		<ul class="cd-header-buttons">
+			<li><a class="cd-search-trigger" href="#cd-search"><span></span></a></li>
+			<li><a class="cd-nav-trigger" href="#cd-primary-nav"><span></span></a></li>
+		</ul> <!-- cd-header-buttons -->
+	</header>
+
+	
+
+	<div class="cd-overlay"></div>
+
+	<nav class="cd-nav">
+		<ul id="cd-primary-nav" class="cd-primary-nav is-fixed">
+			<li class="has-children">
+				<a href="#">MENS</a>
+
+				<ul class="cd-secondary-nav is-hidden">
+					<li class="go-back"><a href="#0">MENU</a></li>
+					<li class="see-all"><a href="#">ALL MENS CLOTHING</a></li>
+					<li class="has-children">
+						<a href="#">Accessories</a>
+
+						<ul class="is-hidden">
+							<li class="go-back"><a href="#0">Clothing</a></li>
+							<li class="see-all"><a href="#">All Accessories</a></li>
+							<li class="has-children">
+								<a href="#0">Beanies</a>
+
+								<ul class="is-hidden">
+									<li class="go-back"><a href="#0">Accessories</a></li>
+									<li class="see-all"><a href="#">All Benies</a></li>
+									<li><a href="#">Caps &amp; Hats</a></li>
+									<li><a href="#">Gifts</a></li>
+									<li><a href="#">Scarves &amp; Snoods</a></li>
+								</ul>
+							</li>
+							<li class="has-children">
+								<a href="#0">Caps &amp; Hats</a>
+
+								<ul class="is-hidden">
+									<li class="go-back"><a href="#0">Accessories</a></li>
+									<li class="see-all"><a href="#">All Caps &amp; Hats</a></li>
+									<li><a href="#">Beanies</a></li>
+									<li><a href="#">Caps</a></li>
+									<li><a href="#">Hats</a></li>
+								</ul>
+							</li>
+							<li><a href="#">Glasses</a></li>
+							<li><a href="#">Gloves</a></li>
+							<li><a href="#">Jewellery</a></li>
+							<li><a href="#">Scarves</a></li>
+							<li><a href="#">Wallets</a></li>
+							<li><a href="#">Watches</a></li>
+						</ul>
+					</li>
+
+					<li class="has-children">
+						<a href="#">Bottoms</a>
+
+						<ul class="is-hidden">
+							<li class="go-back"><a href="#0">Clothing</a></li>
+							<li class="see-all"><a href="#">All Bottoms</a></li>
+							<li><a href="#">Casual Trousers</a></li>
+							<li class="has-children">
+								<a href="#0">Jeans</a>
+
+								<ul class="is-hidden">
+									<li class="go-back"><a href="#0">Bottoms</a></li>
+									<li class="see-all"><a href="#">All Jeans</a></li>
+									<li><a href="#">Ripped</a></li>
+									<li><a href="#">Skinny</a></li>
+									<li><a href="#">Slim</a></li>
+									<li><a href="#">Straight</a></li>
+								</ul>
+							</li>
+							<li><a href="#0">Leggings</a></li>
+							<li><a href="#0">Shorts</a></li>
+						</ul>
+					</li>
+
+					<li class="has-children">
+						<a href="#">Jackets</a>
+
+						<ul class="is-hidden">
+							<li class="go-back"><a href="#0">Clothing</a></li>
+							<li class="see-all"><a href="#">All Jackets</a></li>
+							<li><a href="#">Blazers</a></li>
+							<li><a href="#">Bomber jackets</a></li>
+							<li><a href="#">Denim Jackets</a></li>
+							<li><a href="#">Duffle Coats</a></li>
+							<li><a href="#">Leather Jackets</a></li>
+							<li><a href="#">Parkas</a></li>
+						</ul>
+					</li>
+
+					<li class="has-children">
+						<a href="#">Tops</a>
+
+						<ul class="is-hidden">
+							<li class="go-back"><a href="#0">Clothing</a></li>
+							<li class="see-all"><a href="#">All Tops</a></li>
+							<li><a href="#">Cardigans</a></li>
+							<li><a href="#">Coats</a></li>
+							<li><a href="#">Hoodies &amp; Sweatshirts</a></li>
+							<li><a href="#">Jumpers</a></li>
+							<li><a href="#">Polo Shirts</a></li>
+							<li><a href="#">Shirts</a></li>
+							<li class="has-children">
+								<a href="#0">T-Shirts</a>
+
+								<ul class="is-hidden">
+									<li class="go-back"><a href="#0">Tops</a></li>
+									<li class="see-all"><a href="#">All T-shirts</a></li>
+									<li><a href="#">Plain</a></li>
+									<li><a href="#">Print</a></li>
+									<li><a href="#">Striped</a></li>
+									<li><a href="#">Long sleeved</a></li>
+								</ul>
+							</li>
+							<li><a href="#">Vests</a></li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+			
+			<li class="has-children">
+				<a href="#">WOMENS</a>
+
+				<ul class="cd-secondary-nav is-hidden">
+					<li class="go-back"><a href="#0">MENU</a></li>
+					<li class="see-all"><a href="#">ALL WOMENS CLOTHING</a></li>
+					<li class="has-children">
+						<a href="#">Accessories</a>
+
+						<ul class="is-hidden">
+							<li class="go-back"><a href="#0">Clothing</a></li>
+							<li class="see-all"><a href="#">All Accessories</a></li>
+							<li class="has-children">
+								<a href="#0">Beanies</a>
+
+								<ul class="is-hidden">
+									<li class="go-back"><a href="#0">Accessories</a></li>
+									<li class="see-all"><a href="#">All Benies</a></li>
+									<li><a href="#">Caps &amp; Hats</a></li>
+									<li><a href="#">Gifts</a></li>
+									<li><a href="#">Scarves &amp; Snoods</a></li>
+								</ul>
+							</li>
+							<li class="has-children">
+								<a href="#0">Caps &amp; Hats</a>
+
+								<ul class="is-hidden">
+									<li class="go-back"><a href="#0">Accessories</a></li>
+									<li class="see-all"><a href="#">All Caps &amp; Hats</a></li>
+									<li><a href="#">Beanies</a></li>
+									<li><a href="#">Caps</a></li>
+									<li><a href="#">Hats</a></li>
+								</ul>
+							</li>
+							<li><a href="#">Glasses</a></li>
+							<li><a href="#">Gloves</a></li>
+							<li><a href="#">Jewellery</a></li>
+							<li><a href="#">Scarves</a></li>
+							<li><a href="#">Wallets</a></li>
+							<li><a href="#">Watches</a></li>
+						</ul>
+					</li>
+
+					<li class="has-children">
+						<a href="#">Bottoms</a>
+
+						<ul class="is-hidden">
+							<li class="go-back"><a href="#0">Clothing</a></li>
+							<li class="see-all"><a href="#">All Bottoms</a></li>
+							<li><a href="#">Casual Trousers</a></li>
+							<li class="has-children">
+								<a href="#0">Jeans</a>
+
+								<ul class="is-hidden">
+									<li class="go-back"><a href="#0">Bottoms</a></li>
+									<li class="see-all"><a href="#">All Jeans</a></li>
+									<li><a href="#">Ripped</a></li>
+									<li><a href="#">Skinny</a></li>
+									<li><a href="#">Slim</a></li>
+									<li><a href="#">Straight</a></li>
+								</ul>
+							</li>
+							<li><a href="#0">Leggings</a></li>
+							<li><a href="#0">Shorts</a></li>
+						</ul>
+					</li>
+
+					<li class="has-children">
+						<a href="#">Jackets</a>
+
+						<ul class="is-hidden">
+							<li class="go-back"><a href="#0">Clothing</a></li>
+							<li class="see-all"><a href="#">All Jackets</a></li>
+							<li><a href="#">Blazers</a></li>
+							<li><a href="#">Bomber jackets</a></li>
+							<li><a href="#">Denim Jackets</a></li>
+							<li><a href="#">Duffle Coats</a></li>
+							<li><a href="#">Leather Jackets</a></li>
+							<li><a href="#">Parkas</a></li>
+						</ul>
+					</li>
+
+					<li class="has-children">
+						<a href="#">Tops</a>
+
+						<ul class="is-hidden">
+							<li class="go-back"><a href="#0">Clothing</a></li>
+							<li class="see-all"><a href="#">All Tops</a></li>
+							<li><a href="#">Cardigans</a></li>
+							<li><a href="#">Coats</a></li>
+							<li><a href="#">Hoodies &amp; Sweatshirts</a></li>
+							<li><a href="#">Jumpers</a></li>
+							<li><a href="#">Polo Shirts</a></li>
+							<li><a href="#">Shirts</a></li>
+							<li class="has-children">
+								<a href="#0">T-Shirts</a>
+
+								<ul class="is-hidden">
+									<li class="go-back"><a href="#0">Tops</a></li>
+									<li class="see-all"><a href="#">All T-shirts</a></li>
+									<li><a href="#">Plain</a></li>
+									<li><a href="#">Print</a></li>
+									<li><a href="#">Striped</a></li>
+									<li><a href="#">Long sleeved</a></li>
+								</ul>
+							</li>
+							<li><a href="#">Vests</a></li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+			
+			<li class="has-children">
+				<a href="#">BOYS</a>
+
+				<ul class="cd-secondary-nav is-hidden">
+					<li class="go-back"><a href="#0">MENU</a></li>
+					<li class="see-all"><a href="#">ALL BOYS CLOTHING</a></li>
+					<li class="has-children">
+						<a href="#">Accessories</a>
+
+						<ul class="is-hidden">
+							<li class="go-back"><a href="#0">Clothing</a></li>
+							<li class="see-all"><a href="#">All Accessories</a></li>
+							<li class="has-children">
+								<a href="#0">Beanies</a>
+
+								<ul class="is-hidden">
+									<li class="go-back"><a href="#0">Accessories</a></li>
+									<li class="see-all"><a href="#">All Benies</a></li>
+									<li><a href="#">Caps &amp; Hats</a></li>
+									<li><a href="#">Gifts</a></li>
+									<li><a href="#">Scarves &amp; Snoods</a></li>
+								</ul>
+							</li>
+							<li class="has-children">
+								<a href="#0">Caps &amp; Hats</a>
+
+								<ul class="is-hidden">
+									<li class="go-back"><a href="#0">Accessories</a></li>
+									<li class="see-all"><a href="#">All Caps &amp; Hats</a></li>
+									<li><a href="#">Beanies</a></li>
+									<li><a href="#">Caps</a></li>
+									<li><a href="#">Hats</a></li>
+								</ul>
+							</li>
+							<li><a href="#">Glasses</a></li>
+							<li><a href="#">Gloves</a></li>
+							<li><a href="#">Jewellery</a></li>
+							<li><a href="#">Scarves</a></li>
+							<li><a href="#">Wallets</a></li>
+							<li><a href="#">Watches</a></li>
+						</ul>
+					</li>
+
+					<li class="has-children">
+						<a href="#">Bottoms</a>
+
+						<ul class="is-hidden">
+							<li class="go-back"><a href="#0">Clothing</a></li>
+							<li class="see-all"><a href="#">All Bottoms</a></li>
+							<li><a href="#">Casual Trousers</a></li>
+							<li class="has-children">
+								<a href="#0">Jeans</a>
+
+								<ul class="is-hidden">
+									<li class="go-back"><a href="#0">Bottoms</a></li>
+									<li class="see-all"><a href="#">All Jeans</a></li>
+									<li><a href="#">Ripped</a></li>
+									<li><a href="#">Skinny</a></li>
+									<li><a href="#">Slim</a></li>
+									<li><a href="#">Straight</a></li>
+								</ul>
+							</li>
+							<li><a href="#0">Leggings</a></li>
+							<li><a href="#0">Shorts</a></li>
+						</ul>
+					</li>
+
+					<li class="has-children">
+						<a href="#">Jackets</a>
+
+						<ul class="is-hidden">
+							<li class="go-back"><a href="#0">Clothing</a></li>
+							<li class="see-all"><a href="#">All Jackets</a></li>
+							<li><a href="#">Blazers</a></li>
+							<li><a href="#">Bomber jackets</a></li>
+							<li><a href="#">Denim Jackets</a></li>
+							<li><a href="#">Duffle Coats</a></li>
+							<li><a href="#">Leather Jackets</a></li>
+							<li><a href="#">Parkas</a></li>
+						</ul>
+					</li>
+
+					<li class="has-children">
+						<a href="#">Tops</a>
+
+						<ul class="is-hidden">
+							<li class="go-back"><a href="#0">Clothing</a></li>
+							<li class="see-all"><a href="#">All Tops</a></li>
+							<li><a href="#">Cardigans</a></li>
+							<li><a href="#">Coats</a></li>
+							<li><a href="#">Hoodies &amp; Sweatshirts</a></li>
+							<li><a href="#">Jumpers</a></li>
+							<li><a href="#">Polo Shirts</a></li>
+							<li><a href="#">Shirts</a></li>
+							<li class="has-children">
+								<a href="#0">T-Shirts</a>
+
+								<ul class="is-hidden">
+									<li class="go-back"><a href="#0">Tops</a></li>
+									<li class="see-all"><a href="#">All T-shirts</a></li>
+									<li><a href="#">Plain</a></li>
+									<li><a href="#">Print</a></li>
+									<li><a href="#">Striped</a></li>
+									<li><a href="#">Long sleeved</a></li>
+								</ul>
+							</li>
+							<li><a href="#">Vests</a></li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+			
+			<li class="has-children">
+				<a href="#">GIRLS</a>
+
+				<ul class="cd-secondary-nav is-hidden">
+					<li class="go-back"><a href="#0">MENU</a></li>
+					<li class="see-all"><a href="#">ALL GIRLS CLOTHING</a></li>
+					<li class="has-children">
+						<a href="#">Accessories</a>
+
+						<ul class="is-hidden">
+							<li class="go-back"><a href="#0">Clothing</a></li>
+							<li class="see-all"><a href="#">All Accessories</a></li>
+							<li class="has-children">
+								<a href="#0">Beanies</a>
+
+								<ul class="is-hidden">
+									<li class="go-back"><a href="#0">Accessories</a></li>
+									<li class="see-all"><a href="#">All Benies</a></li>
+									<li><a href="#">Caps &amp; Hats</a></li>
+									<li><a href="#">Gifts</a></li>
+									<li><a href="#">Scarves &amp; Snoods</a></li>
+								</ul>
+							</li>
+							<li class="has-children">
+								<a href="#0">Caps &amp; Hats</a>
+
+								<ul class="is-hidden">
+									<li class="go-back"><a href="#0">Accessories</a></li>
+									<li class="see-all"><a href="#">All Caps &amp; Hats</a></li>
+									<li><a href="#">Beanies</a></li>
+									<li><a href="#">Caps</a></li>
+									<li><a href="#">Hats</a></li>
+								</ul>
+							</li>
+							<li><a href="#">Glasses</a></li>
+							<li><a href="#">Gloves</a></li>
+							<li><a href="#">Jewellery</a></li>
+							<li><a href="#">Scarves</a></li>
+							<li><a href="#">Wallets</a></li>
+							<li><a href="#">Watches</a></li>
+						</ul>
+					</li>
+
+					<li class="has-children">
+						<a href="#">Bottoms</a>
+
+						<ul class="is-hidden">
+							<li class="go-back"><a href="#0">Clothing</a></li>
+							<li class="see-all"><a href="#">All Bottoms</a></li>
+							<li><a href="#">Casual Trousers</a></li>
+							<li class="has-children">
+								<a href="#0">Jeans</a>
+
+								<ul class="is-hidden">
+									<li class="go-back"><a href="#0">Bottoms</a></li>
+									<li class="see-all"><a href="#">All Jeans</a></li>
+									<li><a href="#">Ripped</a></li>
+									<li><a href="#">Skinny</a></li>
+									<li><a href="#">Slim</a></li>
+									<li><a href="#">Straight</a></li>
+								</ul>
+							</li>
+							<li><a href="#0">Leggings</a></li>
+							<li><a href="#0">Shorts</a></li>
+						</ul>
+					</li>
+
+					<li class="has-children">
+						<a href="#">Jackets</a>
+
+						<ul class="is-hidden">
+							<li class="go-back"><a href="#0">Clothing</a></li>
+							<li class="see-all"><a href="#">All Jackets</a></li>
+							<li><a href="#">Blazers</a></li>
+							<li><a href="#">Bomber jackets</a></li>
+							<li><a href="#">Denim Jackets</a></li>
+							<li><a href="#">Duffle Coats</a></li>
+							<li><a href="#">Leather Jackets</a></li>
+							<li><a href="#">Parkas</a></li>
+						</ul>
+					</li>
+
+					<li class="has-children">
+						<a href="#">Tops</a>
+
+						<ul class="is-hidden">
+							<li class="go-back"><a href="#0">Clothing</a></li>
+							<li class="see-all"><a href="#">All Tops</a></li>
+							<li><a href="#">Cardigans</a></li>
+							<li><a href="#">Coats</a></li>
+							<li><a href="#">Hoodies &amp; Sweatshirts</a></li>
+							<li><a href="#">Jumpers</a></li>
+							<li><a href="#">Polo Shirts</a></li>
+							<li><a href="#">Shirts</a></li>
+							<li class="has-children">
+								<a href="#0">T-Shirts</a>
+
+								<ul class="is-hidden">
+									<li class="go-back"><a href="#0">Tops</a></li>
+									<li class="see-all"><a href="#">All T-shirts</a></li>
+									<li><a href="#">Plain</a></li>
+									<li><a href="#">Print</a></li>
+									<li><a href="#">Striped</a></li>
+									<li><a href="#">Long sleeved</a></li>
+								</ul>
+							</li>
+							<li><a href="#">Vests</a></li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+			
+				
+			
+			
+			
+
+			<li class="has-children">
+				<a href="#">PROMOTIONS</a>
+
+				<ul class="cd-nav-gallery is-hidden">
+					<li class="go-back"><a href="#0">Menu</a></li>
+					<li class="see-all"><a href="#">Browse Gallery</a></li>
+					<li>
+						<a class="cd-nav-item" href="#">
+							<img src="img/img.jpg" alt="Product Image">
+							<h3>Product #1</h3>
+						</a>
+					</li>
+
+					<li>
+						<a class="cd-nav-item" href="#">
+							<img src="img/img.jpg" alt="Product Image">
+							<h3>Product #2</h3>
+						</a>
+					</li>
+
+					<li>
+						<a class="cd-nav-item" href="#">
+							<img src="img/img.jpg" alt="Product Image">
+							<h3>Product #3</h3>
+						</a>
+					</li>
+
+					<li>
+						<a class="cd-nav-item" href="#">
+							<img src="img/img.jpg" alt="Product Image">
+							<h3>Product #4</h3>
+						</a>
+					</li>
+				</ul>
+			</li>
+
+			<li class="has-children">
+				<a href="#">NAVIGATION</a>
+				<ul class="cd-nav-icons is-hidden">
+					<li class="go-back"><a href="#0">Menu</a></li>
+					<li class="see-all"><a href="#">Browse Services</a></li>
+					<li>
+						<a class="cd-nav-item item-1" href="#">
+							<h3>Service #1</h3>
+							<p>This is the item description</p>
+						</a>
+					</li>
+
+					<li>
+						<a class="cd-nav-item item-2" href="#">
+							<h3>Service #2</h3>
+							<p>This is the item description</p>
+						</a>
+					</li>
+
+					<li>
+						<a class="cd-nav-item item-3" href="#">
+							<h3>Service #3</h3>
+							<p>This is the item description</p>
+						</a>
+					</li>
+
+					<li>
+						<a class="cd-nav-item item-4" href="#">
+							<h3>Service #4</h3>
+							<p>This is the item description</p>
+						</a>
+					</li>
+
+					<li>
+						<a class="cd-nav-item item-5" href="#">
+							<h3>Service #5</h3>
+							<p>This is the item description</p>
+						</a>
+					</li>
+
+					<li>
+						<a class="cd-nav-item item-6" href="#">
+							<h3>Service #6</h3>
+							<p>This is the item description</p>
+						</a>
+					</li>
+
+					<li>
+						<a class="cd-nav-item item-7" href="#">
+							<h3>Service #7</h3>
+							<p>This is the item description</p>
+						</a>
+					</li>
+
+					<li>
+						<a class="cd-nav-item item-8" href="#">
+							<h3>Service #8</h3>
+							<p>This is the item description</p>
+						</a>
+					</li>
+				</ul>
+			</li>
+
+			<!--<li><a href="#">Standard</a></li>-->
+		</ul> <!-- primary-nav -->
+	</nav> <!-- cd-nav -->
+
+	<div id="cd-search" class="cd-search">
+		<form>
+			<input type="search" placeholder="Search...">
+		</form>
+	</div>
+	
+	<main class="cd-main-content">
+	 {% block content %} {% endblock %}
+	</main>
+	
+<footer class="bb-footer">
+    <div>
+        <div class="container-fluid bb-footer-social">
+            <div class="row">
+                <div class="col-md-6 ">
+                    <h6 id="bb-social-network-text">Connect with us on social networks!</h6>
+                </div>
+                <div class="col-md-6 bb-footer-social-icons">
+                    <a class="bb-social-icons" href="#"><i class="fa fa-facebook"></i></a>
+                    <a class="bb-social-icons" href="#"><i class="fa fa-twitter"></i></a>
+                    <a class="bb-social-icons" href="#"><i class="fa fa-google-plus"></i></a>
+                    <a class="bb-social-icons" href="#"><i class="fa fa-linkedin"></i></a>
+                    <a class="bb-social-icons" href="#"><i class="fa fa-instagram"> </i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid bb-footer-main-container">
+        <div class="row">
+        	 <div class="col-md-4 text-center bb-footer-column">
+                <h6 class="bb-footer-title">USEFUL LINKS</h6>
+                <hr class="bb-footer-hr">
+                <p><a href="#">BLOG</a></p>
+                <p><a href="#">REGISTER</a></p>
+                <p><a href="#">PRODUCTS</a></p>
+                <p><a href="#">NEWSLETTER</a></p>
+            </div>
+            <div class="col-md-4 text-center bb-footer-column">
+                <h6 class="bb-footer-title">HOW DOES IT WORK</h6>
+                <hr class="bb-footer-hr">
+                <p>Best Bargain brings all your favourite brands, shops and products to one place! Simply select the item you wish to buy any we'll open that specific product page for you to make your purchase. </p>
+            </div>
+            <div class="col-md-4 text-center bb-footer-column">
+                <h6 class="bb-footer-title">CONTACT</h6>
+                <hr class="bb-footer-hr">
+                <p><i class="fa fa-home"></i> IRELAND</p>
+                <p><i class="fa fa-envelope"></i> contact@bestbargain.ie</p>
+                <p><i class="fa fa-phone"></i> + 01 777 7777</p>
+                <p><i class="fa fa-print"></i> + 01 777 7777</p>
+            </div>
+        </div>
+    </div>
+    <div class="bb-footer-copyright">
+        <div class="container-fluid">
+            © 2017 Copyright: <strong style="color:#003542;"> BEST BARGAIN</strong>
+        </div>
+    </div>
+</footer>
+            
+</body>
+</html>
+	
+<!--<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>-->
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>-->
+<!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>-->
+<!--<script src="{% static 'js/jquery.mobile.custom.min.js' %}"></script>-->
+<!--<script src="{% static 'js/nav.js' %}"></script> -->
+</body>
+</html>
+ 

@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+<h1> HELLO WORLD</h1>
+
+{% for product in products %}
+<h1>{{ product.product_name }}</h1>
+{% endfor %}
+{% endblock content%}
+
+
