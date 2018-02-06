@@ -41,6 +41,7 @@ class Product(models.Model):
     colour = models.CharField(max_length=500, default='')
     rrp_price = models.DecimalField(max_digits=6, decimal_places=2, null=True)
     category = TreeForeignKey('Category',null=True,blank=True, on_delete=models.CASCADE)
+    slug = models.SlugField(default='')
     
     def __str__(self):
         return self.product_name
