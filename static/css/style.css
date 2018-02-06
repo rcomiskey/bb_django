@@ -224,7 +224,7 @@ a:hover, a:focus {
     border-bottom: 1px solid #9E9E9E;
     box-shadow: none;
     overflow-wrap: break-word;
-    height:150px;
+    height:155px;
 }
 
 .card-img-top {
@@ -246,18 +246,36 @@ a:hover, a:focus {
 
 .bb-product-name {
   padding-top:15px;
+  height: 75px;
+}
+
+.bb-product-name-text {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  color: #003542;
 }
 
 .bb-search-price{
-  
+  padding-top:5px;
+}
+
+.bb-search-price-text{
+  color: #CC151D;
+  font-size: 1rem;
 }
 
 .bb-rrp-price{
-  
+  padding-top:5px;
 }
 
-.bb-merchant-name{
-  
+.bb-rrp-price-text{
+  color:#003542;
+}
+
+.bb-merchant-name-text{
+  color:#2fa4e7;
 }
 
 /**********************************ACCOUNTS************************************/
