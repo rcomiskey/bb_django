@@ -10,3 +10,5 @@ decompressed_file = gzip.GzipFile(fileobj=compressed_file)
 with open(os.path.join(os.path.dirname(os.path.dirname(__file__)),'product_feed/product_feed'), 'wb') as outfile:
     outfile.write(decompressed_file.read())
     
+    
+    

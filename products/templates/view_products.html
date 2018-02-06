@@ -1,10 +1,67 @@
 {% extends "base.html" %}
-{% block content %}
-<h1> HELLO WORLD</h1>
+{% load static %}
 
-{% for product in products %}
-<h1>{{ product.product_name }}</h1>
-{% endfor %}
-{% endblock content%}
+{% block content %}
+
+
+<div class="container-fluid bb-products-container">
+<div class="row">
+    {% for product in products %}
+    <div class="col-6 col-sm-6 col-md-4 col-lg-3">
+        <a class="bb-product-link" style="text-decoration:none" href="{{ product.aw_deep_link }}" target="_blank">
+        <div class="card text-center">
+            <div class="bb-product-img-container">
+                <img class="card-img-top" src="{{ product.aw_image_url }}">
+            </div>
+            <div class="card-block">
+                <div class="row">
+                    <div class="col-12">
+                        <p class="text-bold" style="color:#003542;">{{ product.product_name }}</p>
+                    </div>
+                    <div class="col-6">
+                        <p style="color:#CC151D;">€{{ product.search_price }}</p>
+                    </div>
+                    <div class="col-6">
+                        <p style="color:#EB474E;"><s>{{ product.display_price }}</s></p>
+                    </div>
+                    <div class="col-12">
+                        <p class="text-bold" style="color:#2fa4e7;">{{ product.merchant_name}}</p>
+                    </div>
+                </div>
+            </div>
+        </a>  
+        </div>
+    </div>
+     {% endfor %}
+ </div>
+</div>
+
+<div class="text-center">
+{% if products.has_other_pages %}
+  <ul class="pagination">
+    {% if products.has_previous %}
+      <li><a href="?page={{ products.previous_page_number }}">&laquo;</a></li>
+    {% else %}
+      <li class="disabled"><span>&laquo;</span></li>
+    {% endif %}
+    {% for i in products.paginator.page_range %}
+      {% if products.number == i %}
+        <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+      {% else %}
+        <li><a href="?page={{ i }}">{{ i }}</a></li>
+      {% endif %}
+    {% endfor %}
+    {% if products.has_next %}
+      <li><a href="?page={{ products.next_page_number }}">&raquo;</a></li>
+    {% else %}
+      <li class="disabled"><span>&raquo;</span></li>
+    {% endif %}
+  </ul>
+{% endif %}
+</div>
+
+{% endblock %}
+
+
 
 

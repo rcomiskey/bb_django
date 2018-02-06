@@ -134,6 +134,7 @@ a:hover, a:focus {
 .bb-carousel-container{
     padding-left: 0px;
     padding-right: 0px;
+    padding-top: 50px;
 }
 
 .bb-carousel-btn {
@@ -195,7 +196,7 @@ a:hover, a:focus {
 /**********************************VIEWPRODUCTS************************************/
 
 .bb-products-container {
-  margin-top: 50px;
+  padding-top: 100px;
 }
 
 
@@ -239,6 +240,9 @@ a:hover, a:focus {
     padding: 25px;
 }
 
+.bb-product-link {
+  text-decoration: none;
+}
 
 /**********************************ACCOUNTS************************************/
 

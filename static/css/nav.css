@@ -87,6 +87,7 @@ Main components
   height: 50px;
   background: #ffffff;
   z-index: 4;
+  box-shadow: 0px 2px 10px rgba(0,0,0,0.1);
 }
 .nav-is-fixed .cd-main-header {
   /* add .nav-is-fixed class to body if you want a fixed navigation on > 1170px */
