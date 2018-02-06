@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'home',
     'products',
+    'mptt',
+    
 ]
 
 IMPORT_EXPORT_USE_TRANSACTIONS = True

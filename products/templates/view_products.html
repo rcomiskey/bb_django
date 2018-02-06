@@ -15,16 +15,16 @@
             </div>
             <div class="card-block">
                 <div class="row">
-                    <div class="col-12">
+                    <div class="col-12 bb-product-name">
                         <p class="text-bold" style="color:#003542;">{{ product.product_name }}</p>
                     </div>
-                    <div class="col-6">
+                    <div class="col-6 bb-search-price">
                         <p style="color:#CC151D;">€{{ product.search_price }}</p>
                     </div>
-                    <div class="col-6">
-                        <p style="color:#EB474E;"><s>{{ product.display_price }}</s></p>
+                    <div class="col-6 bb-rrp-price">
+                        <p style="color:#003542;"><s>RRP{{ product.rrp_price }}</s></p>
                     </div>
-                    <div class="col-12">
+                    <div class="col-12 bb-merchant-name">
                         <p class="text-bold" style="color:#2fa4e7;">{{ product.merchant_name}}</p>
                     </div>
                 </div>

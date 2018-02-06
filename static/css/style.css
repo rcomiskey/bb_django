@@ -15,7 +15,7 @@ h1, h2, h3, h4, h5, h6,
 }
 
 p {
-  font-size: .9rem;
+  font-size: .75rem;
 }
 
 ul {
@@ -219,7 +219,7 @@ a:hover, a:focus {
     font-size: 1em;
     position: relative;
     margin: 0;
-    padding: 1em;
+    padding: 0px;
     border: none;
     border-bottom: 1px solid #9E9E9E;
     box-shadow: none;
@@ -230,7 +230,7 @@ a:hover, a:focus {
 .card-img-top {
     display: block;
     width: auto;
-    height: 180px;
+    height: 150px;
     margin: 0 auto;
 }
 
@@ -242,6 +242,22 @@ a:hover, a:focus {
 
 .bb-product-link {
   text-decoration: none;
+}
+
+.bb-product-name {
+  padding-top:15px;
+}
+
+.bb-search-price{
+  
+}
+
+.bb-rrp-price{
+  
+}
+
+.bb-merchant-name{
+  
 }
 
 /**********************************ACCOUNTS************************************/
