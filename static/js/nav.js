@@ -132,3 +132,12 @@ jQuery(document).ready(function($){
 		}
 	}
 });
+
+// side nav for filter options
+function openNav() {
+    document.getElementById("mySidenav").style.width = "250px";
+}
+
+function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+}

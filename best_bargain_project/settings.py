@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'home',
     'products',
     'mptt',
+    'django_filters',
     
 ]
 
