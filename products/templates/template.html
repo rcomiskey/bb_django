@@ -9,24 +9,25 @@
 <div class="container-fluid bb-products-container">
 <div class="row">
     
+   <div class="bb-filter-nav">
+<span class="bb-filter-icon" style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; FILTE</span>
+ </div>
+  
+
+    
     <div id="mySidenav" class="sidenav">
       <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
       <div class="bb-filter-container">
-          <a href="#">About</a>
-          <a href="#">Services</a>
-          <a href="#">Clients</a>
-          <a href="#">Contact</a>
-      </div>
-</div>
-
-<h2>Animated Sidenav Example</h2>
-<p>Click on the element below to open the side navigation menu.</p>
-<span class="bb-filter-icon" style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
-    
-    <form action="" method="get">
+         <form action="" method="get">
         {{ filter.form.as_p }}
         <input type="submit" />
     </form>
+      </div>
+</div>
+
+
+    
+    
     
      {% for product in filter.qs %}
     <div class="col-6 col-sm-6 col-md-4 col-lg-3">

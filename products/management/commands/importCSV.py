@@ -9,8 +9,11 @@ class Command(BaseCommand):
     def add_arguments(self, parser):
         parser.add_argument('--file', dest='file', help='File to load')
 
+    
     def handle(self, **options):
-        from products.models import Product
+        from products.models import Product, Category
+        all_categories = list(Category.objects.exclude(regex=""))
+
         
         if options['file']:
             print("Importing " + options['file'])
@@ -39,6 +42,20 @@ class Command(BaseCommand):
                             'slug' :  category[0],
                             
                     }
+                    
+                    
+                    for textfield in ('description', 'product_name'):
+                        # I suppose these are the two relevant fields to scan?
+                        subcat = None
+                        for cat in all_categories:
+                            if re.search(cat.regex, data[textfield]) is not None:
+                                subcat = cat
+                                break
+                        if subcat is not None:
+                            break
+                    # subcat is now the first matching subcategory
+                    if subcat is not None:
+                        data['category'] = subcat
 
                     product = Product(**data)
                     product.save()
