@@ -284,7 +284,7 @@ a:hover, a:focus {
     z-index: 1;
     top: 50px;
     left: 0;
-    background-color: #2fa4e7;
+    background-color: #fff;
     overflow-x: hidden;
     transition: 0.5s;
     padding-top: 60px;
@@ -308,35 +308,39 @@ a:hover, a:focus {
 .sidenav .closebtn {
     position: absolute;
     top: 0;
-    right: 25px;
-    font-size: 36px;
-    margin-left: 50px;
+    right: 0px;
+    font-size: 20px;
+    padding: 10px 10px 10px 500px;
+    background-color: #2fa4e7;
 }
 
 .bb-filter-container {
-    position: absolute;
-    top: 5;
-    right: 70px;
     font-size: 36px;
     margin-left: 0px;
     text-align: center;
+    margin-top: 20px;
+    height: 1000px;
 }
 
 .bb-filter-icon {
     position: absolute;
-    top: 0;
-    left: 10px;
+    top: 10px;
+    left: 15px;
     z-index: 2;
-    color: #003542;
+    color: #fff;
+    font-size:20px;
+    cursor:pointer;
 }
 
 .bb-filter-nav {
-  margin-top: 50px; 
+  top: 50px; 
   height: 50px; 
-  background-color:#2fa4e7;
+  background-color:#003542;
   position: fixed;
+  transition: top 0.2s ease-in-out;
   width: 100%;
-  z-index:10;
+  z-index:1;
+  box-shadow: 0px 2px 10px rgba(0,0,0,0.1);
 }
 
 

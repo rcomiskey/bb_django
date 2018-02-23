@@ -44,7 +44,7 @@ input[type="search"]::-webkit-search-results-decoration {
 Main components 
 
 -------------------------------- */
-.cd-main-content, .cd-main-header {
+ .cd-main-header {
   /* Force Hardware Acceleration in WebKit */
   -webkit-transform: translateZ(0);
   -moz-transform: translateZ(0);
@@ -54,14 +54,14 @@ Main components
   will-change: transform;
 }
 
-.cd-main-content, .cd-main-header {
+ .cd-main-header {
   position: relative;
   -webkit-transition: -webkit-transform 0.3s;
   -moz-transition: -moz-transform 0.3s;
   transition: transform 0.3s;
 }
 @media only screen and (max-width: 1169px) {
-  .cd-main-content.nav-is-visible, .cd-main-header.nav-is-visible {
+   .cd-main-header.nav-is-visible {
     -webkit-transform: translateX(-260px);
     -moz-transform: translateX(-260px);
     -ms-transform: translateX(-260px);
@@ -496,15 +496,17 @@ Main components
   .cd-primary-nav {
     /* by default .cd-primary-nav is hidden - trick for iOS devices where you can see the navigation if you pull down */
     visibility: hidden;
-    -webkit-transition: visibility 0s 0.3s;
-    -moz-transition: visibility 0s 0.3s;
-    transition: visibility 0s 0.3s;
+    -webkit-transition: transform .3s;
+    -moz-transition: transform .3s;
+    transition: transform .3s;
+    transform: translateX(260px);
   }
   .cd-primary-nav.nav-is-visible {
     visibility: visible;
-    -webkit-transition: visibility 0s 0s;
-    -moz-transition: visibility 0s 0s;
-    transition: visibility 0s 0s;
+    -webkit-transition: transform .3s;
+    -moz-transition: transform .3s;
+    transition: transform .3s;
+    transform: translateX(0);
   }
 }
 

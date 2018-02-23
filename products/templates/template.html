@@ -9,19 +9,36 @@
 <div class="container-fluid bb-products-container">
 <div class="row">
     
-   <div class="bb-filter-nav">
-<span class="bb-filter-icon" style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; FILTE</span>
+   <div class="bb-filter-nav nav-down">
+<span class="bb-filter-icon" onclick="openNav()">FILTER &#9776;</span>
  </div>
   
 
     
     <div id="mySidenav" class="sidenav">
-      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"><span>CLOSE</span></a>
       <div class="bb-filter-container">
-         <form action="" method="get">
-        {{ filter.form.as_p }}
-        <input type="submit" />
+          
+          
+          
+
+    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+    Brand
+    </button>
+
+
+<div class="collapse" id="collapseExample">
+<div class="card card-block">
+    <form action="" method="get">
+    {{ filter.form.as_p }}
+    <input type="submit" />
     </form>
+</div>
+</div>
+
+          
+         
+
       </div>
 </div>
 
