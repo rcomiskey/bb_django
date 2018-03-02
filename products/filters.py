@@ -1,5 +1,5 @@
 import django_filters 
-from .models import Product, Brand
+from .models import Product, Brand, Category
 from django.forms import CheckboxSelectMultiple
 
 class ProductFilter(django_filters.FilterSet):

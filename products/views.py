@@ -15,6 +15,7 @@ def view_products(request,hierarchy= None):
 
     for slug in category_slug[:-1]:
         parent = root.get(parent=parent, slug = slug)
+        
 
     try:
         product = Category.objects.get(parent=parent,slug=category_slug[-1])
@@ -28,4 +29,6 @@ def view_products(request,hierarchy= None):
 def product_list(request):
     f = ProductFilter(request.GET, queryset=Product.objects.all())
     return render(request, 'template.html', {'filter': f})
+    
+
         

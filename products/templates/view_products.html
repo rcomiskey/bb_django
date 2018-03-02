@@ -4,10 +4,12 @@
 {% block content %}
 
 
+
+
 <div class="container-fluid bb-products-container">
 <div class="row">
-    {% if  product.product_set.all %}
-     {% for product in product.product_set.all %}
+  
+     {% for product in product.get_all_products %}
     <div class="col-6 col-sm-6 col-md-4 col-lg-3">
         <a class="bb-product-link" style="text-decoration:none" href="{{ product.aw_deep_link }}" target="_blank">
         <div class="card text-center">
@@ -34,7 +36,7 @@
         </div>
     </div>
      {% endfor %}
-      {% endif %}
+      
  </div>
 
 </div>
