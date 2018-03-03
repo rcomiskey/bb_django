@@ -1,15 +1,52 @@
+
+
 {% extends "base.html" %}
 {% load static %}
 
 {% block content %}
-
-
-
+    
 
 <div class="container-fluid bb-products-container">
 <div class="row">
+    
+   <div class="bb-filter-nav nav-down">
+<span class="bb-filter-icon" onclick="openNav()">FILTER &#9776;</span>
+ </div>
   
-     {% for product in product.get_all_products %}
+
+    
+    <div id="mySidenav" class="sidenav">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"><span>CLOSE</span></a>
+      <div class="bb-filter-container">
+          
+          
+          
+
+    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+    Brand
+    </button>
+
+
+<div class="collapse" id="collapseExample">
+<div>
+    <form action="" method="get">
+    {{ filter.form.as_p }}
+    <input type="submit" />
+    </form>
+</div>
+</div>
+
+          
+         
+
+      </div>
+</div>
+
+
+    
+    
+    
+     {% for product in filter.qs %}
     <div class="col-6 col-sm-6 col-md-4 col-lg-3">
         <a class="bb-product-link" style="text-decoration:none" href="{{ product.aw_deep_link }}" target="_blank">
         <div class="card text-center">
@@ -36,7 +73,7 @@
         </div>
     </div>
      {% endfor %}
-      
+     
  </div>
 
 </div>
