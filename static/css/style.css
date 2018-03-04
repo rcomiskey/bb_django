@@ -195,7 +195,7 @@ a:hover, a:focus {
 /**********************************VIEWPRODUCTS************************************/
 
 .bb-products-container {
-  padding-top: 100px;
+  padding-top: 50px;
 }
 
 
@@ -343,7 +343,29 @@ a:hover, a:focus {
   box-shadow: 0px 2px 10px rgba(0,0,0,0.1);
 }
 
+.bb-category-container {
+  margin-top: 120px;
+  text-align: center;
+}
 
+.bb-category-name {
+  text-transform: uppercase;
+}
+
+.bb-breadcrumbs-container {
+  margin-bottom: 10px;
+}
+
+.bb-breadcrumbs {
+  text-transform: uppercase;
+  color: #2fa4e7;
+}
+
+.bb-breadcrumbs:hover {
+  color: #003542;
+  text-decoration: none;
+  
+}
 
 /**********************************ACCOUNTS************************************/
 

@@ -1,5 +1,5 @@
 import re
-from products.models import Category, Brand
+from products.models import Category, Brand, Colour, Size
 from django.core.management.base import BaseCommand
 
 
@@ -24,9 +24,11 @@ class Command(BaseCommand):
                 next(f)
                 for line in f:
                     linecount += 1
-                    fields = line.split(',')
+                    fields = line.split(';')
                     category = Category.objects.get_or_create(name=fields[10])
                     brand_name = Brand.objects.get_or_create(brand_name=fields[7])
+                    colour = Colour.objects.get_or_create(colour=fields[8])
+                    size = Size.objects.get_or_create(size=fields[11])
                     
                     data = {
                             'aw_deep_link':  fields[0],
@@ -37,10 +39,12 @@ class Command(BaseCommand):
                             'merchant_name': fields[5],
                             'display_price':  fields[6],
                             'brand_name':  brand_name[0],
-                            'colour' :  fields[8],
+                            'colour' :  colour[0],
                             'rrp_price' :  fields[9],
                             'category' :  category[0],
                             'slug' :  category[0],
+                            'size':  size[0],
+                            
                             
                     }
                     

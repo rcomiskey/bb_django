@@ -33,26 +33,42 @@ class Category(MPTTModel):
 	def __str__(self):
 		return self.name
 		
+		
 class Brand(models.Model):
     brand_name = models.CharField(max_length=500, default='')
 
     def __str__(self):
         return self.brand_name
+        
+        
+class Colour(models.Model):
+    colour = models.CharField(max_length=500, default='')
+
+    def __str__(self):
+        return self.colour
+        
+        
+class Size(models.Model):
+    size = models.CharField(max_length=500, default='')
+
+    def __str__(self):
+        return self.size
 
 
 class Product(models.Model):
     aw_deep_link = models.CharField(max_length=500, default='')
-    description = models.CharField(max_length=500, default='')
     product_name = models.CharField(max_length=500, default='')
     aw_image_url = models.CharField(max_length=500, default='')
     search_price = models.DecimalField(max_digits=6, decimal_places=2, null=True)
     merchant_name = models.CharField(max_length=500, default='')
     display_price = models.CharField(max_length=500, default='')
     brand_name = models.ForeignKey('Brand', on_delete=models.CASCADE)
-    colour = models.CharField(max_length=500, default='')
+    colour = models.ForeignKey('Colour', on_delete=models.CASCADE)
+    size = models.ForeignKey('Size', on_delete=models.CASCADE)
     rrp_price = models.DecimalField(max_digits=6, decimal_places=2, null=True)
     category = TreeForeignKey('Category',null=True,blank=True, on_delete=models.CASCADE)
     slug = models.SlugField(max_length=500, default='')
+    description = models.CharField(max_length=500, default='')
     
     def __str__(self):
         return self.product_name

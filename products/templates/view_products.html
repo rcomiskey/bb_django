@@ -2,50 +2,97 @@
 
 {% extends "base.html" %}
 {% load static %}
+{% load namify %}
 
 {% block content %}
     
 
-<div class="container-fluid bb-products-container">
-<div class="row">
-    
-   <div class="bb-filter-nav nav-down">
-<span class="bb-filter-icon" onclick="openNav()">FILTER &#9776;</span>
- </div>
-  
 
-    
-    <div id="mySidenav" class="sidenav">
-      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"><span>CLOSE</span></a>
+<div class="bb-filter-nav nav-down">
+    <span class="bb-filter-icon" onclick="openNav()">FILTER &#9776;</span>
+</div>
+  <div id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"><span>CLOSE</span></a>
       <div class="bb-filter-container">
           
-          
-          
-
-    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-    Brand
-    </button>
-
-
-<div class="collapse" id="collapseExample">
-<div>
-    <form action="" method="get">
-    {{ filter.form.as_p }}
-    <input type="submit" />
-    </form>
-</div>
-</div>
-
-          
-         
-
+        <div id="accordion" role="tablist" aria-multiselectable="true">
+          <div>
+            <div class="card-header" role="tab" id="headingOne">
+              <h5 class="mb-0">
+                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseFilter1" aria-expanded="false" aria-controls="collapseFilter1">
+                  Brand
+                </button>
+              </h5>
+            </div>
+            <div class="collapse" id="collapseFilter1">
+                <form action="" method="get">
+                    {{ filter.form.brand_name }}
+                    <input type="submit" />
+                </form>
+            </div>
+          </div>
+          <div >
+            <div class="card-header" role="tab" id="headingTwo">
+              <h5 class="mb-0">
+                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseFilter2" aria-expanded="false" aria-controls="collapseFilter2">
+                  Price
+                </button>
+              </h5>
+            </div>
+              <div class="collapse" id="collapseFilter2">
+                  <form action="" method="get">
+                    {{ filter.form.search_price__gt }}
+                    {{ filter.form.search_price__lt }}
+                    <input type="submit" />
+                  </form>
+              </div>
+            </div>
+          <div>
+          <div class="card-header" role="tab" id="headingThree">
+            <h5 class="mb-0">
+               <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseFilter3" aria-expanded="false" aria-controls="collapseFilter3">
+                  Colour
+                </button>
+            </h5>
+          </div>
+          <div class="collapse" id="collapseFilter3">
+            <form action="" method="get">
+              {{ filter.form.colour}}
+              <input type="submit" />
+            </form>
+          </div>
+        </div>
       </div>
-</div>
+      <div >
+        <div class="card-header" role="tab" id="headingFour">
+          <h5 class="mb-0">
+            <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseFilter4" aria-expanded="false" aria-controls="collapseFilter4">
+              Size
+            </button>
+          </h5>
+        </div>
+        <div class="collapse" id="collapseFilter4">
+            <form action="" method="get">
+              {{ filter.form.size }}
+              <input type="submit" />
+            </form>
+        </div>
+      </div>         
+    </div>
+  </div>
+          
+  <div class="container bb-category-container">
+    <div class="bb-breadcrumbs-container">
+      <a class="bb-breadcrumbs" href="/">HOME</a>
+      {% for i in product.get_slug_list %}
+         <a class="bb-breadcrumbs" href="/products/category/{{ i }}"><span style="color:#003542">/ </span> {{ i | get_name }}</a>
+      {% endfor %}
+    </div>
+    <h2 class="bb-category-name">{{product.name}}</h2>
+  </div>
 
-
-    
-    
-    
+<div class="container-fluid bb-products-container">
+  <div class="row">
      {% for product in filter.qs %}
     <div class="col-6 col-sm-6 col-md-4 col-lg-3">
         <a class="bb-product-link" style="text-decoration:none" href="{{ product.aw_deep_link }}" target="_blank">
@@ -73,9 +120,7 @@
         </div>
     </div>
      {% endfor %}
-     
- </div>
-
+  </div>
 </div>
 
 <div class="text-center">
