@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container bb-blogpost-container">
+    <h1 class="text-center bb-blog-title">THE BARGAIN BLOG</h1>
+    <div class="row">
+        {% for post in posts %}
+        <div class="col-xs-12 col-lg-6">
+            <div class="card text-center">
+                <div class="bb-product-img-container">
+                    <h5 class="text-bold bb-blogost-title">{{ post.title }}</h5>
+                    <img class="card-img-top bb-blog-img" src="{{MEDIA_URL}}{{post.image}}">
+                </div>
+                <div class="card-block bb-blog-block">
+                    <p class="bb-blog-content">{{ post.content|truncatechars:200 }}</p>
+                    <p><button class="btn bb-form-btn" onclick="location.href='{% url 'viewpost' post.slug %}'">Read More</button></p>
+                    <p><strong class="bb-posts-info-details">Date:</strong> {{ post.published_date }} | <strong class="bb-posts-info-details">Views:</strong> {{ post.views }} | <strong class="bb-posts-info-details">Tags:</strong> {{ post.tag }}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+    
+{% endblock %}

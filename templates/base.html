@@ -602,42 +602,22 @@
 	</nav> <!-- cd-nav -->
 
 	<div id="cd-search" class="cd-search">
-		<form>
-			<input type="search" placeholder="Search...">
+		<form role="search" action="{% url 'search' %}" method="get">
+			<input type="text"  placeholder="Search" name="q" >
 		</form>
 	</div>
 	
 	
-	
-<!--	<div class="bb-filter-nav">-->
-<!--<span class="bb-filter-icon" style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; FILTER</span>-->
-<!-- </div>-->
-  
-
-    
-<!--    <div id="mySidenav" class="sidenav">-->
-<!--      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>-->
-<!--      <div class="bb-filter-container">-->
-<!--         <form action="" method="get">-->
-<!--        {{ filter.form.as_p }}-->
-<!--        <input type="submit" />-->
-<!--    </form>-->
-<!--      </div>-->
-<!--</div>-->
-<!--	<div id="mySidenav" class="sidenav">-->
-<!--	<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>-->
-<!--	<div class="bb-filter-container">-->
-<!--		 <form action="" method="get">-->
-<!--		{{ filter.form.as_p }}-->
-<!--		<input type="submit" />-->
-<!--		</form>-->
-<!--	</div>-->
-<!--</div>-->
-<!--	<div class="bb-filter-nav">-->
-<!--		  <div><span class="bb-filter-icon" style="font-size:25px;cursor:pointer;padding-top: 6px;" onclick="openNav()">&#9776; FILTER</span></div>-->
-<!--     </div>-->
-
-
+<!--<li>-->
+<!--			<form class="navbar-form bb-navbar-search-form" role="search" action="{% url 'search' %}" method="get">-->
+<!--				<div class="input-group bb-input-group">-->
+<!--						<input  >-->
+<!--					<div class="input-group-btn">-->
+<!--						<button class="btn bb-search-btn" type="submit"><i class="fa fa-search"></i></button>-->
+<!--					</div>-->
+<!--				</div>-->
+<!--			</form>    -->
+<!--		</li>-->
 
 
 	

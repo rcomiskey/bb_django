@@ -108,9 +108,10 @@ Main components
 }
 
 .cd-logo {
-  position: absolute;
-  top: 12px;
-  left: 5%;
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    font-size: 20px;
 }
 .cd-logo img {
   display: block;
@@ -123,8 +124,6 @@ Main components
 }
 @media only screen and (min-width: 1170px) {
   .cd-logo {
-    top: 13.5px;
-    left: 2em;
   }
 }
 
@@ -576,7 +575,8 @@ Main components
     -webkit-transition: color 0.3s, box-shadow 0.3s;
     -moz-transition: color 0.3s, box-shadow 0.3s;
     transition: color 0.3s, box-shadow 0.3s;
-    font-size: 0.8rem;
+    font-size: .9rem;
+    font-weight: 400;
   }
   .cd-primary-nav > li > a:hover {
     color: #2fa4e7;

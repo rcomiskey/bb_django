@@ -1,16 +1,18 @@
-@import url('https://fonts.googleapis.com/css?family=Montserrat:500');
-
+@import url('https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i');
 
 /**********************************BASE************************************/
 
 body {
   font-family: 'Montserrat', 'sans-serif';
+  color: #003542;
+  font-weight: 500;
 }
 
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
     font-family: "Montserrat",Helvetica,Arial,sans-serif;
     color: #003542;
+    font-weight: 500;
 }
 
 p {
@@ -107,7 +109,7 @@ a:hover, a:focus {
 }
 
 .bb-footer-title {
-  color: #2fa4e7;
+  color: #FFFFFF;
   font-size: 20px;
 }
 .bb-footer-column{
@@ -189,7 +191,7 @@ a:hover, a:focus {
 }
 
 .bb-footer-hr {
-  border-top: 1px solid white;
+  border-top: 1px solid #2fa4e7;
 }
 
 /**********************************VIEWPRODUCTS************************************/
@@ -210,7 +212,7 @@ a:hover, a:focus {
     margin-bottom: 30px;
     padding: 0;
     border: none;
-    border-radius: .28571429rem;
+    border-radius: 0px;
     /*box-shadow: 0 1px 3px 0 #d4d4d5, 0 0 0 1px #d4d4d5;*/
 }
 
@@ -231,6 +233,7 @@ a:hover, a:focus {
     width: auto;
     height: 150px;
     margin: 0 auto;
+    border-radius: 0px;
 }
 
 .bb-brand-img {
@@ -287,7 +290,7 @@ a:hover, a:focus {
     background-color: #fff;
     overflow-x: hidden;
     transition: 0.5s;
-    padding-top: 60px;
+    padding-top: 50px;
     box-shadow: 2px 0px 10px rgba(0, 0, 0, 0.4);
 }
 
@@ -310,7 +313,7 @@ a:hover, a:focus {
     top: 0;
     right: 0px;
     font-size: 20px;
-    padding: 10px 10px 10px 500px;
+    padding: 10px 15px 10px 100%;
     background-color: #2fa4e7;
 }
 
@@ -318,14 +321,14 @@ a:hover, a:focus {
     font-size: 36px;
     margin-left: 0px;
     text-align: center;
-    margin-top: 20px;
-    height: 1000px;
+    height: auto;
+    margin-bottom: 100px;
 }
 
 .bb-filter-icon {
     position: absolute;
     top: 10px;
-    left: 15px;
+    left: 20px;
     z-index: 2;
     color: #fff;
     font-size:20px;
@@ -337,7 +340,7 @@ a:hover, a:focus {
   height: 50px; 
   background-color:#003542;
   position: fixed;
-  transition: top 0.2s ease-in-out;
+  transition: top 1s ease-in-out;
   width: 100%;
   z-index:1;
   box-shadow: 0px 2px 10px rgba(0,0,0,0.1);
@@ -364,6 +367,67 @@ a:hover, a:focus {
 .bb-breadcrumbs:hover {
   color: #003542;
   text-decoration: none;
+}
+
+.nav-up {
+  top: -50px !important;
+}
+
+.bb-filter-dropdown-container {
+  display: none;
+}
+
+.bb-filter-dropdown-button {
+    width: 110px;
+    padding: 6px;
+    color: #ffffff;
+    border-color: #2fa4e7;
+    border-radius: 0px;
+    background-color: #003542;
+    font-size: .9rem;
+    font-weight: 400;
+    font-family: inherit;
+    border-right: 0px;
+    border-left: 0px;
+}
+
+.bb-filter-dropdown-button:hover,
+.show>.btn-secondary.dropdown-toggle {
+    color: #2fa4e7;
+    border-color: #ffffff; 
+    background-color: #003542;
+}
+
+.btn-secondary.focus, .btn-secondary:focus {
+  box-shadow: none;
+}
+
+.dropdown, .dropup {
+  padding: 9px;
+}
+
+.bb-filter-row {
+  justify-content: space-evenly;
+}
+
+/**********************************PROMOTIONS************************************/
+
+.bb-promotions-container {
+  margin-top: 150px;
+}
+
+.bb-promotions-img {
+  height: 150px! important;
+}
+
+.bb-product-name-text {
+  font-size: 20px;
+  margin-top: 15px;
+  font-weight: 600;
+  color: #CC151D;
+}
+
+.bb-promotion-description {
   
 }
 
@@ -390,7 +454,7 @@ a:hover, a:focus {
 /**********************************BLOG************************************/
 
 .bb-blogpost-container {
-  margin-top: 30px;
+  margin-top: 90px;
 }
 
 .bb-blogpost-img {
@@ -399,8 +463,41 @@ a:hover, a:focus {
   display:block;
 }
 
+.bb-blog-img {
+  border-radius: 0px
+}
+
+.bb-blog-title {
+  margin-bottom: 50px;
+}
+
+.bb-viewpost-title {
+  margin-bottom: 20px;
+  padding-right: 15px;
+  padding-left: 15px;
+  font-size: 1.5rem;
+}
+
+.bb-viewpost-content {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.bb-blogost-title {
+  color: #2fa4e7;
+  margin-bottom: 15px;
+}
+
+.bb-viewpost-details {
+  margin-top: 15px;
+}
+
+.bb-blog-content {
+  margin-top: 15px;
+}
+
 .bb-viewpost-img {
-  height: 165px;
+  height: 150px;
 }
 
 .bb-blog-block {
@@ -410,6 +507,18 @@ a:hover, a:focus {
 .bb-error-message {
   padding: 20px 0px 30px 0px;
   color: red;
+}
+
+.bb-posts-info-details {
+  color: #2fa4e7;
+}
+
+.bb-comment-title {
+  margin-top: 40px;
+}
+
+.bb-comment-form {
+  margin-bottom: 30px;
 }
 
 /**********************************VIEWED************************************/
@@ -446,6 +555,12 @@ a:hover, a:focus {
     padding: 30px;
 }
 
+/**********************************VIEW PRODUCTS************************************/
+
+.card-img-top {
+    height: 200px;
+}
+
 
 /**********************************BLOG************************************/
 
@@ -455,6 +570,10 @@ a:hover, a:focus {
 
 .bb-blog-block {
   height:180px;
+}
+
+.bb-viewpost-title {
+  font-size: 1.8rem;
 }
 
 /**********************************VIEWED************************************/
@@ -647,6 +766,10 @@ a:hover, a:focus {
 .bb-viewpost-img {
   height: 350px;
 }
+
+.bb-viewpost-title {
+  font-size: 2rem;
+}
  
 }
 
@@ -660,11 +783,24 @@ a:hover, a:focus {
   padding-left: 15px;
 }
 
-/**********************************BASE************************************/
-
 .bb-brand-img {
     max-width: 240px;
     padding: 40px;
+}
+
+/**********************************VIEW PRODUCTS************************************/
+
+.bb-filter-icon {
+  display: none;
+}
+
+.dropdown-menu {
+    max-height: 200px;
+    overflow: scroll;
+}
+
+.bb-filter-dropdown-container {
+  display: block;
 }
 
 /**********************************BLOG************************************/

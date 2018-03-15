@@ -1,8 +1,11 @@
 from django.shortcuts import render, get_object_or_404
-from .models import Product, Category
+from .models import Product, Category, Size
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 import django_filters
 from .filters import ProductFilter
+from django.db.models import Q
+import operator
+from functools import reduce
 
     
 def view_products(request,hierarchy= None):
@@ -26,6 +29,10 @@ def view_products(request,hierarchy= None):
         return render(request, 'view_products.html', {'product': product, 'filter': filter })
         
 
-    
 
-        
+    
+def do_search(request):
+    products = Product.objects.filter(product_name__icontains=request.GET['q'])
+    return render(request, "template.html", {"products": products})
+
+    

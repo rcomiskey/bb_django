@@ -1,0 +1,16 @@
+{% load bootstrap_tags %}
+<h2 class="bb-comment-title">COMMENTS</h2>
+    <form class="bb-comment-form" method="POST" action="{% url 'addcomment' post.slug %}">
+        {% csrf_token %}
+        {{ form | as_bootstrap }}
+        <button class="btn bb-form-btn" type="submit">ADD</button>
+    </form>
+
+    {% for comment in comments %}
+    <div>
+       <h3>{{ comment.title }}</h3>
+       <p>{{ comment.content }}</p>
+       <p><strong>{{ comment.author.username }}</strong> - {{ comment.created_date }}</p>
+    </div>
+    <hr>
+    {% endfor %}

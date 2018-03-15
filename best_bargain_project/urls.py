@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, re_path, path
 from home.views import index
-from products.views import view_products
+# from products.views import view_products
 from .settings import MEDIA_ROOT
 from django.conf import settings
 from django.conf.urls.static import static
@@ -25,4 +25,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     re_path(r'^$', index, name='index'),
     re_path(r'^products/', include('products.urls')),
+    re_path(r'^blog/', include('blog.urls')),
+    re_path(r'^promotions/', include('promotions.urls')),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container bb-blogpost-container">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="card text-center">
+            <div class="text-center">
+                <h2 class="text-bold bb-viewpost-title">{{ post.title }}</h2>
+                {% if post.image %}
+                <img class="bb-viewpost-img" src="{{MEDIA_URL}}{{post.image}}">
+                {% endif %}
+                <p class="bb-viewpost-details"><strong class="bb-posts-info-details">Date:</strong> {{ post.published_date }} | <strong class="bb-posts-info-details">Views:</strong> {{ post.views }} | <strong class="bb-posts-info-details">Tags:</strong> {{ post.tag }}</p>
+            </div>
+            <div >
+                <p class="bb-viewpost-content">{{ post.content }}</p>
+                <button class="btn bb-form-btn" onclick="location.href='{% url 'getposts'%}'">BACK TO BLOG</button>
+            </div>
+        </div>
+      </div>
+        </div>
+            {% include '_comments.html' %}
+    </div>
+
+{% endblock %}
