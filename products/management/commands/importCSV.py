@@ -1,5 +1,5 @@
 import re
-from products.models import Category, Brand, Size, Colour
+from products.models import Category, Brand, Size
 from django.core.management.base import BaseCommand
 
 
@@ -11,7 +11,7 @@ class Command(BaseCommand):
 
     
     def handle(self, **options):
-        from products.models import Product, Category, Colour
+        from products.models import Product, Category
         all_categories = list(Category.objects.all())
         # all_colours = list(Colour.objects.all())
        
@@ -29,7 +29,7 @@ class Command(BaseCommand):
                     category = Category.objects.get_or_create(name=fields[10])
                     brand_name = Brand.objects.get_or_create(brand_name=fields[7])
                     size = Size.objects.get_or_create(size=fields[11])
-                    colour = Colour.objects.get_or_create(colour=fields[8])
+                    # colour = Colour.objects.get_or_create(colour=fields[8])
                     
                     data = {
                             'aw_deep_link':  fields[0],
@@ -40,7 +40,7 @@ class Command(BaseCommand):
                             'merchant_name': fields[5],
                             'display_price':  fields[6],
                             'brand_name':  brand_name[0],
-                            'colour' :  colour[0],
+                            'colour' :  fields[8],
                             'rrp_price' :  fields[9],
                             'category' :  category[0],
                             'size':  size[0],

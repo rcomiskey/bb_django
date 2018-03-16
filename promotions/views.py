@@ -3,11 +3,12 @@ from .models import Promotion, Merchant
 from django.utils import timezone
 from django.conf import settings
 from django.contrib import messages
+from .filters import PromotionFilter
 
 
 # Create your views here.
 def getpromotions(request):
-   promotions = Promotion.objects.all()
-   merchants = Merchant.objects.all()
-   return render(request, "promotions.html", {'promotions': promotions, 'merchants': merchants})
+    promo_filter = PromotionFilter(request.GET, queryset=Promotion.objects.all())
+    return render(request, "promotions.html", {'promo_filter': promo_filter})
+   
    

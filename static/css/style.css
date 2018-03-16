@@ -378,17 +378,25 @@ a:hover, a:focus {
 }
 
 .bb-filter-dropdown-button {
-    width: 110px;
-    padding: 6px;
-    color: #ffffff;
-    border-color: #2fa4e7;
-    border-radius: 0px;
-    background-color: #003542;
-    font-size: .9rem;
-    font-weight: 400;
-    font-family: inherit;
-    border-right: 0px;
-    border-left: 0px;
+  width: 110px;
+  padding: 6px;
+  color: #ffffff;
+  border-color: #2fa4e7;
+  border-radius: 0px;
+  background-color: #003542;
+  font-size: .9rem;
+  font-weight: 400;
+  font-family: inherit;
+  border-right: 0px;
+  border-left: 0px;
+}
+
+.bb-fullscreen-filter-button {
+  background-color: #ffffff;
+  color: #003542;
+  margin-top: 9px;
+  border: 1px solid #2fa4e7;
+  font-weight: 500;
 }
 
 .bb-filter-dropdown-button:hover,
@@ -417,18 +425,26 @@ a:hover, a:focus {
 }
 
 .bb-promotions-img {
-  height: 150px! important;
+  height: 140px! important;
 }
 
-.bb-product-name-text {
+.bb-promotions-title {
   font-size: 20px;
   margin-top: 15px;
   font-weight: 600;
   color: #CC151D;
 }
-
-.bb-promotion-description {
   
+.bb-promotions-card-block {
+  height: 180px;
+  border-bottom: none;
+}
+
+.bb-promotions-card {
+  border: 1px solid #2fa4e7;
+  padding: 10px;
+  margin-right: 50px;
+  margin-left: 50px;
 }
 
 /**********************************ACCOUNTS************************************/
@@ -559,6 +575,16 @@ a:hover, a:focus {
 
 .card-img-top {
     height: 200px;
+}
+
+/**********************************PROMOTIONS************************************/
+
+
+.bb-promotions-card {
+  border: 1px solid #2fa4e7;
+  padding: 10px;
+  margin-right: 0px;
+  margin-left: 0px;
 }
 
 
@@ -795,8 +821,14 @@ a:hover, a:focus {
 }
 
 .dropdown-menu {
-    max-height: 200px;
-    overflow: scroll;
+  max-height: 200px;
+  overflow: scroll;
+  overflow-x: hidden;
+  color: #003542;
+  min-width: 12rem;
+  padding: 15px;
+  border-radius: 0px;
+  border: 1px solid #2fa4e7;
 }
 
 .bb-filter-dropdown-container {

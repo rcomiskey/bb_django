@@ -7,31 +7,16 @@
 
 <div class="container bb-filter-dropdown-container">
   <div class="row bb-filter-row">
-    <div class="col-sm-2">
-      <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle bb-filter-dropdown-button" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        BRAND
-        </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <form action="" method="get">
-            {{ filter.form.brand_name }}
-            <input type="submit" />
-          </form>
-        </div>
-      </div>
-    </div>
+    
     
     <div class="col-sm-2">
       <div class="dropdown">
         <button class="btn btn-secondary dropdown-toggle bb-filter-dropdown-button" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        PRICE
+        CATEGORY
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
           <form action="" method="get">
-            {{ filter.form.search_price__gt }}
-            {{ filter.form.search_price__lt }}
-            <input type="submit" />
-          </form>
+            {{ promo_filter.form.category }}
         </div>
       </div>
     </div>
@@ -40,13 +25,10 @@
   <div class="col-sm-2">
       <div class="dropdown">
         <button class="btn btn-secondary dropdown-toggle bb-filter-dropdown-button" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        COLOUR
+        TYPE
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <form action="" method="get">
-            {{ filter.form.colour}}
-            <input type="submit" />
-          </form>
+            {{ promo_filter.form.promo_type}}
         </div>
       </div>
     </div>
@@ -55,16 +37,19 @@
   <div class="col-sm-2">
       <div class="dropdown">
         <button class="btn btn-secondary dropdown-toggle bb-filter-dropdown-button" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        SIZE
+        SHOP
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <form action="" method="get">
-            {{ filter.form.size}}
-            <input type="submit" />
-          </form>
+            {{ promo_filter.form.merchant }}
         </div>
       </div>
     </div>
+    
+    <div class="col-sm-2">
+        <input class="btn btn-secondary dropdown-toggle bb-filter-dropdown-button bb-fullscreen-filter-button" type="submit" value="FILTER" />
+          </form>
+    </div>
+    
   </div>
 </div>
 
@@ -79,106 +64,81 @@
       <div class="bb-filter-container">
           
         <div id="accordion" role="tablist" aria-multiselectable="true">
+          
+          <div>
+            <div class="card-header" role="tab" >
+              <h5 class="mb-0">
+                  <form action="" method="get">
+                    <input type="submit" value="FILTER"/>
+              </h5>
+            </div>
+          </div>
+        
           <div>
             <div class="card-header" role="tab" id="headingOne">
               <h5 class="mb-0">
                 <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseFilter1" aria-expanded="false" aria-controls="collapseFilter1">
-                  Brand
+                  CATEGORY
                 </button>
               </h5>
             </div>
             <div class="collapse" id="collapseFilter1">
-                <form action="" method="get">
-                    {{ filter.form.brand_name }}
-                    <input type="submit" />
-                </form>
+                    {{ promo_filter.form.category}}
             </div>
           </div>
-          <div >
+          
+          <div>
             <div class="card-header" role="tab" id="headingTwo">
               <h5 class="mb-0">
                 <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseFilter2" aria-expanded="false" aria-controls="collapseFilter2">
-                  Price
+                  TYPE
                 </button>
               </h5>
             </div>
               <div class="collapse" id="collapseFilter2">
-                  <form action="" method="get">
-                    {{ filter.form.search_price__gt }}
-                    {{ filter.form.search_price__lt }}
-                    <input type="submit" />
-                  </form>
+                    {{ promo_filter.form.promo_type }}
               </div>
-            </div>
+          </div>
+            
           <div>
           <div class="card-header" role="tab" id="headingThree">
             <h5 class="mb-0">
                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseFilter3" aria-expanded="false" aria-controls="collapseFilter3">
-                  Colour
+                  SHOP
                 </button>
             </h5>
           </div>
           <div class="collapse" id="collapseFilter3">
-            <form action="" method="get">
-              {{ filter.form.colour}}
-              <input type="submit" />
+              {{ promo_filter.form.merchant}}
             </form>
           </div>
         </div>
       </div>
-      <div >
-        <div class="card-header" role="tab" id="headingFour">
-          <h5 class="mb-0">
-            <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseFilter4" aria-expanded="false" aria-controls="collapseFilter4">
-              Size
-            </button>
-          </h5>
-        </div>
-        <div class="collapse" id="collapseFilter4">
-            <form action="" method="get">
-              {{ filter.form.size }}
-              <input type="submit" />
-            </form>
-        </div>
-      </div> 
-        <div>
-        <div class="card-header" role="tab" id="headingFour">
-          <h5 class="mb-0">
-            <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseFilter4" aria-expanded="false" aria-controls="collapseFilter4">
-              Size
-            </button>
-          </h5>
-        </div>
-        <div class="collapse" id="collapseFilter4">
-            <form action="" method="get">
-              {{ filter.form.sale }}
-              <input type="submit" />
-            </form>
-        </div>
-      </div> 
     </div>
   </div>
 
 <div class="container-fluid bb-promotions-container">
   <div class="row">
-     {% for promotion in promotions %}
-    <div class="col-6 col-sm-6 col-md-4 col-lg-3">
+     {% for promotion in promo_filter.qs %}
+    <div class="col-12 col-sm-6 col-md-4 col-lg-3">
         <a class="bb-product-link" style="text-decoration:none" href="{{ promotion.deeplink }}" target="_blank">
-        <div class="card text-center">
+        <div class="card text-center bb-promotions-card">
             <div class="bb-product-img-container">
                 <img class="card-img-top bb-promotions-img" src="{{MEDIA_URL}}{{promotion.merchant.image}}">
             </div>
-            <div class="card-block">
+            <div class="card-block bb-promotions-card-block">
                 <div class="row">
                     <div class="col-12 bb-promotional-title">
-                        <p class="bb-product-name-text">{{ promotion.title }}</p>
+                        <p class="bb-promotions-title">{{ promotion.title }}</p>
                     </div>
-                    <div class="col-12 bb-promotion-description">
-                        <p class="bb-search-price-text">{{ promotion.description }}</p>
+                    <div class="col-12 bb-search-price">
+                        <p class="bb-promotions-description">{{ promotion.description }}</p>
                     </div>
-                   
                     <div class="col-12 bb-merchant-name">
                         <p class="bb-merchant-name-text">{{ promotion.merchant.name}} - {{ promotion.merchant.category}}</p>
+                    </div>
+                    <div class="col-12 bb-merchant-name">
+                        <button class="btn bb-form-btn">OFFER</button>
                     </div>
                     
                 </div>
