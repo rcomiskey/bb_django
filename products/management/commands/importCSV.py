@@ -1,5 +1,5 @@
 import re
-from products.models import Category, Brand, Size
+from products.models import Category, Brand, Size, Colour
 from django.core.management.base import BaseCommand
 
 

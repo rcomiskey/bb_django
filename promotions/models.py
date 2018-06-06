@@ -13,7 +13,7 @@ class Merchant(models.Model):
     def __str__(self):
         return self.name 
         
-
+        
 class Promotion(models.Model):
     merchant = models.ForeignKey('Merchant', on_delete=models.CASCADE)
     title = models.CharField(max_length=500, default='')
@@ -24,7 +24,7 @@ class Promotion(models.Model):
     deeplink = models.CharField(max_length=500, default='')
     category = models.ForeignKey('MerchantCategory', on_delete=models.CASCADE)
     
-    
+
     def __str__(self):
         return self.promo_type
 	

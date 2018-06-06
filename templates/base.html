@@ -31,7 +31,7 @@
 </head>
 <body class="nav-is-fixed">
 	<header class="cd-main-header">
-		<a class="cd-logo" href="#">BEST BARGAIN</a>
+		<a class="cd-logo" href="{% url 'index' %}">BEST BARGAIN</a>
 
 		<ul class="cd-header-buttons">
 			<li><a class="cd-search-trigger" href="#cd-search"><span></span></a></li>
@@ -498,41 +498,41 @@
 			
 			
 
-			<li class="has-children">
-				<a href="#">PROMOTIONS</a>
+			<li>
+				<a href="{% url 'getpromotions' %}">PROMOTIONS</a>
 
-				<ul class="cd-nav-gallery is-hidden">
-					<li class="go-back"><a href="#0">Menu</a></li>
-					<li class="see-all"><a href="#">Browse Gallery</a></li>
-					<li>
-						<a class="cd-nav-item" href="#">
-							<img src="img/img.jpg" alt="Product Image">
-							<h3>Product #1</h3>
-						</a>
-					</li>
+			<!--	<ul class="cd-nav-gallery is-hidden">-->
+			<!--		<li class="go-back"><a href="#0">Menu</a></li>-->
+			<!--		<li class="see-all"><a href="#">Browse Gallery</a></li>-->
+			<!--		<li>-->
+			<!--			<a class="cd-nav-item" href="#">-->
+			<!--				<img src="img/img.jpg" alt="Product Image">-->
+			<!--				<h3>Product #1</h3>-->
+			<!--			</a>-->
+			<!--		</li>-->
 
-					<li>
-						<a class="cd-nav-item" href="#">
-							<img src="img/img.jpg" alt="Product Image">
-							<h3>Product #2</h3>
-						</a>
-					</li>
+			<!--		<li>-->
+			<!--			<a class="cd-nav-item" href="#">-->
+			<!--				<img src="img/img.jpg" alt="Product Image">-->
+			<!--				<h3>Product #2</h3>-->
+			<!--			</a>-->
+			<!--		</li>-->
 
-					<li>
-						<a class="cd-nav-item" href="#">
-							<img src="img/img.jpg" alt="Product Image">
-							<h3>Product #3</h3>
-						</a>
-					</li>
+			<!--		<li>-->
+			<!--			<a class="cd-nav-item" href="#">-->
+			<!--				<img src="img/img.jpg" alt="Product Image">-->
+			<!--				<h3>Product #3</h3>-->
+			<!--			</a>-->
+			<!--		</li>-->
 
-					<li>
-						<a class="cd-nav-item" href="#">
-							<img src="img/img.jpg" alt="Product Image">
-							<h3>Product #4</h3>
-						</a>
-					</li>
-				</ul>
-			</li>
+			<!--		<li>-->
+			<!--			<a class="cd-nav-item" href="#">-->
+			<!--				<img src="img/img.jpg" alt="Product Image">-->
+			<!--				<h3>Product #4</h3>-->
+			<!--			</a>-->
+			<!--		</li>-->
+			<!--	</ul>-->
+			<!--</li>-->
 
 			<li class="has-children">
 				<a href="#">NAVIGATION</a>
@@ -647,7 +647,7 @@
         	 <div class="col-md-4 text-center bb-footer-column">
                 <h6 class="bb-footer-title">USEFUL LINKS</h6>
                 <hr class="bb-footer-hr">
-                <p><a href="#">BLOG</a></p>
+                <p><a href="{% url 'getposts' %}">BLOG</a></p>
                 <p><a href="#">REGISTER</a></p>
                 <p><a href="#">PRODUCTS</a></p>
                 <p><a href="#">NEWSLETTER</a></p>
@@ -661,7 +661,7 @@
                 <h6 class="bb-footer-title">CONTACT</h6>
                 <hr class="bb-footer-hr">
                 <p><i class="fa fa-home"></i> IRELAND</p>
-                <p><i class="fa fa-envelope"></i> contact@bestbargain.ie</p>
+                <p><i class="fa fa-envelope"></i> admin@bestbargain.ie</p>
                 <p><i class="fa fa-phone"></i> + 01 777 7777</p>
                 <p><i class="fa fa-print"></i> + 01 777 7777</p>
             </div>

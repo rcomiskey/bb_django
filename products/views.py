@@ -6,6 +6,7 @@ from .filters import ProductFilter
 from django.db.models import Q
 import operator
 from functools import reduce
+import re
 
     
 def view_products(request,hierarchy= None):
@@ -34,5 +35,7 @@ def view_products(request,hierarchy= None):
 def do_search(request):
     products = Product.objects.filter(product_name__icontains=request.GET['q'])
     return render(request, "template.html", {"products": products})
+
+
 
     

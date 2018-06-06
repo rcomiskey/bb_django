@@ -42,8 +42,6 @@ class Brand(models.Model):
     def __str__(self):
         return self.brand_name
         
-
-        
 class Size(models.Model):
     size = models.CharField(max_length=500, default='')
 
@@ -58,45 +56,23 @@ class Size(models.Model):
 #         colour = Colour.colour
 #         return super().get_queryset().exclude(colour__in=colours)
                
-        
-        
-# class Colour(models.Model):      
-#     regex = models.CharField(max_length=100, blank=True)
-    
-    # objects = ColourManager()
-    
+
+
 
 
     
     
    
     
-    # def __str__(self):
-    #     return self.colour
+    
         
 # class SaleManager(models.Manager):
 #     def get_queryset(self):
         
 #         return super().get_queryset().filter(search_price__lt=5)
 
-COLOURS = (
-    ( 'White' ,'White'),
-    ('beige/bg', 'Beige'),
-    ('black/blck','Black'),
-    ('blue/denim/teal','Blue'),
-    ('brown/brwn/bronze','Brown'),
-    ('gold/gld', 'Gold'),
-    ('green/grn/kamo/camo/khaki/lime/mint/olive/turquoise', 'Green'),
-    ('grey/gray/gry/charcoal/stone', 'Grey'),
-    ('navy/nvy', 'Navy'),
-    ('Nude', 'Nude'),
-    ('orange/orng', 'Orange'),
-    ('pink/pnk', 'Pink'),
-    ('purple/purpl/burgundy', 'Purple'),
-    ('red/rd', 'Red'),
-    ('silver/slvr', 'Silver'),
-    ('yellow/yllw', 'Yellow'),
-    )
+
+
 class Product(models.Model):
     aw_deep_link = models.CharField(max_length=500, default='')
     product_name = models.CharField(max_length=500, default='')
@@ -106,17 +82,23 @@ class Product(models.Model):
     display_price = models.CharField(max_length=500, default='')
     brand_name = models.ForeignKey('Brand', on_delete=models.CASCADE)
     size = models.ForeignKey('Size', on_delete=models.CASCADE)
-    colour = models.CharField(max_length=500, choices=COLOURS, default='')
-    # colour = models.ForeignKey('Colour', on_delete=models.CASCADE)
+    colourOptions = models.ForeignKey('Colour', on_delete=models.CASCADE, null=True)
+    colour = models.CharField(max_length=500, default='')
     rrp_price = models.DecimalField(max_digits=6, decimal_places=2, null=True)
     category = TreeForeignKey('Category',null=True,blank=True, on_delete=models.CASCADE)
     description = models.CharField(max_length=500, default='')
    
-    
-    
     def __str__(self):
         return self.product_name
         
+    
+    
+
+class Colour(models.Model):       
+    colour = models.CharField(max_length=500, default='')
+    
+    def __str__(self):
+        return self.colour        
 
 
 #  COLOURS = (
@@ -137,3 +119,4 @@ class Product(models.Model):
 #     ('silver/slvr', 'Silver'),
 #     ('yellow/yllw', 'Yellow'),
 #     )
+

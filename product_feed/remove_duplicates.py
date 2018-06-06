@@ -1,12 +1,15 @@
-lines_seen = set() # holds lines already seen
+lines_seen = [] # holds lines already seen
 fields_seen = set()
 outfile = open('test_feed', "w")
-for line in open('product_feed.csv', "r"):
+for line in open('product_feed', "r"):
     field = line.split(';')
-    if field[2] and field[8] not in fields_seen: # not a duplicate
+    if field[2] in line in lines_seen: # not a duplicate
+
         outfile.write(line)
-        fields_seen.add(field[2] and field[8])
-        lines_seen.add(line)
+        # fields_seen.add(field[2] and field[8])
+        lines_seen.append(line)
+               
+
        
 outfile.close()
 

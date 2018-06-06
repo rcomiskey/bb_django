@@ -12,7 +12,7 @@
     <div class="col-sm-2">
       <div class="dropdown">
         <button class="btn btn-secondary dropdown-toggle bb-filter-dropdown-button" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        CATEGORY
+        CATEGORY 
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
           <form action="" method="get">
@@ -77,8 +77,8 @@
           <div>
             <div class="card-header" role="tab" id="headingOne">
               <h5 class="mb-0">
-                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseFilter1" aria-expanded="false" aria-controls="collapseFilter1">
-                  CATEGORY
+                <button class="btn bb-form-btn" type="button" data-toggle="collapse" data-target="#collapseFilter1" aria-expanded="false" aria-controls="collapseFilter1">
+                  CATEGORY <i class="fa fa-chevron-down"></i>
                 </button>
               </h5>
             </div>
@@ -90,8 +90,8 @@
           <div>
             <div class="card-header" role="tab" id="headingTwo">
               <h5 class="mb-0">
-                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseFilter2" aria-expanded="false" aria-controls="collapseFilter2">
-                  TYPE
+                <button class="btn bb-form-btn" type="button" data-toggle="collapse" data-target="#collapseFilter2" aria-expanded="false" aria-controls="collapseFilter2">
+                  TYPE <i class="fa fa-chevron-down"></i>
                 </button>
               </h5>
             </div>
@@ -103,8 +103,8 @@
           <div>
           <div class="card-header" role="tab" id="headingThree">
             <h5 class="mb-0">
-               <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseFilter3" aria-expanded="false" aria-controls="collapseFilter3">
-                  SHOP
+               <button class="btn bb-filter-dropdown-button" type="button" data-toggle="collapse" data-target="#collapseFilter3" aria-expanded="false" aria-controls="collapseFilter3">
+                  SHOP <i class="fa fa-chevron-down"></i>
                 </button>
             </h5>
           </div>
@@ -135,7 +135,7 @@
                         <p class="bb-promotions-description">{{ promotion.description }}</p>
                     </div>
                     <div class="col-12 bb-merchant-name">
-                        <p class="bb-merchant-name-text">{{ promotion.merchant.name}} - {{ promotion.merchant.category}}</p>
+                        <p class="bb-merchant-name-text">{{ promotion.merchant.name}} - {{ promotion.category}}</p>
                     </div>
                     <div class="col-12 bb-merchant-name">
                         <button class="btn bb-form-btn">OFFER</button>

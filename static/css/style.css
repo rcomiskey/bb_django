@@ -129,6 +129,17 @@ a:hover, a:focus {
     text-align: center;
 }
 
+.check-label {
+ font-size: 45%!important;
+}
+
+.collapse.show {
+    display: block;
+    max-height: 215px;
+    overflow-y: scroll;
+}
+
+
 /**********************************INDEX************************************/
 
 
@@ -281,23 +292,23 @@ a:hover, a:focus {
 }
 
 .sidenav {
-    height: 100%;
-    width: 0;
-    position: fixed;
-    z-index: 1;
-    top: 50px;
-    left: 0;
-    background-color: #fff;
-    overflow-x: hidden;
-    transition: 0.5s;
-    padding-top: 50px;
-    box-shadow: 2px 0px 10px rgba(0, 0, 0, 0.4);
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 50px;
+  left: 0;
+  background-color: #FFFFFF;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 50px;
+  box-shadow: 2px 0px 10px rgba(0, 0, 0, 0.4);
 }
 
 .sidenav a {
     padding: 8px 8px 8px 32px;
     text-decoration: none;
-    font-size: 25px;
+    font-size: 18px;
     color: #fff;
     display: block;
     transition: 0.3s;
@@ -399,6 +410,13 @@ a:hover, a:focus {
   font-weight: 500;
 }
 
+.bb-fullscreen-filter-button:hover,
+.bb-fullscreen-filter-button:focus{
+  background-color: #2fa4e7!important;
+  color: #FFFFFF!important;
+  border: 1px solid #FFFFFF!important;
+}
+
 .bb-filter-dropdown-button:hover,
 .show>.btn-secondary.dropdown-toggle {
     color: #2fa4e7;
@@ -418,6 +436,12 @@ a:hover, a:focus {
   justify-content: space-evenly;
 }
 
+.card-header {
+  background-color: #FFFFFF;
+  border-bottom: 1px solid #FFFFFF;
+  
+}
+
 /**********************************PROMOTIONS************************************/
 
 .bb-promotions-container {
@@ -426,12 +450,14 @@ a:hover, a:focus {
 
 .bb-promotions-img {
   height: 140px! important;
+  margin-top: 15px;
 }
 
 .bb-promotions-title {
-  font-size: 20px;
+  font-size: 15px;
   margin-top: 15px;
   font-weight: 600;
+  text-transform: uppercase;
   color: #CC151D;
 }
   
