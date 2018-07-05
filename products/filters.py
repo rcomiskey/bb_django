@@ -2,7 +2,13 @@ import django_filters
 from .models import Product, Brand, Category, Size, Colour
 from django.forms import CheckboxSelectMultiple
 from django.db.models import Q
+from django.db.models import Func, F
+# Product.objects.annotate(abs_calculation=Func(Product.search_price < Product.rrp_price function='ABS').filter(abs_calculation)
 
+
+
+# Company.objects.annotate(num_offerings=Count(F('products') + F('services')))
+    
 
 
 colours = [('grey', 'red'),('blue', 'blue')]
@@ -13,17 +19,21 @@ class ProductFilter(django_filters.FilterSet):
     brand_name = django_filters.filters.ModelMultipleChoiceFilter( label='Brand',widget=CheckboxSelectMultiple(attrs={'class': 'check-label'}), queryset = Brand.objects.all())
     # colour = django_filters.filters.MultipleChoiceFilter(label='Colour', choices=Colour.COLOURS,widget=CheckboxSelectMultiple)
     size = django_filters.filters.ModelMultipleChoiceFilter( label='Size',widget=CheckboxSelectMultiple(attrs={'class': 'check-label'}), queryset = Size.objects.all())
-    # sale = django_filters.filters.ModelMultipleChoiceFilter( label='Sale',widget=CheckboxSelectMultiple, queryset = Product.test.get_queryset())
+    # sale = django_filters.ModelMultipleChoiceFilter(queryset=Product.objects.annotate(on_sale=(F('rrp_price') - F('search_price'))
     # product_name = django_filters.CharFilter(lookup_expr='icontains')
     # colour = django_filters.filters.CharFilter(lookup_expr='icontains')
     # size = django_filters.filters.CharFilter(lookup_expr='icontains')
     # colour = django_filters.MultipleChoiceFilter(choices=colours, lookup_expr='icontains')
-    colour = django_filters.AllValuesMultipleFilter(widget=CheckboxSelectMultiple(attrs={'class': 'check-label'}))
-    
+    colour = django_filters.AllValuesMultipleFilter(label='Colour', widget=CheckboxSelectMultiple(attrs={'class': 'check-label'}))
+
     
     class Meta:
         model = Product
-        fields = [ 'brand_name']
+        fields = [ 'brand_name', 'colour']
+        
+        # def a(self, queryset, value):
+        #     return queryset.filter(product_name=value)
+        
         
    
    

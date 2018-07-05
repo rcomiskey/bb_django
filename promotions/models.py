@@ -13,20 +13,25 @@ class Merchant(models.Model):
     def __str__(self):
         return self.name 
         
+class PromoType(models.Model):
+    name = models.CharField(max_length=500, default='')
+    
+    def __str__(self):
+        return self.name 
+        
         
 class Promotion(models.Model):
     merchant = models.ForeignKey('Merchant', on_delete=models.CASCADE)
     title = models.CharField(max_length=500, default='')
     description = models.CharField(max_length=500, default='')
-    promo_type = models.CharField(max_length=500, default='')
+    promo_type = models.ForeignKey('PromoType', on_delete=models.CASCADE) 
     start_date = models.DateTimeField(blank=True, null=True)
     end_date = models.DateTimeField(blank=True, null=True)
     deeplink = models.CharField(max_length=500, default='')
     category = models.ForeignKey('MerchantCategory', on_delete=models.CASCADE)
     
-
     def __str__(self):
-        return self.promo_type
+        return self.title
 	
 
     

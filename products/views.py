@@ -10,6 +10,7 @@ import re
 
     
 def view_products(request,hierarchy= None):
+    currency = '€'
     category_slug = hierarchy.split('/')
     parent = None
     root = Category.objects.all()
@@ -25,9 +26,9 @@ def view_products(request,hierarchy= None):
     except:
         product = get_object_or_404(Product, slug = category_slug[-1])
         filter = ProductFilter(request.GET, queryset=Category.get_all_products(product))
-        return render(request, "view_products.html", {'product': product, 'filter': filter })
+        return render(request, "view_products.html", {'product': product, 'filter': filter, 'currency': currency })
     else:
-        return render(request, 'view_products.html', {'product': product, 'filter': filter })
+        return render(request, 'view_products.html', {'product': product, 'filter': filter, 'currency': currency })
         
 
 

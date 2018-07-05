@@ -56,6 +56,19 @@
         </div>
       </div>
     </div>
+    
+      <div class="col-sm-2">
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle bb-filter-dropdown-button" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        SALE
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            {{ filter.form.sale}}
+           
+        </div>
+      </div>
+    </div>
+    
     <div class="col-sm-2">
         <input class="btn btn-secondary dropdown-toggle bb-filter-dropdown-button bb-fullscreen-filter-button" type="submit" value="FILTER" />
           </form>
@@ -89,7 +102,7 @@
           <div>
             <div class="card-header" role="tab" id="headingOne">
               <h5 class="mb-0">
-                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseFilter1" aria-expanded="false" aria-controls="collapseFilter1">
+                <button class="btn bb-accordian-filter-btn" type="button" data-toggle="collapse" data-target="#collapseFilter1" aria-expanded="false" aria-controls="collapseFilter1">
                   Brand
                 </button>
               </h5>
@@ -103,7 +116,7 @@
           <div >
             <div class="card-header" role="tab" id="headingTwo">
               <h5 class="mb-0">
-                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseFilter2" aria-expanded="false" aria-controls="collapseFilter2">
+                <button class="btn bb-accordian-filter-btn" type="button" data-toggle="collapse" data-target="#collapseFilter2" aria-expanded="false" aria-controls="collapseFilter2">
                   Price
                 </button>
               </h5>
@@ -189,10 +202,10 @@
                         <p class="bb-product-name-text">{{ product.product_name }}</p>
                     </div>
                     <div class="col-6 bb-search-price">
-                        <p class="bb-search-price-text">€{{ product.search_price }}</p>
+                        <p class="bb-search-price-text">{{ currency }}{{ product.search_price }}</p>
                     </div>
                     <div class="col-6 bb-rrp-price">
-                        <p class="bb-rrp-price-text"><s> {{ product.rrp_price }}</s></p>
+                        <p class="bb-rrp-price-text"><s> {{ currency }}{{ product.rrp_price }}</s></p>
                     </div>
                     <div class="col-12 bb-merchant-name">
                         <p class="bb-merchant-name-text">{{ product.merchant_name}}</p>

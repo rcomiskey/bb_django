@@ -506,6 +506,7 @@ Main components
     -moz-transition: transform .3s;
     transition: transform .3s;
     transform: translateX(0);
+    border-left: 1px solid #6f7374;
   }
 }
 

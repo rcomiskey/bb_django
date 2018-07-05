@@ -37,16 +37,66 @@
   </a>
 </div>
 
-<div class="container  text-center" style="margin-top:50px;margin-bottom:75px;">
-  <h1>POPULAR COLLECTIONS</h1>
+
+<div class="container-fluid text-center" style="margin-top:50px;">
+  <h1 style="color:#2fa4e7">POPULAR PROMOTIONS</h1>
   <hr>
   <div class="row">
-    <div class="col-xs-12 col-sm-4 ">
+     {% for promotion in promotions %}
+    <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+        <!--<a class="bb-product-link" style="text-decoration:none" href="{{ promotion.deeplink }}" target="_blank">-->
+        <div class="card text-center bb-promotions-card">
+            <div class="bb-product-img-container">
+                <img class="card-img-top bb-promotions-img" src="{{MEDIA_URL}}{{promotion.merchant.image}}">
+            </div>
+            <div class="card-block bb-promotions-card-block">
+                <div class="row">
+                    <div class="col-12 bb-promotional-title">
+                        <p class="bb-promotions-title">{{ promotion.title }}</p>
+                    </div>
+                    <div class="col-12 bb-search-price">
+                        <p class="bb-promotions-description">{{ promotion.description }}</p>
+                    </div>
+                    <div class="col-12 bb-merchant-name">
+                        <p class="bb-merchant-name-text">{{ promotion.merchant.name}} - {{ promotion.category}} </p>
+                    </div>
+                    {% if promotion.promo_type.name in "Code" %}
+                    <div class="col-12 bb-merchant-name">
+                      <div class="bb-code-reveal">
+                        <p class="bb-form-btn-code-reveal" hidden>HELLO123456</p>
+                        <div class="btn bb-form-btn-code" style='font-weight:500'>CODE</div>
+                         <!--<a class="btn bb-form-btn-code" style='font-weight:500' href="{{ promotion.deeplink }}" target="_blank">CODE</a>-->
+                      </div>
+                    </div>
+                    {% elif promotion.promo_type.name in "Promotion" %}
+                    <div class="col-12 bb-merchant-name">
+                      <div class="bb-code-reveal">
+                          <button class="btn bb-form-btn bb-form-btn-offer" style='font-weight:500'>OFFER</button>
+                        <!--<a class="btn bb-form-btn bb-form-btn-offer" style='font-weight:500' href="{{ promotion.deeplink }}" target="_blank">OFFER</a>-->
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        <!--</a>  -->
+        </div>
+    </div>
+     {% endfor %}
+  </div>
+</div>
+
+
+
+<div class="container  text-center" style="margin-top:50px;margin-bottom:75px;">
+  <h1>HOT COLLECTIONS</h1>
+  <hr>
+  <div class="row">
+    <div class="col-xs-12 col-sm-4 bb-collection-img-1">
       <a href="#">
       <div class="bb-hovereffect">
         <img class="img-responsive" src="media/images/womens bags.jpg" alt="">
             <div class="overlay">
-                <h2>GIRLS BAGS</h2>
+                <h2>GIRLS ACCESSORIES</h2>
         				<p>SHOP NOW</p>
             </div>
     </div>
@@ -103,6 +153,28 @@
       </a>
     </div>
   </div>
+</div>
+
+<div class="container bb-blogpost-container">
+    <h1 class="text-center bb-blog-title">THE BARGAIN BLOG</h1>
+    <hr>
+    <div class="row">
+        {% for post in posts %}
+        <div class="col-xs-12 col-lg-6">
+            <div class="card text-center">
+                <div class="bb-product-img-container">
+                    <h5 class="text-bold bb-blogost-title">{{ post.title }}</h5>
+                    <img class="card-img-top bb-blog-img" src="{{MEDIA_URL}}{{post.image}}">
+                </div>
+                <div class="card-block bb-blog-block">
+                    <p class="bb-blog-content">{{ post.content|truncatechars:200 }}</p>
+                    <p><button class="btn bb-form-btn" onclick="location.href='{% url 'viewpost' post.slug %}'">Read More</button></p>
+                    <p><strong class="bb-posts-info-details">Date:</strong> {{ post.published_date }} | <strong class="bb-posts-info-details">Views:</strong> {{ post.views }} | <strong class="bb-posts-info-details">Tags:</strong> {{ post.tag }}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
 </div>
 
 

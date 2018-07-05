@@ -25,7 +25,7 @@ SECRET_KEY = 'v4^^(l*mprl_%y%120kp2v*lq3&#$v=q9=zzi4pq%39%hjyx@)'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['official-best-bargain-rcomiskey.c9users.io']
+ALLOWED_HOSTS = ['official-best-bargain-rcomiskey.c9users.io', 'localhost']
 
 
 # Application definition
@@ -91,6 +91,17 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': os.path.join(BASE_DIR, 'bestbargain'),
+#         'USER': 'rory',
+#         'PASSWORD': 'Liverpool88',
+#         'HOST': 'localhost',
+#         'PORT': '5432'
+#         }
+# }
 
 
 # Password validation

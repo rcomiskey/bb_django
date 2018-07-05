@@ -58,8 +58,9 @@ class Size(models.Model):
                
 
 
-
-
+# class OnSale(models.Manager):
+#     def get_queryset(self):
+#         return super().get_queryset().filter(product_name='hello'))
     
     
    
@@ -84,10 +85,12 @@ class Product(models.Model):
     size = models.ForeignKey('Size', on_delete=models.CASCADE)
     colourOptions = models.ForeignKey('Colour', on_delete=models.CASCADE, null=True)
     colour = models.CharField(max_length=500, default='')
-    rrp_price = models.DecimalField(max_digits=6, decimal_places=2, null=True)
+    rrp_price = models.DecimalField(max_digits=6, decimal_places=2, null=True, default='')
     category = TreeForeignKey('Category',null=True,blank=True, on_delete=models.CASCADE)
     description = models.CharField(max_length=500, default='')
+    # sale_objects = OnSale() 
    
+        
     def __str__(self):
         return self.product_name
         

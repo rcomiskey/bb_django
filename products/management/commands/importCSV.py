@@ -16,7 +16,6 @@ class Command(BaseCommand):
         # all_colours = list(Colour.objects.all())
        
     
-        
         if options['file']:
             print("Importing " + options['file'])
             
