@@ -1,5 +1,5 @@
 import django_filters 
-from .models import Product, Brand, Category, Size, Colour
+from .models import Product, Brand, Category, Size, Colour, COLOURS
 from django.forms import CheckboxSelectMultiple
 from django.db.models import Q
 from django.db.models import Func, F
@@ -9,9 +9,10 @@ from django.db.models import Func, F
 
 # Company.objects.annotate(num_offerings=Count(F('products') + F('services')))
     
-
-
-colours = [('grey', 'red'),('blue', 'blue')]
+# def Colours(request, colour):
+#     if "red" in colour:
+blue = Colour.objects.filter(colour="blue")
+    
     
 class ProductFilter(django_filters.FilterSet):
     search_price__gt = django_filters.NumberFilter(name='search_price', lookup_expr='gt', )
@@ -23,9 +24,10 @@ class ProductFilter(django_filters.FilterSet):
     # product_name = django_filters.CharFilter(lookup_expr='icontains')
     # colour = django_filters.filters.CharFilter(lookup_expr='icontains')
     # size = django_filters.filters.CharFilter(lookup_expr='icontains')
-    # colour = django_filters.MultipleChoiceFilter(choices=colours, lookup_expr='icontains')
-    colour = django_filters.AllValuesMultipleFilter(label='Colour', widget=CheckboxSelectMultiple(attrs={'class': 'check-label'}))
-
+    # red = django_filters.filters.ChoiceFilter(queryset=Colour.objects.filter(colour="red"),widget=CheckboxSelectMultiple(attrs={'class': 'check-label'}))
+    # colour = django_filters.AllValuesMultipleFilter(label='Colour', widget=CheckboxSelectMultiple(attrs={'class': 'check-label'}))
+    product = Product.objects.all()
+    colour = Colour.objects.all()
     
     class Meta:
         model = Product

@@ -83,8 +83,7 @@ class Product(models.Model):
     display_price = models.CharField(max_length=500, default='')
     brand_name = models.ForeignKey('Brand', on_delete=models.CASCADE)
     size = models.ForeignKey('Size', on_delete=models.CASCADE)
-    colourOptions = models.ForeignKey('Colour', on_delete=models.CASCADE, null=True)
-    colour = models.CharField(max_length=500, default='')
+    colour = models.ForeignKey('Colour', on_delete=models.CASCADE, null=True)
     rrp_price = models.DecimalField(max_digits=6, decimal_places=2, null=True, default='')
     category = TreeForeignKey('Category',null=True,blank=True, on_delete=models.CASCADE)
     description = models.CharField(max_length=500, default='')
@@ -95,10 +94,13 @@ class Product(models.Model):
         return self.product_name
         
     
-    
+COLOURS = (
+    (1 ,'Red'),
+    (2 ,'Blue'),
+    )  
 
 class Colour(models.Model):       
-    colour = models.CharField(max_length=500, default='')
+    colour = models.CharField(max_length=500, choices=COLOURS, default='')
     
     def __str__(self):
         return self.colour        

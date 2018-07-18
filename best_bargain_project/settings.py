@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_forms_bootstrap',
+    # 'haystack',
     'home',
     'products',
     'mptt',
@@ -97,11 +98,21 @@ DATABASES = {
 #         'ENGINE': 'django.db.backends.postgresql',
 #         'NAME': os.path.join(BASE_DIR, 'bestbargain'),
 #         'USER': 'rory',
-#         'PASSWORD': 'Liverpool88',
+#         'PASSWORD': '*******',
 #         'HOST': 'localhost',
 #         'PORT': '5432'
 #         }
 # }
+
+# HAYSTACK_CONNECTIONS = {
+#     'default': {
+#         'ENGINE': 'haystack.backends.elasticsearch_backend.ElasticsearchSearchEngine',
+#         'URL': 'http://127.0.0.1:9200/',
+#         'INDEX_NAME': 'haystack',
+#     },
+# }
+
+# HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'
 
 
 # Password validation

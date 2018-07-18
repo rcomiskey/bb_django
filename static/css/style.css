@@ -191,6 +191,7 @@ input[type=checkbox], input[type=radio] {
 #collapseFilter4 {
   padding: 2% 0% 2% 30%;
   text-align: left;
+  border-bottom: 1px solid #2fa4e7;
 }
 
 #bb-filter-header {
@@ -215,7 +216,9 @@ input[type=checkbox], input[type=radio] {
 /*    width: 50px;*/
 /*}*/
 
-
+.carousel-item {
+    transition: transform .5s ease-in-out,-webkit-transform .5s ease-in-out,-o-transform .5s ease-in-out;
+}
 
 
 div.tog{float:left; display:block;margin:0em auto;height:20px;width:51px;position:relative;cursor:pointer;font:18px/18px arial;background:#6f7374;
@@ -283,7 +286,7 @@ div.tog.on:after{left:27.5px;}
   text-transform: uppercase;
   text-align: center;
   position: relative;
-  font-size: 40px;
+  font-size: 37px;
   background-color: transparent;
   color: #FFF;
   padding: 1em 0;
@@ -1078,7 +1081,7 @@ div.tog.on:after{left:27.5px;}
   overflow: scroll;
   overflow-x: hidden;
   color: #003542;
-  min-width: 15rem;
+  min-width: 18rem;
   padding: 15px;
   border-radius: 0px;
   border: 1px solid #2fa4e7;

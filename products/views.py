@@ -14,21 +14,30 @@ def view_products(request,hierarchy= None):
     category_slug = hierarchy.split('/')
     parent = None
     root = Category.objects.all()
-    
-
     for slug in category_slug[:-1]:
         parent = root.get(parent=parent, slug = slug)
-        
-
+    product = Category.objects.get(parent=parent,slug=category_slug[-1])
+    filters = ProductFilter(request.GET, queryset=Category.get_all_products(product))
+    page = request.GET.get('page')
+    paginator = Paginator(filters.qs, 1)
     try:
-        product = Category.objects.get(parent=parent,slug=category_slug[-1])
-        filter = ProductFilter(request.GET, queryset=Category.get_all_products(product))
-    except:
-        product = get_object_or_404(Product, slug = category_slug[-1])
-        filter = ProductFilter(request.GET, queryset=Category.get_all_products(product))
-        return render(request, "view_products.html", {'product': product, 'filter': filter, 'currency': currency })
-    else:
-        return render(request, 'view_products.html', {'product': product, 'filter': filter, 'currency': currency })
+        products = paginator.page(page)
+    except PageNotAnInteger:
+        products = paginator.page(1)
+    except EmptyPage:
+        products = paginator.page(paginator.num_pages)
+
+    return render(request, "view_products.html", {'product': product, 'filter': filters, 'currency': currency, 'products': products })
+    
+    # try:
+    #     product = Category.objects.get(parent=parent,slug=category_slug[-1])
+    #     filter = ProductFilter(request.GET, queryset=Category.get_all_products(product))
+    # except:
+    #     product = get_object_or_404(Product, slug = category_slug[-1])
+    #     filter = ProductFilter(request.GET, queryset=Category.get_all_products(product))
+    #     return render(request, "view_products.html", {'product': product, 'filter': filter, 'currency': currency })
+    # else:
+    #     return render(request, 'view_products.html', {'product': product, 'filter': filter, 'currency': currency })
         
 
 

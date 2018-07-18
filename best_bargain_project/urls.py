@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, re_path, path
-from home.views import index
+from home.views import index, privacyPolicy, termsConditions
 # from products.views import view_products
 from .settings import MEDIA_ROOT
 from django.conf import settings
@@ -24,6 +24,8 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     re_path(r'^$', index, name='index'),
+    re_path(r'^terms-and-conditions$', termsConditions, name='termsConditions'),
+    re_path(r'^privacy-and-cookie-policy$', privacyPolicy, name='privacyPolicy'),
     re_path(r'^products/', include('products.urls')),
     re_path(r'^blog/', include('blog.urls')),
     re_path(r'^promotions/', include('promotions.urls')),

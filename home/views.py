@@ -8,3 +8,8 @@ def index(request):
     promotions = Promotion.objects.all()[:4]
     return render(request, 'index.html', {'posts': posts, 'promotions': promotions})
 
+def privacyPolicy(request):
+    return render(request, 'privacy_and_cookie_policy.html')
+    
+def termsConditions(request):
+    return render(request, 'terms_and_conditions.html')
