@@ -94,19 +94,26 @@ class Product(models.Model):
         return self.product_name
         
     
-COLOURS = (
-    (1 ,'Red'),
-    (2 ,'Blue'),
-    )  
 
-class Colour(models.Model):       
+
+COLOURS = (
+('red' ,'Red'),
+('blue' ,'Blue'),
+)
+class Colour(models.Model):
     colour = models.CharField(max_length=500, choices=COLOURS, default='')
-    
+
     def __str__(self):
         return self.colour        
 
 
-#  COLOURS = (
+COLOURS2 = (
+    (('Blue', 'Denim', 'Teal'),'blue'),
+    (('Red', 'rd'), 'red'),
+)
+
+
+# COLOURS2 = (
 #     ('white' ,'White'),
 #     ('beige/bg', 'Beige'),
 #     ('black/blck','Black'),
