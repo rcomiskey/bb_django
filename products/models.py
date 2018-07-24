@@ -72,7 +72,10 @@ class Size(models.Model):
         
 #         return super().get_queryset().filter(search_price__lt=5)
 
-
+COLOURS = (
+('red' ,'Red'),
+('blue' ,'Blue'),
+)
 
 class Product(models.Model):
     aw_deep_link = models.CharField(max_length=500, default='')
@@ -83,7 +86,7 @@ class Product(models.Model):
     display_price = models.CharField(max_length=500, default='')
     brand_name = models.ForeignKey('Brand', on_delete=models.CASCADE)
     size = models.ForeignKey('Size', on_delete=models.CASCADE)
-    colour = models.ForeignKey('Colour', on_delete=models.CASCADE, null=True)
+    colour = models.CharField(max_length=500, default='')
     rrp_price = models.DecimalField(max_digits=6, decimal_places=2, null=True, default='')
     category = TreeForeignKey('Category',null=True,blank=True, on_delete=models.CASCADE)
     description = models.CharField(max_length=500, default='')
@@ -96,39 +99,37 @@ class Product(models.Model):
     
 
 
-COLOURS = (
-('red' ,'Red'),
-('blue' ,'Blue'),
-)
-class Colour(models.Model):
-    colour = models.CharField(max_length=500, choices=COLOURS, default='')
 
-    def __str__(self):
-        return self.colour        
+# class Colour(models.Model):
+#     colour = models.CharField(max_length=500, choices=COLOURS, default='')
 
-
-COLOURS2 = (
-    (('Blue', 'Denim', 'Teal'),'blue'),
-    (('Red', 'rd'), 'red'),
-)
+#     def __str__(self):
+#         return self.colour        
 
 
 # COLOURS2 = (
-#     ('white' ,'White'),
-#     ('beige/bg', 'Beige'),
-#     ('black/blck','Black'),
-#     ('blue/denim/teal','Blue'),
-#     ('brown/brwn/bronze','Brown'),
-#     ('gold/gld', 'gold'),
-#     ('green/grn/kamo/camo/khaki/lime/mint/olive/turquoise', 'Green'),
-#     ('grey/gray/gry/charcoal/stone', 'Grey'),
-#     ('navy/nvy', 'Navy'),
-#     ('nude', 'Nude'),
-#     ('orange/orng', 'Orange'),
-#     ('pink/pnk', 'Pink'),
-#     ('purple/purpl/burgundy', 'Purple'),
-#     ('red/rd', 'Red'),
-#     ('silver/slvr', 'Silver'),
-#     ('yellow/yllw', 'Yellow'),
-#     )
+#     (('blue', 'denim', 'teal'),'blue'),
+#     (('red', 'rd'), 'red'),
+#     (('white') ,'white'),
+# )
+
+
+COLOURS2 = (
+    (('white') ,'white'),
+    (('beige','bg'), 'beige'),
+    (('black', 'blck'),'black'),
+    (('blue', 'denim', 'teal'),'blue'),
+    (('brown', 'brwn', 'bronze'),'brown'),
+    (('gold', 'gld'), 'gold'),
+    (('green', 'grn', 'kamo', 'camo', 'khaki', 'lime', 'mint', 'olive', 'turquoise'), 'green'),
+    (('grey', 'gray', 'gry', 'charcoal', 'stone'), 'grey'),
+    (('navy', 'nvy'), 'navy'),
+    (('nude'), 'nude'),
+    (('orange', 'orng'), 'orange'),
+    (('pink', 'pnk'), 'pink'),
+    (('purple', 'purpl', 'burgundy'), 'purple'),
+    (('red', 'rd'), 'red'),
+    (('silver', 'slvr'), 'silver'),
+    (('yellow', 'yllw'), 'yellow'),
+    )
 

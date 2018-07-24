@@ -1,33 +1,48 @@
 import django_filters 
-from .models import Product, Brand, Category, Size, Colour,  COLOURS, COLOURS2
+from .models import Product, Brand, Category, Size,  COLOURS, COLOURS2
 from django.forms import CheckboxSelectMultiple
 from django.db.models import Q
 from django.db.models import Func, F
-# Product.objects.annotate(abs_calculation=Func(Product.search_price < Product.rrp_price function='ABS').filter(abs_calculation)
+import operator
+from functools import reduce
 
+
+# COLOURS = (
+# ('red' ,'Red'),
+# ('blue' ,'Blue'),
+# )
 
 COLOURS = (
-('red' ,'Red'),
-('blue' ,'Blue'),
-)
-# Company.objects.annotate(num_offerings=Count(F('products') + F('services')))
-    
-# def Colours(request, colour):
-#     if "red" in colour:
-blue = Colour.objects.filter(colour="blue")
+    ('white' ,'White'),
+    ('beige', 'Beige'),
+    ('black', 'Black'),
+    ('blue','Blue'),
+    ('brown','Brown'),
+    ('gold','gold'),
+    ('green', 'Green'),
+    ('grey','Grey'),
+    ('navy','Navy'),
+    ('nude', 'Nude'),
+    ('orange', 'Orange'),
+    ('pink', 'Pink'),
+    ('purple', 'Purple'),
+    ('red', 'Red'),
+    ('silver', 'Silver'),
+    ('yellow', 'Yellow'),
+    )
 
 COLOUR3 = {}
 for variations, colour in COLOURS2:
-    COLOUR3[colour] = [x.id for x in Colour.objects.filter(colour__in=variations)]
-
-print(COLOUR3)
+    clauses = (Q(colour__icontains=p) for p in variations)
+    query = reduce(operator.or_, clauses)
+    COLOUR3[colour] = [x.id for x in Product.objects.filter(query)]
 
     
 class ProductFilter(django_filters.FilterSet):
     search_price__gt = django_filters.NumberFilter(name='search_price', lookup_expr='gt', )
     search_price__lt = django_filters.NumberFilter(name='search_price', lookup_expr='lt')
     brand_name = django_filters.filters.ModelMultipleChoiceFilter( label='Brand',widget=CheckboxSelectMultiple(attrs={'class': 'check-label'}), queryset = Brand.objects.all())
-    colour = django_filters.filters.MultipleChoiceFilter(label='Colour', choices=COLOURS,widget=CheckboxSelectMultiple,method='filter_colour')
+    colour = django_filters.filters.MultipleChoiceFilter(label='Colour', choices=COLOURS, widget=CheckboxSelectMultiple(attrs={'class': 'check-label'}), method='filter_colour')
     size = django_filters.filters.ModelMultipleChoiceFilter( label='Size',widget=CheckboxSelectMultiple(attrs={'class': 'check-label'}), queryset = Size.objects.all())
     # sale = django_filters.ModelMultipleChoiceFilter(queryset=Product.objects.annotate(on_sale=(F('rrp_price') - F('search_price'))
     # product_name = django_filters.CharFilter(lookup_expr='icontains')
@@ -42,14 +57,12 @@ class ProductFilter(django_filters.FilterSet):
         colour_ids =  []
         for colour in value:
             colour_ids.extend(COLOUR3[colour])
-        return queryset.filter(colour__in=colour_ids)
+        return queryset.filter(id__in=colour_ids)
 
     class Meta:
         model = Product
         fields = [ 'brand_name', 'colour']
-        
-        # def a(self, queryset, value):
-        #     return queryset.filter(product_name=value)
+
         
         
    
