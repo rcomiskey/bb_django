@@ -19,7 +19,7 @@ def view_products(request,hierarchy= None):
     product = Category.objects.get(parent=parent,slug=category_slug[-1])
     filters = ProductFilter(request.GET, queryset=Category.get_all_products(product))
     page = request.GET.get('page')
-    paginator = Paginator(filters.qs, 1)
+    paginator = Paginator(filters.qs, 20)
     try:
         products = paginator.page(page)
     except PageNotAnInteger:
@@ -45,6 +45,11 @@ def view_products(request,hierarchy= None):
 def do_search(request):
     products = Product.objects.filter(product_name__icontains=request.GET['q'])
     return render(request, "template.html", {"products": products})
+    
+def view_product_item(request, id):
+    this_product = get_object_or_404(Product, id=id)
+    this_product.save()
+    return render(request, "view_product_item.html", {'product': this_product})
 
 
 

@@ -1,16 +1,11 @@
 import django_filters 
-from .models import Product, Brand, Category, Size,  COLOURS, COLOURS2
+from .models import Product, Brand, Category, Size
 from django.forms import CheckboxSelectMultiple
 from django.db.models import Q
 from django.db.models import Func, F
 import operator
 from functools import reduce
 
-
-# COLOURS = (
-# ('red' ,'Red'),
-# ('blue' ,'Blue'),
-# )
 
 COLOURS = (
     ('white' ,'White'),
@@ -30,12 +25,39 @@ COLOURS = (
     ('silver', 'Silver'),
     ('yellow', 'Yellow'),
     )
+    
+COLOURS2 = (
+    (('white') ,'white'),
+    (('beige','bg'), 'beige'),
+    (('black', 'blck'),'black'),
+    (('blue', 'denim', 'teal'),'blue'),
+    (('brown', 'brwn', 'bronze'),'brown'),
+    (('gold', 'gld'), 'gold'),
+    (('green', 'grn', 'kamo', 'camo', 'khaki', 'lime', 'mint', 'olive', 'turquoise'), 'green'),
+    (('grey', 'gray', 'gry', 'charcoal', 'stone'), 'grey'),
+    (('navy', 'nvy'), 'navy'),
+    (('nude'), 'nude'),
+    (('orange', 'orng'), 'orange'),
+    (('pink', 'pnk'), 'pink'),
+    (('purple', 'purpl', 'burgundy'), 'purple'),
+    (('red', 'rd'), 'red'),
+    (('silver', 'slvr'), 'silver'),
+    (('yellow', 'yllw'), 'yellow'),
+    )
 
 COLOUR3 = {}
 for variations, colour in COLOURS2:
     clauses = (Q(colour__icontains=p) for p in variations)
     query = reduce(operator.or_, clauses)
     COLOUR3[colour] = [x.id for x in Product.objects.filter(query)]
+
+
+
+# SIZE = (
+#     ('small', 'Small'),
+#     ('medium', 'Medium'),
+#     ('large', 'Large'),
+#     )
 
     
 class ProductFilter(django_filters.FilterSet):
@@ -51,6 +73,7 @@ class ProductFilter(django_filters.FilterSet):
     # red = django_filters.filters.ChoiceFilter(queryset=Colour.objects.filter(colour="red"),widget=CheckboxSelectMultiple(attrs={'class': 'check-label'}))
     # colour = django_filters.AllValuesMultipleFilter(label='Colour', widget=CheckboxSelectMultiple(attrs={'class': 'check-label'}))
     product = Product.objects.all()
+    sale = django_filters.BooleanFilter(label='On Sale', method='filter_sale')
 
     def filter_colour(self, queryset, name, value):
         # construct the full lookup expression.
@@ -58,7 +81,13 @@ class ProductFilter(django_filters.FilterSet):
         for colour in value:
             colour_ids.extend(COLOUR3[colour])
         return queryset.filter(id__in=colour_ids)
-
+        
+    def filter_sale(self, queryset, name, value):
+        # construct the full lookup expression.
+        
+        return queryset.filter(id__in=[1,2])
+        
+        
     class Meta:
         model = Product
         fields = [ 'brand_name', 'colour']

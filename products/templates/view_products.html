@@ -57,7 +57,7 @@
         SIZE
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            {{ filter.form.size}}
+            {{ filter.form.sale}}
            
         </div>
       </div>
@@ -206,7 +206,7 @@
 
 <div class="container-fluid bb-products-container">
   <div class="row">
-     {% for product in filter.qs %}
+     {% for product in products.object_list %}
     <div class="col-6 col-sm-6 col-md-4 col-lg-3">
         <a class="bb-product-link" style="text-decoration:none" href="{{ product.aw_deep_link }}" target="_blank">
         <div class="card text-center">
@@ -236,29 +236,53 @@
   </div>
 </div>
 
-<div class="text-center">
-{% if products.has_other_pages %}
-  <ul class="pagination">
-    {% if products.has_previous %}
-      <li><a href="?page={{ products.previous_page_number }}">&laquo;</a></li>
-    {% else %}
-      <li class="disabled"><span>&laquo;</span></li>
-    {% endif %}
-    {% for i in products.paginator.page_range %}
-      {% if products.number == i %}
-        <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+<!--<div class="text-center">-->
+<!--{% if products.has_other_pages %}-->
+<!--  <ul class="pagination">-->
+<!--    {% if products.has_previous %}-->
+<!--      <li><a href="?page={{ products.previous_page_number }}">&laquo;</a></li>-->
+<!--    {% else %}-->
+<!--      <li class="disabled"><span>&laquo;</span></li>-->
+<!--    {% endif %}-->
+<!--    {% for i in products.paginator.page_range %}-->
+<!--      {% if products.number == i %}-->
+<!--        <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>-->
+<!--      {% else %}-->
+<!--        <li><a href="?page={{ i }}">{{ i }}</a></li>-->
+<!--      {% endif %}-->
+<!--    {% endfor %}-->
+<!--    {% if products.has_next %}-->
+<!--      <li><a href="?page={{ products.next_page_number }}">&raquo;</a></li>-->
+<!--    {% else %}-->
+<!--      <li class="disabled"><span>&raquo;</span></li>-->
+<!--    {% endif %}-->
+<!--  </ul>-->
+<!--{% endif %}-->
+<!--</div>-->
+
+    {% if products.has_other_pages %}
+    <nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center">
+      {% if products.has_previous %}
+      <li class="page-item"><a class="page-link" href="?page={{ products.previous_page_number }}">&laquo;</a></li>
       {% else %}
-        <li><a href="?page={{ i }}">{{ i }}</a></li>
+      <li class="page-item disabled"><a class="page-link" href="#"><span>&laquo;</span></a></li>
       {% endif %}
-    {% endfor %}
-    {% if products.has_next %}
-      <li><a href="?page={{ products.next_page_number }}">&raquo;</a></li>
-    {% else %}
-      <li class="disabled"><span>&raquo;</span></li>
+      {% for i in products.paginator.page_range %}
+      {% if products.number == i %}
+      <li class="page-item active"><a class="page-link" href="#">{{ i }} <span class="sr-only">(current)</span></a></li>
+      {% else %}
+      <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+      {% endif %}
+      {% endfor %}
+      {% if products.has_next %}
+      <li class="page-item"><a class="page-link" href="?page={{ products.next_page_number }}">&raquo;</a></li>
+      {% else %}
+      <li class="page-item disabled"><a class="page-link" href="#"><span>&raquo;</span></a></li>
+      {% endif %}
+    </ul>
+    </nav>
     {% endif %}
-  </ul>
-{% endif %}
-</div>
 
 {% endblock %}
 

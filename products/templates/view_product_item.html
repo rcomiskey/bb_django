@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container bb-blogpost-container">
+    <div class="row" style="justify-content: center;">
+      <div class="col-xs-12">
+        <div class="text-center">
+            <div >
+                <h2 class="text-bold bb-viewpost-title" style="color:#cc151d">{{ product.product_name }}</h2>
+           
+                <img  src="{{ product.aw_image_url }}">
+                
+                <p class="bb-viewpost-details"><strong class="bb-posts-info-details">Merchant:</strong> {{ product.merchant_name}} | <strong class="bb-posts-info-details">Category:</strong> {{ product.category }} | <strong class="bb-posts-info-details">Tags:</strong> </p>
+            </div>
+            <div >
+                <h6 style="color:#2fa4e7">DESCRIPTION</h6>
+                  <hr>
+  
+                <p class="bb-viewpost-content">{{ product.description }}</p>
+                
+            </div>
+        </div>
+      </div>
+        </div>
+    </div>
+
+{% endblock %}

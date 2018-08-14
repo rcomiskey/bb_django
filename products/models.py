@@ -48,35 +48,7 @@ class Size(models.Model):
     def __str__(self):
         return self.size
         
-# class ColourManager(models.Manager):
-#     def get_queryset(self):
-# #   if regex matches value, return key
-#         colours = Colour.COLOURS
-#         regex = Colour.regex
-#         colour = Colour.colour
-#         return super().get_queryset().exclude(colour__in=colours)
-               
-
-
-# class OnSale(models.Manager):
-#     def get_queryset(self):
-#         return super().get_queryset().filter(product_name='hello'))
-    
-    
-   
-    
-    
         
-# class SaleManager(models.Manager):
-#     def get_queryset(self):
-        
-#         return super().get_queryset().filter(search_price__lt=5)
-
-COLOURS = (
-('red' ,'Red'),
-('blue' ,'Blue'),
-)
-
 class Product(models.Model):
     aw_deep_link = models.CharField(max_length=500, default='')
     product_name = models.CharField(max_length=500, default='')
@@ -90,46 +62,9 @@ class Product(models.Model):
     rrp_price = models.DecimalField(max_digits=6, decimal_places=2, null=True, default='')
     category = TreeForeignKey('Category',null=True,blank=True, on_delete=models.CASCADE)
     description = models.CharField(max_length=500, default='')
-    # sale_objects = OnSale() 
    
         
     def __str__(self):
         return self.product_name
         
-    
-
-
-
-# class Colour(models.Model):
-#     colour = models.CharField(max_length=500, choices=COLOURS, default='')
-
-#     def __str__(self):
-#         return self.colour        
-
-
-# COLOURS2 = (
-#     (('blue', 'denim', 'teal'),'blue'),
-#     (('red', 'rd'), 'red'),
-#     (('white') ,'white'),
-# )
-
-
-COLOURS2 = (
-    (('white') ,'white'),
-    (('beige','bg'), 'beige'),
-    (('black', 'blck'),'black'),
-    (('blue', 'denim', 'teal'),'blue'),
-    (('brown', 'brwn', 'bronze'),'brown'),
-    (('gold', 'gld'), 'gold'),
-    (('green', 'grn', 'kamo', 'camo', 'khaki', 'lime', 'mint', 'olive', 'turquoise'), 'green'),
-    (('grey', 'gray', 'gry', 'charcoal', 'stone'), 'grey'),
-    (('navy', 'nvy'), 'navy'),
-    (('nude'), 'nude'),
-    (('orange', 'orng'), 'orange'),
-    (('pink', 'pnk'), 'pink'),
-    (('purple', 'purpl', 'burgundy'), 'purple'),
-    (('red', 'rd'), 'red'),
-    (('silver', 'slvr'), 'silver'),
-    (('yellow', 'yllw'), 'yellow'),
-    )
 

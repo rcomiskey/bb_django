@@ -11,4 +11,8 @@ def getpromotions(request):
     promo_filter = PromotionFilter(request.GET, queryset=Promotion.objects.all())
     return render(request, "promotions.html", {'promo_filter': promo_filter})
    
+def viewpromotion(request, id):
+    this_promotion = get_object_or_404(Promotion, id=id)
+    this_promotion.save()
+    return render(request, "viewpromotion.html", {'promotion': this_promotion})
    

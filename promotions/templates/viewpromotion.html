@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+<div class="container bb-blogpost-container">
+    <div class="row" style="justify-content: center;">
+      <div class="col-xs-12">
+        <div class="text-center">
+            <div >
+                <h2 class="text-bold bb-viewpost-title" style="color:#cc151d">{{ promotion.title }}</h2>
+           
+                <img  src="{{MEDIA_URL}}{{promotion.merchant.image}}">
+                
+                <p class="bb-viewpost-details"><strong class="bb-posts-info-details">Merchant:</strong> {{ promotion.merchant.name }} | <strong class="bb-posts-info-details">Category:</strong> {{ promotion.category }} | <strong class="bb-posts-info-details">Tags:</strong> </p>
+            </div>
+            <div >
+                <h6 style="color:#2fa4e7">DESCRIPTION</h6>
+                  <hr>
+  
+                <p class="bb-viewpost-content">{{ promotion.description }}</p>
+                 {% if promotion.promo_type.name in "Code" %}
+                    <div class="col-12 bb-merchant-name">
+                      <div class="bb-code-reveal">
+                        <p class="bb-form-btn-code-reveal" hidden>HELLO123456</p>
+                        <div class="btn bb-form-btn-code" style='font-weight:500'>CODE</div>
+                         <!--<a class="btn bb-form-btn-code" style='font-weight:500' href="{{ promotion.deeplink }}" target="_blank">CODE</a>-->
+                      </div>
+                    </div>
+                    {% elif promotion.promo_type.name in "Offer" %}
+                    <div class="col-12 bb-merchant-name">
+                      <div class="bb-code-reveal">
+                          <button class="btn bb-form-btn bb-form-btn-offer" style='font-weight:500'>OFFER</button>
+                        <!--<a class="btn bb-form-btn bb-form-btn-offer" style='font-weight:500' href="{{ promotion.deeplink }}" target="_blank">OFFER</a>-->
+                        </div>
+                    </div>
+                    {% endif %}
+                <!--<button class="btn bb-form-btn" onclick="location.href='{% url 'getpromotions'%}'">BACK TO PROMOTIONS</button>-->
+            </div>
+        </div>
+      </div>
+        </div>
+    </div>
+{% endblock %}

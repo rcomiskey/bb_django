@@ -2,8 +2,8 @@
 {% block content %}
 
 <div class="bb-filter-nav nav-down">
-    <span class="bb-filter-icon" onclick="openNav()"><i class="fa fa-sliders"></i> FILTER</span>
-    
+    <span class="bb-filter-icon" onclick="openNav2()"><i class="fa fa-sliders"></i> FILTER</span>
+  
 
 <div class="container bb-filter-dropdown-container">
   <div class="row bb-filter-row">
@@ -67,9 +67,11 @@
 
 
 </div>
+
   <div id="mySidenav" class="sidenav">
-    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"><span><i class="fa fa-window-close"></i></span></a>
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav2()"><span><i class="fa fa-window-close"></i></span></a>
       <div class="bb-filter-container">
+    
           
         <div id="accordion" role="tablist" aria-multiselectable="true">
           
@@ -158,7 +160,7 @@
                         <p class="bb-promotions-title">{{ promotion.title }}</p>
                     </div>
                     <div class="col-12 bb-search-price">
-                        <p class="bb-promotions-description">{{ promotion.description }}</p>
+                        <p class="bb-promotions-description" onclick="location.href='{% url 'viewpromotion' promotion.id %}'">{{ promotion.description }}</p>
                     </div>
                     <div class="col-12 bb-merchant-name">
                         <p class="bb-merchant-name-text">{{ promotion.merchant.name}} - {{ promotion.category}} </p>
@@ -171,7 +173,7 @@
                          <!--<a class="btn bb-form-btn-code" style='font-weight:500' href="{{ promotion.deeplink }}" target="_blank">CODE</a>-->
                       </div>
                     </div>
-                    {% elif promotion.promo_type.name in "Promotion" %}
+                    {% elif promotion.promo_type.name in "Offer" %}
                     <div class="col-12 bb-merchant-name">
                       <div class="bb-code-reveal">
                           <button class="btn bb-form-btn bb-form-btn-offer" style='font-weight:500'>OFFER</button>
