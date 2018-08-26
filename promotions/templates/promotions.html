@@ -147,7 +147,7 @@
 
 <div class="container-fluid bb-promotions-container">
   <div class="row">
-     {% for promotion in promo_filter.qs %}
+     {% for promotion in promotions.object_list %}
     <div class="col-12 col-sm-6 col-md-4 col-lg-3">
         <!--<a class="bb-product-link" style="text-decoration:none" href="{{ promotion.deeplink }}" target="_blank">-->
         <div class="card text-center bb-promotions-card">
@@ -189,5 +189,39 @@
      {% endfor %}
   </div>
 </div>
+
+    {% if promotions.has_other_pages %}
+    <nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center">
+  {% if promotions.has_previous %}
+    <a class="pagination-action" href="?page=1">
+     <i class="fa fa-angle-double-left" aria-hidden="true"></i>
+    </a>
+    <a class="pagination-action" href="?page={{ promotions.previous_page_number }}">
+      <i class="fa fa-angle-left" aria-hidden="true"></i>
+    </a>
+  {% endif %}
+ 
+  {% for num in promotions.paginator.page_range %}
+    
+    {% if promotions.number == num %}
+    <span class="pagination-number pagination-current">{{ num }}</span>
+    {% elif num > promotions.number|add:'-3' and num < promotions.number|add:'3' %}
+    <a class="pagination-number" href="?page={{ num }}">{{ num }}</a>
+    {% endif %}
+ 
+  {% endfor %}
+    
+  {% if promotions.has_next %}
+    <a class="pagination-action" href="?page={{ promotions.next_page_number }}">
+      <i class="fa fa-angle-right" aria-hidden="true"></i>
+    </a>
+    <a class="pagination-action" href="?page={{ promotions.paginator.num_pages }}">
+      <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+    </a>
+  {% endif %}
+    </ul>
+    </nav>
+    {% endif %}
     
 {% endblock %}

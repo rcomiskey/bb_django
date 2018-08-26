@@ -8,7 +8,6 @@ from functools import reduce
 
 
 COLOURS = (
-    ('white' ,'White'),
     ('beige', 'Beige'),
     ('black', 'Black'),
     ('blue','Blue'),
@@ -23,11 +22,11 @@ COLOURS = (
     ('purple', 'Purple'),
     ('red', 'Red'),
     ('silver', 'Silver'),
+    ('white' ,'White'),
     ('yellow', 'Yellow'),
     )
     
 COLOURS2 = (
-    (('white') ,'white'),
     (('beige','bg'), 'beige'),
     (('black', 'blck'),'black'),
     (('blue', 'denim', 'teal'),'blue'),
@@ -42,6 +41,7 @@ COLOURS2 = (
     (('purple', 'purpl', 'burgundy'), 'purple'),
     (('red', 'rd'), 'red'),
     (('silver', 'slvr'), 'silver'),
+    (('white', 'wht') ,'white'),
     (('yellow', 'yllw'), 'yellow'),
     )
 
@@ -51,15 +51,48 @@ for variations, colour in COLOURS2:
     query = reduce(operator.or_, clauses)
     COLOUR3[colour] = [x.id for x in Product.objects.filter(query)]
 
+SIZES = (
+    ('beige', 'Extra Small'),
+    ('black', 'Small'),
+    ('blue','Medium'),
+    ('brown','Large'),
+    ('gold','Extra Large'),
+    ('green', ''),
+    ('grey','Grey'),
+    ('navy','Navy'),
+    ('nude', 'Nude'),
+    ('orange', 'Orange'),
+    ('pink', 'Pink'),
+    ('purple', 'Purple'),
+    ('red', 'Red'),
+    ('silver', 'Silver'),
+    ('white' ,'White'),
+    ('yellow', 'Yellow'),
+    )
 
-
-# SIZE = (
-#     ('small', 'Small'),
-#     ('medium', 'Medium'),
-#     ('large', 'Large'),
-#     )
-
+SALE = (
+    ('true' ,'ON SALE'),
+    ('false', 'NOT ON SALE'),
+    )
     
+ids = [product.id for product in Product.objects.all()]
+search_prices = [product.search_price for product in Product.objects.all()]
+rrp_prices = [product.rrp_price for product in Product.objects.all()]
+
+SALE2 = []
+SALE3 = []
+
+
+for i in range(len(ids)-1):
+    print(ids[i], search_prices[i], rrp_prices[i])
+    if search_prices[i] < rrp_prices[i]:
+        SALE2.append(ids[i])
+    else:
+        SALE3.append(ids[i])
+
+print(SALE2)
+print(SALE3)
+
 class ProductFilter(django_filters.FilterSet):
     search_price__gt = django_filters.NumberFilter(name='search_price', lookup_expr='gt', )
     search_price__lt = django_filters.NumberFilter(name='search_price', lookup_expr='lt')
@@ -73,7 +106,7 @@ class ProductFilter(django_filters.FilterSet):
     # red = django_filters.filters.ChoiceFilter(queryset=Colour.objects.filter(colour="red"),widget=CheckboxSelectMultiple(attrs={'class': 'check-label'}))
     # colour = django_filters.AllValuesMultipleFilter(label='Colour', widget=CheckboxSelectMultiple(attrs={'class': 'check-label'}))
     product = Product.objects.all()
-    sale = django_filters.BooleanFilter(label='On Sale', method='filter_sale')
+    sale = django_filters.filters.MultipleChoiceFilter(label='Sale', choices=SALE, widget=CheckboxSelectMultiple(attrs={'class': 'check-label'}), method='filter_sale')
 
     def filter_colour(self, queryset, name, value):
         # construct the full lookup expression.
@@ -83,9 +116,14 @@ class ProductFilter(django_filters.FilterSet):
         return queryset.filter(id__in=colour_ids)
         
     def filter_sale(self, queryset, name, value):
-        # construct the full lookup expression.
-        
-        return queryset.filter(id__in=[1,2])
+        id_list = []
+        for value in value:
+            if value == 'true':
+                id_list.extend(SALE2)
+            else:
+                id_list.extend(SALE3)
+        return queryset.filter(id__in=id_list)
+
         
         
     class Meta:

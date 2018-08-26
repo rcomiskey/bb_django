@@ -1,27 +1,48 @@
-{% extends "base.html" %}
-{% block content %}
+{% extends "base.html" %} {% block content %}
 
-<div class="container bb-blogpost-container">
-    <div class="row" style="justify-content: center;">
-      <div class="col-xs-12">
+<div class="container bb-blogpost-container" style="margin-left:40px; margin-right:40px">
+  <div class="row" style="justify-content: center;">
+    <div class="col-xs-12">
+      <div>
         <div class="text-center">
-            <div >
-                <h2 class="text-bold bb-viewpost-title" style="color:#cc151d">{{ product.product_name }}</h2>
-           
-                <img  src="{{ product.aw_image_url }}">
-                
-                <p class="bb-viewpost-details"><strong class="bb-posts-info-details">Merchant:</strong> {{ product.merchant_name}} | <strong class="bb-posts-info-details">Category:</strong> {{ product.category }} | <strong class="bb-posts-info-details">Tags:</strong> </p>
-            </div>
-            <div >
-                <h6 style="color:#2fa4e7">DESCRIPTION</h6>
-                  <hr>
-  
-                <p class="bb-viewpost-content">{{ product.description }}</p>
-                
-            </div>
+          <h2 class="text-bold bb-viewpost-title" style="color:#cc151d">{{ product.product_name }}</h2>
+          <img src="{{ product.aw_image_url }}">
         </div>
+        
+        <div>
+          <button class="btn bb-form-btn bb-form-btn-offer" style='font-weight:500'>GO TO PRODUCT</button>
+          <!--<a class="btn bb-form-btn bb-form-btn-offer" style='font-weight:500' href="{{ promotion.deeplink }}" target="_blank">OFFER</a>-->
+        </div>
+        
+        <div class="container" style="font-size: .7em;">
+          <div class="col-xs-12">
+            <strong class="bb-posts-info-details">PRICE:</strong> {{ product.search_price}}
+          </div>
+          <div class="col-xs-12">
+            <strong class="bb-posts-info-details">RRP:</strong> {{ product.rrp_price }}
+          </div>
+          <div class="col-xs-12">
+            <strong class="bb-posts-info-details">SHOP:</strong> {{ product.merchant_name}}
+          </div>
+          <div class="col-xs-12">
+            <strong class="bb-posts-info-details">CATEGORY:</strong> {{ product.category }}
+          </div>
+          <div class="col-xs-12">
+            <strong class="bb-posts-info-details">SIZE:</strong> {{ product.size }}
+          </div>
+          <div class="col-xs-12">
+            <strong class="bb-posts-info-details">COLOUR:</strong> {{ product.colour }}
+          </div>
+        </div>
+        
+        <!--<div class="text-center">-->
+        <!--    <strong class="bb-posts-info-details">DESCRIPTION</strong>-->
+        <!--      <hr>-->
+        <!--    <p class="bb-viewpost-content">{{ product.description }}</p>-->
+        <!--</div>-->
       </div>
-        </div>
     </div>
+  </div>
+</div>
 
 {% endblock %}

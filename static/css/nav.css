@@ -378,6 +378,7 @@ Main components
   line-height: 50px;
   padding: 0 20px;
   color: #ffffff;
+  text-transform: uppercase;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow: hidden;
@@ -687,7 +688,7 @@ Main components
     color: #003542;
     border-bottom: none;
     font-size: 0.9rem;
-    text-transform: capitalize;
+    text-transform: uppercase;
   }
   .cd-primary-nav .cd-secondary-nav a:hover {
     color: #2fa4e7;

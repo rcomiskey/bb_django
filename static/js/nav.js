@@ -136,7 +136,7 @@ jQuery(document).ready(function($){
 // side nav for filter options
 
 function openNav2() {
-    document.getElementById("mySidenav").style.width = "100%";
+    document.getElementById("mySidenav").style.width = "80%";
 }
 
 function closeNav2() {
@@ -248,10 +248,10 @@ $(document).ready(function(){
                 //Check the current state of the checkbox
                 if(obj.hasClass(options.activeElementClass)) {
                     obj.removeClass(options.activeElementClass);
-                    $(obj.attr('id')).attr('checked',false);
+                    $(obj.attr('id')).prop('checked', false);
                 } else {
                     obj.addClass(options.activeElementClass);
-                    $(obj.attr('id')).attr('checked',true);
+                    $(obj.attr('id')).prop('checked', true);
                 }
                 //Kill the click function
                 return false; 
