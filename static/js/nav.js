@@ -249,21 +249,38 @@ $(document).ready(function(){
                 if(obj.hasClass(options.activeElementClass)) {
                     obj.removeClass(options.activeElementClass);
                     $(obj.attr('id')).prop('checked', false);
+//                    if($(obj.attr('id')).is(':checked') == false){
+//                        $('#filter-form').submit();
+//                    }
                 } else {
                     obj.addClass(options.activeElementClass);
                     $(obj.attr('id')).prop('checked', true);
+//                     if($(obj.attr('id')).is(':checked')){
+//                        $('#filter-form').submit();
+//                    }
                 }
+
                 //Kill the click function
-                return false; 
+                return false;
             });
         });
     };
 })(jQuery);
 
-$(document).ready(function(){ 
-
+$(document).ready(function(){
+// setTimeout(function() {
+       $('input:checkbox').simpleCheckbox();
+//    }, 10000);
 // replace checkboxes with Toggles
-$('input:checkbox').simpleCheckbox();
+
 
 });// end document.ready
 // ]]>
+
+
+
+$(document).ready(function(){
+$(".bb-product-item-description").click(function(){
+    $(".bb-product-item-description").removeClass("bb-product-item-description");
+});
+});

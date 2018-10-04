@@ -25,7 +25,7 @@ SECRET_KEY = 'v4^^(l*mprl_%y%120kp2v*lq3&#$v=q9=zzi4pq%39%hjyx@)'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['official-best-bargain-rcomiskey.c9users.io', 'localhost']
+ALLOWED_HOSTS = ['127.0.0.1']
 
 
 # Application definition
@@ -86,23 +86,23 @@ WSGI_APPLICATION = 'best_bargain_project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
-
 # DATABASES = {
 #     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': os.path.join(BASE_DIR, 'bestbargain'),
-#         'USER': 'rory',
-#         'PASSWORD': '*******',
-#         'HOST': 'localhost',
-#         'PORT': '5432'
-#         }
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
 # }
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'bestbargain',
+        'USER': 'rory',
+        'PASSWORD': 'Liverpool88',
+        'HOST': 'localhost',
+        'PORT': '5432'
+        }
+}
 
 # HAYSTACK_CONNECTIONS = {
 #     'default': {

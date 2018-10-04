@@ -25,7 +25,7 @@ COLOURS = (
     ('white' ,'White'),
     ('yellow', 'Yellow'),
     )
-    
+
 COLOURS2 = (
     (('beige','bg'), 'beige'),
     (('black', 'blck'),'black'),
@@ -71,10 +71,10 @@ SIZES = (
     )
 
 SALE = (
-    ('true' ,'ON SALE'),
+    ('true', 'ON SALE'),
     ('false', 'NOT ON SALE'),
     )
-    
+
 ids = [product.id for product in Product.objects.all()]
 search_prices = [product.search_price for product in Product.objects.all()]
 rrp_prices = [product.rrp_price for product in Product.objects.all()]
@@ -84,14 +84,11 @@ SALE3 = []
 
 
 for i in range(len(ids)-1):
-    print(ids[i], search_prices[i], rrp_prices[i])
     if search_prices[i] < rrp_prices[i]:
         SALE2.append(ids[i])
     else:
         SALE3.append(ids[i])
 
-print(SALE2)
-print(SALE3)
 
 class ProductFilter(django_filters.FilterSet):
     search_price__gt = django_filters.NumberFilter(name='search_price', lookup_expr='gt', )
@@ -99,12 +96,12 @@ class ProductFilter(django_filters.FilterSet):
     brand_name = django_filters.filters.ModelMultipleChoiceFilter( label='Brand',widget=CheckboxSelectMultiple(attrs={'class': 'check-label'}), queryset = Brand.objects.all())
     colour = django_filters.filters.MultipleChoiceFilter(label='Colour', choices=COLOURS, widget=CheckboxSelectMultiple(attrs={'class': 'check-label'}), method='filter_colour')
     size = django_filters.filters.ModelMultipleChoiceFilter( label='Size',widget=CheckboxSelectMultiple(attrs={'class': 'check-label'}), queryset = Size.objects.all())
-    # sale = django_filters.ModelMultipleChoiceFilter(queryset=Product.objects.annotate(on_sale=(F('rrp_price') - F('search_price'))
-    # product_name = django_filters.CharFilter(lookup_expr='icontains')
-    # colour = django_filters.filters.CharFilter()
-    # size = django_filters.filters.CharFilter(lookup_expr='icontains')
-    # red = django_filters.filters.ChoiceFilter(queryset=Colour.objects.filter(colour="red"),widget=CheckboxSelectMultiple(attrs={'class': 'check-label'}))
-    # colour = django_filters.AllValuesMultipleFilter(label='Colour', widget=CheckboxSelectMultiple(attrs={'class': 'check-label'}))
+    # # sale = django_filters.ModelMultipleChoiceFilter(queryset=Product.objects.annotate(on_sale=(F('rrp_price') - F('search_price'))
+    # # product_name = django_filters.CharFilter(lookup_expr='icontains')
+    # # colour = django_filters.filters.CharFilter()
+    # # size = django_filters.filters.CharFilter(lookup_expr='icontains')
+    # # red = django_filters.filters.ChoiceFilter(queryset=Colour.objects.filter(colour="red"),widget=CheckboxSelectMultiple(attrs={'class': 'check-label'}))
+    # # colour = django_filters.AllValuesMultipleFilter(label='Colour', widget=CheckboxSelectMultiple(attrs={'class': 'check-label'}))
     product = Product.objects.all()
     sale = django_filters.filters.MultipleChoiceFilter(label='Sale', choices=SALE, widget=CheckboxSelectMultiple(attrs={'class': 'check-label'}), method='filter_sale')
 
@@ -114,7 +111,7 @@ class ProductFilter(django_filters.FilterSet):
         for colour in value:
             colour_ids.extend(COLOUR3[colour])
         return queryset.filter(id__in=colour_ids)
-        
+
     def filter_sale(self, queryset, name, value):
         id_list = []
         for value in value:
@@ -132,11 +129,10 @@ class ProductFilter(django_filters.FilterSet):
 
         
         
-   
-   
 
-        
-        
-        
-        
-      
+
+
+
+
+
+

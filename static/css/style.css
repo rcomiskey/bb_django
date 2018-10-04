@@ -155,7 +155,6 @@ a:focus {
 
 .collapse.show {
   display: block;
-  max-height: 215px;
   overflow-y: scroll;
 }
 
@@ -176,6 +175,17 @@ input[type=radio] {
   background-color: #003542;
   color: #FFFFFF;
   width: 100%;
+  text-align: left;
+  padding-left:0;
+}
+
+.bb-plus-dropdown-icon {
+    position: absolute;
+    right: 20px;
+}
+
+.check-label li:last-child {
+  border-bottom: none;
 }
 
 .btn:focus {
@@ -184,28 +194,28 @@ input[type=radio] {
 }
 
 #collapseFilter1 {
-  padding: 2% 0% 2% 30%;
+  padding: 10px 20px;
   text-align: left;
   border-bottom: 1px solid #2fa4e7;
   background-color: #ffffff;
 }
 
 #collapseFilter2 {
-  padding: 2% 0% 2% 30%;
+  padding: 10px 20px;
   text-align: left;
   border-bottom: 1px solid #2fa4e7;
   background-color: #ffffff;
 }
 
 #collapseFilter3 {
-  padding: 2% 0% 2% 30%;
+  padding: 10px 20px;
   text-align: left;
   border-bottom: 1px solid #2fa4e7;
   background-color: #ffffff;
 }
 
 #collapseFilter4 {
-  padding: 2% 0% 2% 30%;
+  padding: 10px 20px;
   text-align: left;
   border-bottom: 1px solid #2fa4e7;
   background-color: #ffffff;
@@ -606,9 +616,20 @@ div.tog.on:after {
   position: absolute;
   top: 0;
   right: 0px;
+  color: white!important;
   font-size: 20px;
-  padding: 10px 15px 10px 100%;
+  padding: 10px 20px 10px 100%;
   background-color: #2fa4e7;
+}
+
+.bb-undo-filter {
+    position: absolute;
+    top: 0;
+    left: 20px;
+    color: white;
+    z-index: 10;
+    font-size: 20px;
+    padding: 10px 0px 10px 0px;
 }
 
 .bb-filter-container {
@@ -623,6 +644,16 @@ div.tog.on:after {
   position: absolute;
   top: 10px;
   left: 20px;
+  z-index: 2;
+  color: #fff;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.bb-filter-icon-sort {
+  position: absolute;
+  top: 10px;
+  right: 20px;
   z-index: 2;
   color: #fff;
   font-size: 20px;
@@ -724,7 +755,43 @@ div.tog.on:after {
 .card-header {
   background-color: #003542;
   border-bottom: 1px solid #2fa4e7;
+}
 
+.bb-view-product-item-product-name {
+    font-size: 1.1rem;
+    color: #2fa4e7;
+ }
+
+ .bb-view-product-item-search-price {
+    font-size: 1.3rem !important;
+    color: #cc151d;
+    text-align: center;
+    padding-bottom: 30px !important;
+ }
+
+.bb-product-item-sections {
+    padding-bottom: 7px;
+    font-size: .8rem;
+}
+
+.bb-view-product-item-button {
+    white-space:normal !important;
+    word-wrap: break-word;
+    margin-top: 15px;
+    max-width: 500px;
+    font-size: .9rem;
+}
+
+.bb-view-product-item-details-title {
+    font-size: 1.1rem;
+    text-align: center;
+}
+
+.bb-product-item-description {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
 }
 
 /**********************************PROMOTIONS************************************/
@@ -766,7 +833,7 @@ div.tog.on:after {
 }
 
 .bb-form-btn {
-  background-color: #03a9f4;
+  background-color: #2fa4e7;
   border-radius: 0px;
   transition: .50s;
   color: white;
@@ -1026,6 +1093,10 @@ div.tog.on:after {
     height: 200px;
   }
 
+  .bb-view-product-item-product-name {
+    font-size: 1.6rem;
+}
+
   /**********************************PROMOTIONS************************************/
   .bb-promotions-card {
     border: 1px solid #2fa4e7;
@@ -1181,7 +1252,7 @@ div.tog.on:after {
   }
 
   /**********************************VIEW PRODUCTS************************************/
-  .bb-filter-icon {
+  .bb-filter-icon, .bb-filter-icon-sort {
     display: none;
   }
 

@@ -1,7 +1,8 @@
 {% extends "base.html" %} {% load static %} {% load namify %} {% block content %}
 
 <div class="bb-filter-nav nav-down">
-  <span class="bb-filter-icon" onclick="openNav2()"><i class="fa fa-sliders"></i> FILTER</span>
+  <span class="bb-filter-icon" onclick="openNav2()"><i class="fas fa-sliders-h"></i></span>
+  <span class="bb-filter-icon-sort"><i class="fas fa-sort-amount-down"></i></span>
   <div class="container bb-filter-dropdown-container">
     <div class="row bb-filter-row">
 
@@ -83,9 +84,10 @@
 
 </div>
 <div id="mySidenav" class="sidenav">
-  <a href="javascript:void(0)" class="closebtn" onclick="closeNav2()"><span><i class="fa fa-times"></i></span></a>
+  <span class="bb-undo-filter"><i class="fas fa-undo-alt"></i></span>
+  <a class="closebtn"><span><i onclick="closeNav2()" class="fas fa-times "></i></span></a>
   <div class="bb-filter-container">
-    
+
 <!--<nav>-->
 <!--  <ul>-->
 <!--    <li class="has-children">-->
@@ -130,29 +132,28 @@
 
 <!--  </ul>-->
 <!--</nav>-->
-    	
+
 
     <div id="accordion" role="tablist" aria-multiselectable="true">
 
       <div class="row">
-        <div class="col-6" style="padding:0px">
-          <div class="card-header" id="bb-filter-header" role="tab">
-            <h5 class="mb-0">
-              <form action="" method="get">
-                {{ filter.form.product }}
-                <input type="submit" class='btn bb-filter-sidenav-btn' value="RESET" />
-              </form>
-            </h5>
+        <!--<div class="col-6" style="padding:0px">-->
+          <!--<div class="card-header" id="bb-filter-header" role="tab">-->
+            <!--<h5 class="mb-0">-->
+              <!--<form action="" method="get">-->
+                <!--{{ filter.form.product }}-->
+                <!--<input type="submit" class='btn bb-filter-sidenav-btn' value="RESET" />-->
+              <!--</form>-->
+            <!--</h5>-->
 
 
-          </div>
-        </div>
-        <div class="col-6" style="padding:0px">
+          <!--</div>-->
+        <!--</div>-->
+        <div class="col-12" style="padding:0px">
           <div class="card-header" id="bb-filter-header" role="tab">
-            <h5 class="mb-0">
+            <h5 class="mb-0" style="text-align:center">
               <form action="" method="get">
                 <input type="submit" class='btn bb-filter-sidenav-btn' value="FILTER" />
-
             </h5>
           </div>
         </div>
@@ -162,7 +163,7 @@
         <div class="card-header" role="tab" id="headingOne">
           <h5 class="mb-0">
             <button class="btn bb-accordian-filter-btn" type="button" data-toggle="collapse" data-target="#collapseFilter1" aria-expanded="false" aria-controls="collapseFilter1">
-                  BRAND <i class="fa fa-chevron-down"></i>
+                  BRAND <span class="bb-plus-dropdown-icon"><i style="color: #FFFFFF" class="fa fa-plus"></i></span>
                 </button>
           </h5>
         </div>
@@ -170,13 +171,13 @@
           {{ filter.form.brand_name }}
         </div>
       </div>
-      
+
 
       <div>
         <div class="card-header" role="tab" id="headingTwo">
           <h5 class="mb-0">
             <button class="btn bb-accordian-filter-btn" type="button" data-toggle="collapse" data-target="#collapseFilter2" aria-expanded="false" aria-controls="collapseFilter2">
-                  PRICE <i class="fa fa-chevron-down"></i>
+                  PRICE <span class="bb-plus-dropdown-icon"><i style="color: #FFFFFF" class="fa fa-plus"></i></span>
                 </button>
           </h5>
         </div>
@@ -191,8 +192,8 @@
         <div class="card-header" role="tab" id="headingThree">
           <h5 class="mb-0">
             <button class="btn bb-accordian-filter-btn" type="button" data-toggle="collapse" data-target="#collapseFilter3" aria-expanded="false" aria-controls="collapseFilter3">
-                  COLOUR <i class="fa fa-chevron-down"></i>
-                </button>
+                  COLOUR <span class="bb-plus-dropdown-icon"><i style="color: #FFFFFF" class="fa fa-plus"></i></span>
+                </button><span>
           </h5>
         </div>
         <div class="collapse" id="collapseFilter3">
@@ -202,12 +203,12 @@
         </div>
       </div>
 
-    
+
     <div>
       <div class="card-header" role="tab" id="headingFour">
         <h5 class="mb-0">
           <button class="btn bb-accordian-filter-btn" type="button" data-toggle="collapse" data-target="#collapseFilter4" aria-expanded="false" aria-controls="collapseFilter4">
-              SIZE <i class="fa fa-chevron-down"></i>
+              SIZE <span class="bb-plus-dropdown-icon"><i style="color: #FFFFFF" class="fa fa-plus"></i></span>
             </button>
         </h5>
       </div>
@@ -219,20 +220,20 @@
     </div>
     </div>
       <div>
-      <div class="card-header" role="tab" id="headingFour">
-        <h5 class="mb-0">
-          <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseFilter4" aria-expanded="false" aria-controls="collapseFilter4">
-            Size
-          </button>
-        </h5>
-      </div>
-      <div class="collapse" id="collapseFilter4">
-          <form action="" method="get">
-            {{ filter.form.sale }}
-            <input type="submit" />
-          </form>
-      </div>
-    </div> 
+      <!--<div class="card-header" role="tab" id="headingFour">-->
+        <!--<h5 class="mb-0">-->
+          <!--<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseFilter4" aria-expanded="false" aria-controls="collapseFilter4">-->
+            <!--Size-->
+          <!--</button>-->
+        <!--</h5>-->
+      <!--</div>-->
+      <!--<div class="collapse" id="collapseFilter4">-->
+          <!--<form action="" method="get">-->
+            <!--{{ filter.form.sale }}-->
+            <!--<input type="submit" />-->
+          <!--</form>-->
+      <!--</div>-->
+    </div>
   </div>
 </div>
 
@@ -270,12 +271,16 @@
               <p class="bb-merchant-name-text">{{ product.merchant_name}}</p>
             </div>
             <div class="col-3" style="text-align:left">
-              <span class="bb-eye-icon" onclick="location.href='{% url 'view_product_item' product.id %}'"><i class="fa fa-eye fa-sm"></i></span>
+              <span class="bb-eye-icon" onclick="location.href='{% url 'view_product_item' product.id %}'"><i class="fa fa-search-plus fa-sm"></i></span>
             </div>
           </div>
         </div>
         <!--</a>  -->
       </div>
+    </div>
+    {% empty %}
+    <div class="col-12">
+      <h3 style="text-align:center;padding: 70px;">SORRY, NO PRODUCTS FOUND!</h3>
     </div>
     {% endfor %}
   </div>
@@ -340,17 +345,17 @@
       <i class="fa fa-angle-left" aria-hidden="true"></i>
     </a>
   {% endif %}
- 
+
   {% for num in products.paginator.page_range %}
-    
+
     {% if products.number == num %}
     <span class="pagination-number pagination-current">{{ num }}</span>
     {% elif num > products.number|add:'-3' and num < products.number|add:'3' %}
     <a class="pagination-number" href="?page={{ num }}">{{ num }}</a>
     {% endif %}
- 
+
   {% endfor %}
-    
+
   {% if products.has_next %}
     <a class="pagination-action" href="?page={{ products.next_page_number }}">
       <i class="fa fa-angle-right" aria-hidden="true"></i>
@@ -362,5 +367,5 @@
     </ul>
     </nav>
     {% endif %}
-    
+
 {% endif %} {% endblock %}

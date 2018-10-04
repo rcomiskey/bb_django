@@ -39,9 +39,9 @@ class Command(BaseCommand):
                             'merchant_name': fields[5],
                             'display_price':  fields[6],
                             'brand_name':  brand_name[0],
-                            'colour' :  fields[8],
-                            'rrp_price' :  fields[9],
-                            'category' :  category[0],
+                            'colour':  fields[8],
+                            'rrp_price':  fields[9],
+                            'category':  category[0],
                             'size':  size[0],
                     }
                     

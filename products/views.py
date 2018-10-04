@@ -3,6 +3,7 @@ from .models import Product, Category, Size
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 import django_filters
 from .filters import ProductFilter
+from promotions.models import Promotion
 from django.db.models import Q
 import operator
 from functools import reduce
@@ -49,7 +50,11 @@ def do_search(request):
 def view_product_item(request, id):
     this_product = get_object_or_404(Product, id=id)
     this_product.save()
-    return render(request, "view_product_item.html", {'product': this_product})
+    currency = '€'
+    promotions = Promotion.objects.filter(merchant__name__icontains=this_product.merchant_name)
+    return render(request, "view_product_item.html", {'product': this_product, 'currency': currency, 'promotions': promotions})
+
+
 
 
 
