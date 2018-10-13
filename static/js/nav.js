@@ -227,6 +227,7 @@ $(document).ready(function(){
                 'class': options.newElementClass,
                 'style': 'display: block;'
             }).insertAfter(this);
+
             //Make sure pre-checked boxes are rendered as checked
             if(obj.is(':checked')) {
                 newObj.addClass(options.activeElementClass);
@@ -284,3 +285,9 @@ $(".bb-product-item-description").click(function(){
     $(".bb-product-item-description").removeClass("bb-product-item-description");
 });
 });
+
+
+
+ function submitResetForm() {
+       $("#resetProduct").submit();
+    }

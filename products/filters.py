@@ -1,6 +1,6 @@
 import django_filters 
 from .models import Product, Brand, Category, Size
-from django.forms import CheckboxSelectMultiple
+from django.forms import CheckboxSelectMultiple, RadioSelect
 from django.db.models import Q
 from django.db.models import Func, F
 import operator
@@ -89,12 +89,18 @@ for i in range(len(ids)-1):
     else:
         SALE3.append(ids[i])
 
+SORT = (
+    ('low', 'LOW TO HIGH'),
+    ('high', 'HIGH TO LOW'),
+    )
 
 class ProductFilter(django_filters.FilterSet):
-    search_price__gt = django_filters.NumberFilter(name='search_price', lookup_expr='gt', )
+    search_price__gt = django_filters.NumberFilter(name='search_price', lookup_expr='gt' )
     search_price__lt = django_filters.NumberFilter(name='search_price', lookup_expr='lt')
     brand_name = django_filters.filters.ModelMultipleChoiceFilter( label='Brand',widget=CheckboxSelectMultiple(attrs={'class': 'check-label'}), queryset = Brand.objects.all())
+    brand_nameNav = django_filters.filters.ModelMultipleChoiceFilter( label='Brand',widget=CheckboxSelectMultiple(attrs={'class': 'check-label'}), queryset = Brand.objects.all())
     colour = django_filters.filters.MultipleChoiceFilter(label='Colour', choices=COLOURS, widget=CheckboxSelectMultiple(attrs={'class': 'check-label'}), method='filter_colour')
+    colourNav = django_filters.filters.MultipleChoiceFilter(label='Colour', choices=COLOURS, widget=CheckboxSelectMultiple(attrs={'class': 'check-label'}), method='filter_colour')
     size = django_filters.filters.ModelMultipleChoiceFilter( label='Size',widget=CheckboxSelectMultiple(attrs={'class': 'check-label'}), queryset = Size.objects.all())
     # # sale = django_filters.ModelMultipleChoiceFilter(queryset=Product.objects.annotate(on_sale=(F('rrp_price') - F('search_price'))
     # # product_name = django_filters.CharFilter(lookup_expr='icontains')
@@ -104,6 +110,8 @@ class ProductFilter(django_filters.FilterSet):
     # # colour = django_filters.AllValuesMultipleFilter(label='Colour', widget=CheckboxSelectMultiple(attrs={'class': 'check-label'}))
     product = Product.objects.all()
     sale = django_filters.filters.MultipleChoiceFilter(label='Sale', choices=SALE, widget=CheckboxSelectMultiple(attrs={'class': 'check-label'}), method='filter_sale')
+    sort = django_filters.filters.ChoiceFilter(label='Sort', choices=SORT, widget=RadioSelect(attrs={'class': 'check-label'}), method='filter_sort')
+
 
     def filter_colour(self, queryset, name, value):
         # construct the full lookup expression.
@@ -120,6 +128,14 @@ class ProductFilter(django_filters.FilterSet):
             else:
                 id_list.extend(SALE3)
         return queryset.filter(id__in=id_list)
+
+    def filter_sort(self, queryset, name, value):
+        if value == 'low':
+            return queryset.order_by('search_price')
+        if value == 'high':
+            return queryset.order_by('-search_price')
+
+
 
         
         

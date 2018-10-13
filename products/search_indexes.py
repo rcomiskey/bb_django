@@ -1,13 +1,17 @@
 from haystack import indexes
-from .models import Product
+from products.models import Product
 
-    class ProductIndex(indexes.SearchIndex, indexes.Indexable):
-        text = indexes.CharField(document=True, use_template=True, template_name="templates/search.txt")
-        product_name = indexes.CharField(model_attr='product_name')
-        authors = indexes.CharField()
-        def get_model(self):
-            return Product
-        def prepare_category(self, obj):
-            return [ category.name for a in obj.category.all()]
-        def index_queryset(self, using=None):
-            return self.get_model().objects.all()
+
+class ProductIndex(indexes.SearchIndex, indexes.Indexable):
+    text = indexes.CharField(document=True, use_template=True, template_name="search/product_text.txt")
+    product_name = indexes.CharField(model_attr='product_name')
+    brand_name = indexes.CharField()
+
+    def get_model(self):
+        return Product
+
+    def prepare_brand_name(self, obj):
+        return [ brand_name.brand_name for a in obj.brand_name.all()]
+
+    def index_queryset(self, using=None):
+        return self.get_model().objects.all()

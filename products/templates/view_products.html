@@ -6,14 +6,14 @@
   <div class="container bb-filter-dropdown-container">
     <div class="row bb-filter-row">
 
-      <div class="col-sm-2">
-        <form>
-          {{ promo_filter.form.promotion }}
-          <input class="btn btn-secondary dropdown-toggle bb-filter-dropdown-button bb-fullscreen-filter-button" type="submit" value="RESET" />
+      <div>
+        <form id="resetProduct">
+          {{ filter.form.product }}
+          <input class="btn btn-secondary dropdown-toggle bb-filter-dropdown-button bb-fullscreen-filter-button" type="submit" value="CLEAR" />
         </form>
       </div>
 
-      <div class="col-sm-2">
+      <div>
         <div class="dropdown">
           <button class="btn btn-secondary dropdown-toggle bb-filter-dropdown-button" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         BRAND
@@ -25,7 +25,7 @@
         </div>
       </div>
 
-      <div class="col-sm-2">
+      <div>
         <div class="dropdown">
           <button class="btn btn-secondary dropdown-toggle bb-filter-dropdown-button" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         PRICE
@@ -36,7 +36,7 @@
           </div>
         </div>
       </div>
-      <div class="col-sm-2">
+      <div>
         <div class="dropdown">
           <button class="btn btn-secondary dropdown-toggle bb-filter-dropdown-button" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         COLOUR
@@ -46,7 +46,7 @@
           </div>
         </div>
       </div>
-      <div class="col-sm-2">
+      <div>
         <div class="dropdown">
           <button class="btn btn-secondary dropdown-toggle bb-filter-dropdown-button" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         SALE
@@ -57,20 +57,31 @@
           </div>
         </div>
       </div>
+            <div>
+        <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle bb-filter-dropdown-button" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        PRICE
+        </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            {{ filter.form.price}}
 
-      <!--  <div class="col-sm-2">-->
-      <!--  <div class="dropdown">-->
-      <!--    <button class="btn btn-secondary dropdown-toggle bb-filter-dropdown-button" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
-      <!--    SALE-->
-      <!--    </button>-->
-      <!--    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">-->
-      <!--        {{ filter.form.sale}}-->
+          </div>
+        </div>
+      </div>
 
-      <!--    </div>-->
-      <!--  </div>-->
-      <!--</div>-->
+        <div>
+        <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle bb-filter-dropdown-button" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          SORT
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              {{ filter.form.sort}}
 
-      <div class="col-sm-2">
+          </div>
+        </div>
+      </div>
+
+      <div>
         <input class="btn btn-secondary dropdown-toggle bb-filter-dropdown-button bb-fullscreen-filter-button" type="submit" value="FILTER" />
         </form>
       </div>
@@ -84,7 +95,7 @@
 
 </div>
 <div id="mySidenav" class="sidenav">
-  <span class="bb-undo-filter"><i class="fas fa-undo-alt"></i></span>
+  <span class="bb-undo-filter" onClick='submitResetForm()'><i class="fas fa-undo-alt"></i></span>
   <a class="closebtn"><span><i onclick="closeNav2()" class="fas fa-times "></i></span></a>
   <div class="bb-filter-container">
 
@@ -140,9 +151,9 @@
         <!--<div class="col-6" style="padding:0px">-->
           <!--<div class="card-header" id="bb-filter-header" role="tab">-->
             <!--<h5 class="mb-0">-->
-              <!--<form action="" method="get">-->
+              <!--<form action="" method="get" name="resetNav">-->
                 <!--{{ filter.form.product }}-->
-                <!--<input type="submit" class='btn bb-filter-sidenav-btn' value="RESET" />-->
+                <!--<input type="submit" class='btn bb-filter-sidenav-btn' />-->
               <!--</form>-->
             <!--</h5>-->
 
@@ -168,7 +179,7 @@
           </h5>
         </div>
         <div class="collapse" id="collapseFilter1">
-          {{ filter.form.brand_name }}
+          {{ filter.form.brand_nameNav }}
         </div>
       </div>
 
@@ -198,7 +209,7 @@
         </div>
         <div class="collapse" id="collapseFilter3">
 
-          {{ filter.form.colour}}
+          {{ filter.form.colourNav}}
 
         </div>
       </div>
@@ -241,6 +252,10 @@
   <div class="bb-breadcrumbs-container">
     <a class="bb-breadcrumbs" href="/">HOME</a> {% for i in product.get_slug_list %}
     <a class="bb-breadcrumbs" href="/products/category/{{ i }}"><span style="color:#9e9e9e">/ </span> {{ i | get_name }}</a> {% endfor %}
+    <form action="/search" method="get">
+        <input name="q" type="text" />
+        <input type="submit" />
+    </form>
   </div>
   <h2 class="bb-category-name">{{product.name}}</h2>
 </div>
