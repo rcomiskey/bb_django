@@ -57,7 +57,7 @@ class Product(models.Model):
     rrp_price = models.DecimalField(max_digits=6, decimal_places=2, null=True, default='')
     category = TreeForeignKey('Category', null=True, blank=True, on_delete=models.CASCADE)
     description = models.CharField(max_length=1000, default='')
-    aw_product_id = models.CharField(max_length=500, default='')
+    aw_product_id = models.CharField(max_length=500, default='', unique=True)
 
     def __str__(self):
         return self.product_name
