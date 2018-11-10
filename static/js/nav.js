@@ -269,15 +269,10 @@ $(document).ready(function(){
 })(jQuery);
 
 $(document).ready(function(){
-// setTimeout(function() {
        $('input:checkbox').simpleCheckbox();
-//    }, 10000);
 // replace checkboxes with Toggles
-
-
 });// end document.ready
 // ]]>
-
 
 
 $(document).ready(function(){
@@ -287,7 +282,31 @@ $(".bb-product-item-description").click(function(){
 });
 
 
+function submitResetForm() {
+   $("#resetProduct").submit();
+}
 
- function submitResetForm() {
-       $("#resetProduct").submit();
+ function submitClearForm() {
+   $("#resetPromo").submit();
+}
+
+$(window).resize(function() {
+  if ($(window).width() < 992) {
+    $('.mainFilter').remove();
+  }
+   else {
+    $('.mainFilter').add();
     }
+});
+
+$(document).ready(function(){
+  if ($(window).width() < 992) {
+    $('.mainFilter').remove();
+  }
+});
+
+$(document).ready(function(){
+  if ($(window).width() > 992) {
+    $('.sortFilter').remove();
+  }
+});

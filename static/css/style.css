@@ -551,19 +551,20 @@ div.tog.on:after {
 
 .bb-product-name {
   padding-top: 15px;
-  height: 75px;
+  height: 65px;
 }
 
 .bb-product-name-text {
   overflow: hidden;
   display: -webkit-box;
-  -webkit-line-clamp: 3;
+  -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   color: #003542;
 }
 
 .bb-search-price {
   padding-top: 5px;
+  height: 55px;
 }
 
 .bb-search-price-text {
@@ -678,6 +679,7 @@ div.tog.on:after {
 
 .bb-category-name {
   text-transform: uppercase;
+  font-size: 1.7rem;
 }
 
 .bb-breadcrumbs-container {
@@ -703,7 +705,7 @@ div.tog.on:after {
 }
 
 .bb-filter-dropdown-button {
-  width: 110px;
+  width: 95px;
   padding: 6px;
   color: #ffffff;
   border-color: #2fa4e7;
@@ -794,6 +796,17 @@ div.tog.on:after {
     -webkit-box-orient: vertical;
 }
 
+.dropdown-menu {
+    max-height: 200px;
+    overflow: scroll;
+    overflow-x: hidden;
+    color: #003542;
+    min-width: 18rem;
+    padding: 15px;
+    border-radius: 0px;
+    border: 1px solid #2fa4e7;
+}
+
 /**********************************PROMOTIONS************************************/
 
 .bb-promotions-container {
@@ -806,11 +819,17 @@ div.tog.on:after {
 }
 
 .bb-promotions-title {
-  font-size: 15px;
-  margin-top: 15px;
-  font-weight: 600;
-  text-transform: uppercase;
-  color: #CC151D;
+    font-size: 14px;
+    margin-top: 15px;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #CC151D;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 .bb-promotions-card-block {
@@ -820,9 +839,20 @@ div.tog.on:after {
 
 .bb-promotions-card {
   border: 1px solid #2fa4e7;
-  padding: 10px;
+  padding: 0px 10px 30px 10px;
   margin-right: 50px;
   margin-left: 50px;
+}
+
+.bb-promotional-title {
+    height: 65px;
+}
+
+.bb-promotions-description {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
 }
 
 
@@ -1097,10 +1127,15 @@ div.tog.on:after {
     font-size: 1.6rem;
 }
 
+.bb-category-name {
+  text-transform: uppercase;
+  font-size: 2rem;
+}
+
   /**********************************PROMOTIONS************************************/
   .bb-promotions-card {
     border: 1px solid #2fa4e7;
-    padding: 10px;
+    padding: 0px 10px 30px 10px;
     margin-right: 0px;
     margin-left: 0px;
   }
@@ -1292,7 +1327,6 @@ div.tog.on:after {
   }
 
 
-
   /**********************************BLOG************************************/
   .bb-blog-block {
     height: 180px;
@@ -1314,5 +1348,9 @@ div.tog.on:after {
     max-width: 300px;
     padding: 50px;
   }
+
+  .bb-filter-dropdown-button {
+  width: 110px;
+}
 
 }

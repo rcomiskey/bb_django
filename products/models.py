@@ -44,14 +44,6 @@ class Brand(models.Model):
     def __str__(self):
         return self.brand_name
 
-
-class Size(models.Model):
-    size = models.CharField(max_length=500, default='')
-
-    def __str__(self):
-        return self.size
-
-
 class Product(models.Model):
     aw_deep_link = models.CharField(max_length=500, default='')
     product_name = models.CharField(max_length=500, default='')
@@ -60,12 +52,12 @@ class Product(models.Model):
     merchant_name = models.CharField(max_length=500, default='')
     display_price = models.CharField(max_length=500, default='')
     brand_name = models.ForeignKey('Brand', on_delete=models.CASCADE)
-    size = models.ForeignKey('Size', on_delete=models.CASCADE)
+    size = models.CharField(max_length=500, default='')
     colour = models.CharField(max_length=500, default='')
     rrp_price = models.DecimalField(max_digits=6, decimal_places=2, null=True, default='')
     category = TreeForeignKey('Category', null=True, blank=True, on_delete=models.CASCADE)
     description = models.CharField(max_length=1000, default='')
-
+    aw_product_id = models.CharField(max_length=500, default='')
 
     def __str__(self):
         return self.product_name

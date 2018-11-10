@@ -1,5 +1,5 @@
 import re
-from products.models import Category, Brand, Size
+from products.models import Category, Brand
 from django.core.management.base import BaseCommand
 
 
@@ -25,24 +25,25 @@ class Command(BaseCommand):
                 for line in f:
                     linecount += 1
                     fields = line.split(';')
-                    category = Category.objects.get_or_create(name=fields[10])
-                    brand_name = Brand.objects.get_or_create(brand_name=fields[7])
-                    size = Size.objects.get_or_create(size=fields[11])
+                    category = Category.objects.get_or_create(name=fields[11])
+                    brand_name = Brand.objects.get_or_create(brand_name=fields[8])
+                    # size = Size.objects.get_or_create(size=fields[12])
                     # colour = Colour.objects.get_or_create(colour=fields[8])
                     
                     data = {
-                            'aw_deep_link':  fields[0],
-                            'description': fields[1],
-                            'product_name': fields[2],
-                            'aw_image_url':  fields[3],
-                            'search_price':  fields[4],
-                            'merchant_name': fields[5],
-                            'display_price':  fields[6],
+                            'aw_deep_link':  fields[1],
+                            'description': fields[2],
+                            'product_name': fields[3],
+                            'aw_image_url':  fields[4],
+                            'search_price':  fields[5],
+                            'merchant_name': fields[6],
+                            'display_price':  fields[7],
                             'brand_name':  brand_name[0],
-                            'colour':  fields[8],
-                            'rrp_price':  fields[9],
+                            'colour':  fields[9],
+                            'rrp_price':  fields[10],
                             'category':  category[0],
-                            'size':  size[0],
+                            'size':  fields[12],
+                            'aw_product_id': fields[13]
                     }
                     
                     

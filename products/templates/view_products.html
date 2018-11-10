@@ -2,7 +2,18 @@
 
 <div class="bb-filter-nav nav-down">
   <span class="bb-filter-icon" onclick="openNav2()"><i class="fas fa-sliders-h"></i></span>
-  <span class="bb-filter-icon-sort"><i class="fas fa-sort-amount-down"></i></span>
+
+    <div class="sortFilter">
+    <a type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <span class="bb-filter-icon-sort"><i class="fas fa-sort-amount-down"></i></span>
+    </a>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="left: unset;right: 0;">
+           <form onchange="submit()">
+           {{ filter.form.sort}}
+        </form>
+    </div>
+  </div>
+
   <div class="container bb-filter-dropdown-container">
     <div class="row bb-filter-row">
 
@@ -14,7 +25,7 @@
       </div>
 
       <div>
-        <div class="dropdown">
+        <div class="dropdown mainFilter">
           <button class="btn btn-secondary dropdown-toggle bb-filter-dropdown-button" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         BRAND
         </button>
@@ -26,7 +37,7 @@
       </div>
 
       <div>
-        <div class="dropdown">
+        <div class="dropdown mainFilter">
           <button class="btn btn-secondary dropdown-toggle bb-filter-dropdown-button" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         PRICE
         </button>
@@ -37,7 +48,7 @@
         </div>
       </div>
       <div>
-        <div class="dropdown">
+        <div class="dropdown mainFilter">
           <button class="btn btn-secondary dropdown-toggle bb-filter-dropdown-button" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         COLOUR
         </button>
@@ -47,7 +58,7 @@
         </div>
       </div>
       <div>
-        <div class="dropdown">
+        <div class="dropdown mainFilter">
           <button class="btn btn-secondary dropdown-toggle bb-filter-dropdown-button" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         SALE
         </button>
@@ -57,20 +68,21 @@
           </div>
         </div>
       </div>
-            <div>
-        <div class="dropdown">
+
+              <div>
+        <div class="dropdown mainFilter">
           <button class="btn btn-secondary dropdown-toggle bb-filter-dropdown-button" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        PRICE
-        </button>
+          SIZE
+          </button>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            {{ filter.form.price}}
+              {{ filter.form.size}}
 
           </div>
         </div>
       </div>
 
         <div>
-        <div class="dropdown">
+        <div class="dropdown mainFilter">
           <button class="btn btn-secondary dropdown-toggle bb-filter-dropdown-button" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           SORT
           </button>
@@ -82,7 +94,7 @@
       </div>
 
       <div>
-        <input class="btn btn-secondary dropdown-toggle bb-filter-dropdown-button bb-fullscreen-filter-button" type="submit" value="FILTER" />
+        <input class="btn btn-secondary dropdown-toggle bb-filter-dropdown-button bb-fullscreen-filter-button mainFilter" type="submit" value="FILTER" />
         </form>
       </div>
     </div>
@@ -179,7 +191,7 @@
           </h5>
         </div>
         <div class="collapse" id="collapseFilter1">
-          {{ filter.form.brand_nameNav }}
+          {{ filter.form.brand_name }}
         </div>
       </div>
 
@@ -209,7 +221,7 @@
         </div>
         <div class="collapse" id="collapseFilter3">
 
-          {{ filter.form.colourNav}}
+          {{ filter.form.colour}}
 
         </div>
       </div>
@@ -224,7 +236,6 @@
         </h5>
       </div>
       <div class="collapse" id="collapseFilter4">
-
         {{ filter.form.size }}
         </form>
       </div>
@@ -252,10 +263,10 @@
   <div class="bb-breadcrumbs-container">
     <a class="bb-breadcrumbs" href="/">HOME</a> {% for i in product.get_slug_list %}
     <a class="bb-breadcrumbs" href="/products/category/{{ i }}"><span style="color:#9e9e9e">/ </span> {{ i | get_name }}</a> {% endfor %}
-    <form action="/search" method="get">
-        <input name="q" type="text" />
-        <input type="submit" />
-    </form>
+    <!--<form action="/search" method="get">-->
+        <!--<input name="q" type="text" />-->
+        <!--<input type="submit" />-->
+    <!--</form>-->
   </div>
   <h2 class="bb-category-name">{{product.name}}</h2>
 </div>
@@ -353,10 +364,10 @@
     <nav aria-label="Page navigation example">
     <ul class="pagination justify-content-center">
   {% if products.has_previous %}
-    <a class="pagination-action" href="?page=1">
+    <a class="pagination-action" href="?page=1{% for key, value in request.GET.items %}{% if key != 'page' %}&{{ key }}={{ value }}{% endif %}{% endfor %}">
      <i class="fa fa-angle-double-left" aria-hidden="true"></i>
     </a>
-    <a class="pagination-action" href="?page={{ products.previous_page_number }}">
+    <a class="pagination-action" href="?page={{ products.previous_page_number }}{% for key, value in request.GET.items %}{% if key != 'page' %}&{{ key }}={{ value }}{% endif %}{% endfor %}">
       <i class="fa fa-angle-left" aria-hidden="true"></i>
     </a>
   {% endif %}
@@ -366,16 +377,16 @@
     {% if products.number == num %}
     <span class="pagination-number pagination-current">{{ num }}</span>
     {% elif num > products.number|add:'-3' and num < products.number|add:'3' %}
-    <a class="pagination-number" href="?page={{ num }}">{{ num }}</a>
+    <a class="pagination-number" href="?page={{ num }}{% for key, value in request.GET.items %}{% if key != 'page' %}&{{ key }}={{ value }}{% endif %}{% endfor %}">{{ num }}</a>
     {% endif %}
 
   {% endfor %}
 
   {% if products.has_next %}
-    <a class="pagination-action" href="?page={{ products.next_page_number }}">
+    <a class="pagination-action" href="?page={{ products.next_page_number }}{% for key, value in request.GET.items %}{% if key != 'page' %}&{{ key }}={{ value }}{% endif %}{% endfor %}">
       <i class="fa fa-angle-right" aria-hidden="true"></i>
     </a>
-    <a class="pagination-action" href="?page={{ products.paginator.num_pages }}">
+    <a class="pagination-action" href="?page={{ products.paginator.num_pages }}{% for key, value in request.GET.items %}{% if key != 'page' %}&{{ key }}={{ value }}{% endif %}{% endfor %}">
       <i class="fa fa-angle-double-right" aria-hidden="true"></i>
     </a>
   {% endif %}

@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from .models import Product, Category, Size
+from .models import Product, Category
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 import django_filters
 from .filters import ProductFilter

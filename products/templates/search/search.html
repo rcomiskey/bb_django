@@ -1,0 +1,6 @@
+{% for result in page.object_list %}
+           {{ result.object.product_name }}
+           {{ result.object.description }}
+        {% empty %}           
+             No results found.
+        {% endfor %}

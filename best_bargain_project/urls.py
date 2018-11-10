@@ -29,4 +29,5 @@ urlpatterns = [
     re_path(r'^products/', include('products.urls')),
     re_path(r'^blog/', include('blog.urls')),
     re_path(r'^promotions/', include('promotions.urls')),
+    # re_path(r'^search', include('haystack.urls'))
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
