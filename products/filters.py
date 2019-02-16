@@ -1,5 +1,5 @@
-import django_filters 
-from .models import Product, Brand, Category
+import django_filters
+from .models import Product, Brand, Category, Merchant
 from django.forms import CheckboxSelectMultiple, RadioSelect
 from django.db.models import Q
 from django.db.models import Func, F
@@ -27,15 +27,15 @@ COLOURS = (
     )
 
 COLOURS2 = (
-    (('beige','bg'), 'beige'),
-    (('black', 'blck'),'black'),
+    (('beige', 'bg'), 'beige'),
+    (('black', 'blck'), 'black'),
     (('blue', 'denim', 'teal', 'royal'),'blue'),
-    (('brown', 'brwn', 'bronze'),'brown'),
+    (('brown', 'brwn', 'bronze', 'tan'),'brown'),
     (('gold', 'gld'), 'gold'),
     (('green', 'grn', 'kamo', 'camo', 'khaki', 'lime', 'mint', 'olive', 'turquoise'), 'green'),
     (('grey', 'gray', 'gry', 'charcoal', 'stone'), 'grey'),
     (('navy', 'nvy'), 'navy'),
-    (('nude'), 'nude'),
+    (('nude', 'skin'), 'nude'),
     (('orange', 'orng', 'apricot'), 'orange'),
     (('pink', 'pnk'), 'pink'),
     (('purple', 'purpl', 'burgundy'), 'purple'),
@@ -48,11 +48,38 @@ COLOURS2 = (
 COLOUR3 = {}
 for variations, colour in COLOURS2:
     if colour == 'white':
-        clauses = (Q(colour=p) for p in variations)
+        clauses = (Q(colour__iexact=p) for p in variations)
     else:
         clauses = (Q(colour__icontains=p) for p in variations)
     query = reduce(operator.or_, clauses)
     COLOUR3[colour] = [x.id for x in Product.objects.filter(query)]
+
+CLOTHING_SIZES = (
+    ('extra extra small', 'Extra Extra Small'),
+    ('extra small', 'Extra Small'),
+    ('small', 'Small'),
+    ('medium', 'Medium'),
+    ('large', 'Large'),
+    ('extra Large', 'Extra Large'),
+    ('extra extra large', 'Extra Extra Large')
+    )
+
+CLOTHING_SIZES2 = (
+    (('(?:^|\W)xxs(?:$|\W)', '(?=.*small)(extra.*){2}'), 'extra extra small'),
+    (('(?:^|\W)xs(?:$|\W)', '^extra small$'), 'extra small'),
+    (('(?:^|\W)s(?:$|\W)', '^(?!.*extra).*small.*$'), 'small'),
+    (('(?:^|\W)m(?:$|\W)', '^(?!.*extra).*medium.*$'), 'medium'),
+    (('(?:^|\W)l(?:$|\W)', '^(?!.*extra).*large.*$'), 'large'),
+    (('(?:^|\W)xl(?:$|\W)', '^extra large$'), 'extra Large'),
+    (('(?:^|\W)xxl(?:$|\W)', '(?=.*large)(extra.*){2}'), 'extra extra large')
+    )
+
+CLOTHING_SIZES3 = {}
+for variations, size in CLOTHING_SIZES2:
+    clauses = (Q(size__iregex=p) for p in variations)
+    query = reduce(operator.or_, clauses)
+    CLOTHING_SIZES3[size] = [x.id for x in Product.objects.filter(query)]
+
 
 SIZES = (
     ('1', '1'),
@@ -110,13 +137,15 @@ SIZES2 = (
     (('13', '46'), '13'),
     )
 
+# (?:^|\W)1(?:$|\W)
+# matches number without have another numerical number around it
 SIZES3 = {}
 for variations, size in SIZES2:
-    clauses = (Q(size__icontains=p) for p in variations)
+    clauses = (Q(size__iregex='(?:^|\W)' + p + '(?:$|\W)') for p in variations)
     query = reduce(operator.or_, clauses)
     SIZES3[size] = [x.id for x in Product.objects.filter(query)]
-    print(query)
-print(SIZES3)
+#     print(query)
+# print(SIZES3)
 
 
 SALE = (
@@ -146,15 +175,11 @@ SORT = (
 class ProductFilter(django_filters.FilterSet):
     search_price__gt = django_filters.NumberFilter(name='search_price', lookup_expr='gt' )
     search_price__lt = django_filters.NumberFilter(name='search_price', lookup_expr='lt')
-    brand_name = django_filters.filters.ModelMultipleChoiceFilter( label='Brand',widget=CheckboxSelectMultiple(attrs={'class': 'check-label'}), queryset = Brand.objects.all().order_by('brand_name'))
+    brand_name = django_filters.filters.ModelMultipleChoiceFilter( label='Brand',widget=CheckboxSelectMultiple(attrs={'class': 'check-label'}), queryset=Brand.objects.all().order_by('brand_name'))
     colour = django_filters.filters.MultipleChoiceFilter(label='Colour', choices=COLOURS, widget=CheckboxSelectMultiple(attrs={'class': 'check-label'}), method='filter_colour')
     size = django_filters.filters.MultipleChoiceFilter(label='Size', choices=SIZES, widget=CheckboxSelectMultiple(attrs={'class': 'check-label'}), method='filter_size')
-    # # sale = django_filters.ModelMultipleChoiceFilter(queryset=Product.objects.annotate(on_sale=(F('rrp_price') - F('search_price'))
-    # # product_name = django_filters.CharFilter(lookup_expr='icontains')
-    # # colour = django_filters.filters.CharFilter()
-    # # size = django_filters.filters.CharFilter(lookup_expr='icontains')
-    # # red = django_filters.filters.ChoiceFilter(queryset=Colour.objects.filter(colour="red"),widget=CheckboxSelectMultiple(attrs={'class': 'check-label'}))
-    # # colour = django_filters.AllValuesMultipleFilter(label='Colour', widget=CheckboxSelectMultiple(attrs={'class': 'check-label'}))
+    clothing_size = django_filters.filters.MultipleChoiceFilter(label='Clothing Size', choices=CLOTHING_SIZES, widget=CheckboxSelectMultiple(attrs={'class': 'check-label'}), method='filter_clothing_size')
+    merchant_name = django_filters.filters.ModelMultipleChoiceFilter(label='Shop', widget=CheckboxSelectMultiple(attrs={'class': 'check-label'}), queryset=Merchant.objects.all().order_by('merchant_name'))
     product = Product.objects.all()
     sale = django_filters.filters.MultipleChoiceFilter(label='Sale', choices=SALE, widget=CheckboxSelectMultiple(attrs={'class': 'check-label'}), method='filter_sale')
     sort = django_filters.filters.ChoiceFilter(label='Sort', choices=SORT, widget=RadioSelect(attrs={'class': 'check-label'}), method='filter_sort')
@@ -176,6 +201,13 @@ class ProductFilter(django_filters.FilterSet):
             size_ids.extend(SIZES3[size])
         return queryset.filter(id__in=size_ids)
 
+    def filter_clothing_size(self, queryset, name, value):
+        # construct the full lookup expression.
+        clothing_size_ids = []
+        for clothing_size in value:
+            clothing_size_ids.extend(CLOTHING_SIZES3[clothing_size])
+        return queryset.filter(id__in=clothing_size_ids)
+
 
     def filter_sale(self, queryset, name, value):
         id_list = []
@@ -194,14 +226,14 @@ class ProductFilter(django_filters.FilterSet):
 
 
 
-        
-        
+
+
     class Meta:
         model = Product
         fields = [ 'brand_name', 'colour']
 
-        
-        
+
+
 
 
 

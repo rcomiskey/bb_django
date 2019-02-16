@@ -762,6 +762,7 @@ div.tog.on:after {
 .bb-view-product-item-product-name {
     font-size: 1.1rem;
     color: #2fa4e7;
+    margin-bottom: 50px;
  }
 
  .bb-view-product-item-search-price {
@@ -769,6 +770,7 @@ div.tog.on:after {
     color: #cc151d;
     text-align: center;
     padding-bottom: 30px !important;
+    margin-top: 50px;
  }
 
 .bb-product-item-sections {
@@ -1292,7 +1294,7 @@ div.tog.on:after {
   }
 
   .dropdown-menu {
-    max-height: 200px;
+    max-height: 214px;
     overflow: scroll;
     overflow-x: hidden;
     color: #003542;
@@ -1304,6 +1306,8 @@ div.tog.on:after {
 
   .bb-filter-dropdown-container {
     display: block;
+    margin-left: 20px;
+    margin-right: 15px;
   }
 
   .check-label {

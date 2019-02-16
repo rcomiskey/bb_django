@@ -376,6 +376,7 @@ Main components
   display: block;
   height: 50px;
   line-height: 50px;
+  font-size: .85em;
   padding: 0 20px;
   color: #ffffff;
   text-transform: uppercase;
@@ -682,12 +683,12 @@ Main components
     text-transform: uppercase;
   }
   .cd-primary-nav .cd-secondary-nav a {
-    height: 30px;
-    line-height: 30px;
+    height: 23px;
+    line-height: 23px;
     padding: 0 18% 0 0;
     color: #003542;
     border-bottom: none;
-    font-size: 0.9rem;
+    font-size: 0.7rem;
     text-transform: uppercase;
   }
   .cd-primary-nav .cd-secondary-nav a:hover {

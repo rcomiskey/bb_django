@@ -3,18 +3,18 @@
 <div class="bb-filter-nav nav-down">
   <span class="bb-filter-icon" onclick="openNav2()"><i class="fas fa-sliders-h"></i></span>
 
-    <div class="sortFilter">
-    <a type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    <span class="bb-filter-icon-sort"><i class="fas fa-sort-amount-down"></i></span>
-    </a>
-    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="left: unset;right: 0;">
-           <form onchange="submit()">
-           {{ filter.form.sort}}
-        </form>
-    </div>
-  </div>
+    <!--<div class="sortFilter">-->
+    <!--<a type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+    <!--<span class="bb-filter-icon-sort"><i class="fas fa-sort-amount-down"></i></span>-->
+    <!--</a>-->
+    <!--<div class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="left: unset;right: 0;">-->
+           <!--<form onchange="submit()">-->
+           <!--{{ filter.form.sort}}-->
+        <!--</form>-->
+    <!--</div>-->
+  <!--</div>-->
 
-  <div class="container bb-filter-dropdown-container">
+  <div class="bb-filter-dropdown-container">
     <div class="row bb-filter-row">
 
       <div>
@@ -32,6 +32,17 @@
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
             <form action="" method="get" >
               {{ filter.form.brand_name }}
+          </div>
+        </div>
+      </div>
+
+       <div>
+        <div class="dropdown mainFilter">
+          <button class="btn btn-secondary dropdown-toggle bb-filter-dropdown-button" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          SHOP
+        </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              {{ filter.form.merchant_name }}
           </div>
         </div>
       </div>
@@ -69,6 +80,8 @@
         </div>
       </div>
 
+
+      {% if 'footwear' in request.path %}
               <div>
         <div class="dropdown mainFilter">
           <button class="btn btn-secondary dropdown-toggle bb-filter-dropdown-button" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -80,7 +93,19 @@
           </div>
         </div>
       </div>
+{% else %}
+                    <div>
+        <div class="dropdown mainFilter">
+          <button class="btn btn-secondary dropdown-toggle bb-filter-dropdown-button" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          SIZE
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              {{ filter.form.clothing_size}}
 
+          </div>
+        </div>
+      </div>
+{% endif %}
         <div>
         <div class="dropdown mainFilter">
           <button class="btn btn-secondary dropdown-toggle bb-filter-dropdown-button" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -289,10 +314,13 @@
               <p class="bb-search-price-text">{{ currency }}{{ product.search_price }}</p>
             </div>
             <div class="col-6 bb-rrp-price">
-              {% if product.rrp_price > 0 %}
               <p class="bb-rrp-price-text"><s> {{ currency }}{{ product.rrp_price }}</s></p>
-              {% endif %}
             </div>
+            <!--<div class="col-6 bb-rrp-price">-->
+              <!--{% if product.rrp_price > 0 %}-->
+              <!--<p class="bb-rrp-price-text"><s> {{ currency }}{{ product.rrp_price }}</s></p>-->
+              <!--{% endif %}-->
+            <!--</div>-->
             <div class="col-9 bb-merchant-name">
               <p class="bb-merchant-name-text">{{ product.merchant_name}}</p>
             </div>

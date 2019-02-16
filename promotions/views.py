@@ -19,11 +19,10 @@ def getpromotions(request):
     except EmptyPage:
         promotions = paginator.page(paginator.num_pages)
     return render(request, "promotions.html", {'promo_filter': promo_filter, 'promotions': promotions})
-    
-   
+
+
 def viewpromotion(request, id):
     this_promotion = get_object_or_404(Promotion, id=id)
     this_promotion.save()
     return render(request, "viewpromotion.html", {'promotion': this_promotion})
-  
-    
+

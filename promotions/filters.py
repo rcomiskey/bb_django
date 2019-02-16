@@ -1,4 +1,4 @@
-import django_filters 
+import django_filters
 from .models import Promotion, Merchant, MerchantCategory, PromoType
 from django.forms import CheckboxSelectMultiple
 
@@ -8,11 +8,10 @@ class PromotionFilter(django_filters.FilterSet):
     category = django_filters.filters.ModelMultipleChoiceFilter( label='Type',widget=CheckboxSelectMultiple(attrs={'class': 'check-label'}), queryset = MerchantCategory.objects.all())
 
     promotion = Promotion.objects.all()
-    
+
     class Meta:
         model = Promotion
         fields = ['merchant']
-        
-   
 
-        
+
+
