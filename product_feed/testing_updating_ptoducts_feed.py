@@ -9,21 +9,21 @@ import urllib.request
 import io
 import gzip
 import pandas
+from django.contrib.postgres.search import SearchVector
 
 # Read in CSV list from Awin
 feed = pandas.read_csv('https://productdata.awin.com/datafeed/list/apikey/c43cb2adc7d4b494d4d5ef358ef0050d')
 feed.to_csv('product_feed_list.csv')
 
-# , '2165', '2374', '2606', '4412', '6518', '5374', '6518'
+# , '2165', '2374', '4412', '6518', '5374'
 advertisersUrls = {
 '2606': 'https://productdata.awin.com/datafeed/download/apikey/c43cb2adc7d4b494d4d5ef358ef0050d/language/en/fid/2606/columns/aw_deep_link,product_name,aw_product_id,merchant_product_id,merchant_image_url,description,merchant_category,search_price,merchant_name,category_name,currency,merchant_deep_link,brand_name,colour,rrp_price,mpn/format/csv/delimiter/%2C/compression/gzip/adultcontent/1/',
-# '2165': 'https://productdata.awin.com/datafeed/download/apikey/c43cb2adc7d4b494d4d5ef358ef0050d/language/en/fid/2165/columns/aw_deep_link,product_name,aw_product_id,merchant_product_id,merchant_image_url,description,merchant_category,search_price,merchant_name,category_name,aw_image_url,merchant_deep_link,brand_name,specifications,rrp_price,currency,in_stock/format/csv/delimiter/%3B/compression/gzip/adultcontent/1/',
-# '2374': 'https://productdata.awin.com/datafeed/download/apikey/c43cb2adc7d4b494d4d5ef358ef0050d/language/en/fid/12433/columns/aw_deep_link,product_name,aw_product_id,merchant_product_id,merchant_image_url,description,merchant_category,search_price,merchant_name,category_name,currency,brand_name,colour,rrp_price,Fashion%3Asize/format/csv/delimiter/%7C/compression/gzip/adultcontent/1/',
-# '2606':, 
-# '4412': 'https://productdata.awin.com/datafeed/download/apikey/c43cb2adc7d4b494d4d5ef358ef0050d/language/en/fid/4412/columns/aw_deep_link,product_name,aw_product_id,merchant_product_id,merchant_image_url,description,merchant_category,search_price,merchant_name,category_name,aw_image_url,currency,brand_name,colour,dimensions,rrp_price/format/csv/delimiter/%3B/compression/gzip/adultcontent/1/',
-# '6518': 'https://productdata.awin.com/datafeed/download/apikey/c43cb2adc7d4b494d4d5ef358ef0050d/language/en/fid/12161,18325/columns/aw_deep_link,product_name,aw_product_id,merchant_product_id,merchant_image_url,description,merchant_category,search_price,merchant_name,currency,category_name,brand_name,colour,rrp_price,Fashion%3Asize/format/csv/delimiter/%3B/compression/gzip/adultcontent/1/',
-# '5374': 'https://productdata.awin.com/datafeed/download/apikey/c43cb2adc7d4b494d4d5ef358ef0050d/language/en/fid/17383/columns/aw_deep_link,product_name,aw_product_id,merchant_product_id,merchant_image_url,description,merchant_category,search_price,aw_image_url,currency,colour,merchant_name,category_name,rrp_price,Fashion%3Asize/format/csv/delimiter/%3B/compression/gzip/adultcontent/1/',
-# '6518':
+'2165': 'https://productdata.awin.com/datafeed/download/apikey/c43cb2adc7d4b494d4d5ef358ef0050d/language/en/fid/2165/columns/aw_deep_link,product_name,aw_product_id,merchant_product_id,merchant_image_url,description,merchant_category,search_price,merchant_name,category_name,aw_image_url,merchant_deep_link,brand_name,specifications,rrp_price,currency,in_stock/format/csv/delimiter/%3B/compression/gzip/adultcontent/1/',
+'2374': 'https://productdata.awin.com/datafeed/download/apikey/c43cb2adc7d4b494d4d5ef358ef0050d/language/en/fid/12433/columns/aw_deep_link,product_name,aw_product_id,merchant_product_id,merchant_image_url,description,merchant_category,search_price,merchant_name,category_name,currency,brand_name,colour,rrp_price,Fashion%3Asize/format/csv/delimiter/%7C/compression/gzip/adultcontent/1/',
+'4412': 'https://productdata.awin.com/datafeed/download/apikey/c43cb2adc7d4b494d4d5ef358ef0050d/language/en/fid/4412/columns/aw_deep_link,product_name,aw_product_id,merchant_product_id,merchant_image_url,description,merchant_category,search_price,merchant_name,category_name,aw_image_url,currency,brand_name,colour,dimensions,rrp_price/format/csv/delimiter/%3B/compression/gzip/adultcontent/1/',
+'6518': 'https://productdata.awin.com/datafeed/download/apikey/c43cb2adc7d4b494d4d5ef358ef0050d/language/en/fid/12161,18325/columns/aw_deep_link,product_name,aw_product_id,merchant_product_id,merchant_image_url,description,merchant_category,search_price,merchant_name,currency,category_name,brand_name,colour,rrp_price,Fashion%3Asize/format/csv/delimiter/%3B/compression/gzip/adultcontent/1/',
+'5374': 'https://productdata.awin.com/datafeed/download/apikey/c43cb2adc7d4b494d4d5ef358ef0050d/language/en/fid/17383/columns/aw_deep_link,product_name,aw_product_id,merchant_product_id,merchant_image_url,description,merchant_category,search_price,aw_image_url,currency,colour,merchant_name,category_name,rrp_price,Fashion%3Asize/format/csv/delimiter/%3B/compression/gzip/adultcontent/1/'
+
 }
 #
 with open('product_feed_list.csv', 'r') as pf:
@@ -31,7 +31,7 @@ with open('product_feed_list.csv', 'r') as pf:
     reader = csv.DictReader(pf, delimiter=',')
     for line in reader:
         linecount += 1
-        if line['Membership Status'] == 'active' and line['Advertiser ID'] in ['2606']:
+        if line['Membership Status'] == 'active' and line['Advertiser ID'] in ['2606', '2165', '2374', '4412', '6518', '5374']:
             advertiserId = line['Advertiser ID']
             print(advertiserId)
             print(advertisersUrls[advertiserId])
@@ -249,8 +249,11 @@ with open('product_feed_list.csv', 'r') as pf:
                         if int(fields[12]) in importIds:
                             linecount += 1
                             category = Category.objects.get_or_create(name=fields[10])
-                            brand_name = Brand.objects.get_or_create(brand_name=fields[7])
+                            brand_name = Brand.objects.get_or_create(brand_name=fields[7].lower())
                             merchant_name = Merchant.objects.get_or_create(merchant_name=fields[6])
+                            search_vector = SearchVector('description', 'product_name')
+                            Product.objects.update(search_vector=search_vector)
+                            # " ".join((fields[2].replace(":", ""), fields[3], fields[6], fields[7], fields[8]))
 
                             data = {
                                 'aw_deep_link': fields[1],
@@ -286,7 +289,7 @@ with open('product_feed_list.csv', 'r') as pf:
                     print("Imported {0} products".format(linecount))
 
 
-            deleteProducts()
-            updateProducts()
+            # deleteProducts()
+            # updateProducts()
             importProducts()
 

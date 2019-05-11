@@ -18,7 +18,7 @@
                   <hr>
   
                 <p class="bb-viewpost-content">{{ promotion.description }}</p>
-                 {% if promotion.promo_type.name in "Code" %}
+                 {% if promotion.promo_type.name in "Vouchers" %}
                     <div class="col-12 bb-merchant-name">
                       <div class="bb-code-reveal">
                         <p class="bb-form-btn-code-reveal" hidden>HELLO123456</p>
@@ -26,7 +26,7 @@
                          <!--<a class="btn bb-form-btn-code" style='font-weight:500' href="{{ promotion.deeplink }}" target="_blank">CODE</a>-->
                       </div>
                     </div>
-                    {% elif promotion.promo_type.name in "Offer" %}
+                    {% elif promotion.promo_type.name in "Promotions" %}
                     <div class="col-12 bb-merchant-name">
                       <div class="bb-code-reveal">
                           <button class="btn bb-form-btn bb-form-btn-offer" style='font-weight:500'>OFFER</button>

@@ -11,7 +11,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 def getpromotions(request):
     promo_filter = PromotionFilter(request.GET, queryset=Promotion.objects.all())
     page = request.GET.get('page')
-    paginator = Paginator(promo_filter.qs, 1)
+    paginator = Paginator(promo_filter.qs, 20)
     try:
         promotions = paginator.page(page)
     except PageNotAnInteger:

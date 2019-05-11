@@ -285,11 +285,6 @@
 </div>
 
 <div class="container bb-category-container">
-  <div class="bb-breadcrumbs-container">
-    <a class="bb-breadcrumbs" href="/">HOME</a> {% for i in product.get_slug_list %}
-    <a class="bb-breadcrumbs" href="/products/category/{{ i }}"><span style="color:#9e9e9e">/ </span> {{ i | get_name }}</a> {% endfor %}
-  </div>
-  <h2 class="bb-category-name">{{product.name}}</h2>
   <p style="color: #9E9E9E;"> {{total}} Products </p>
 </div>
 

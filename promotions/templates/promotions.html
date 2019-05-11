@@ -16,7 +16,7 @@
     </div>
     
     
-    <div class="col-sm-2">
+    <div>
       <div class="dropdown mainFilter">
         <button class="btn btn-secondary dropdown-toggle bb-filter-dropdown-button" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         CATEGORY 
@@ -29,7 +29,7 @@
     </div>
  
 
-  <div class="col-sm-2">
+  <div>
       <div class="dropdown mainFilter">
         <button class="btn btn-secondary dropdown-toggle bb-filter-dropdown-button" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         TYPE
@@ -42,7 +42,7 @@
     </div>
     
     
-  <div class="col-sm-2">
+  <div>
       <div class="dropdown mainFilter">
         <button class="btn btn-secondary dropdown-toggle bb-filter-dropdown-button" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         SHOP
@@ -53,7 +53,7 @@
       </div>
     </div>
     
-    <div class="col-sm-2">
+    <div>
         <input class="btn btn-secondary dropdown-toggle bb-filter-dropdown-button bb-fullscreen-filter-button mainFilter" type="submit" value="FILTER" />
           </form>
     </div>
@@ -82,7 +82,7 @@
           <div class="card-header" id="bb-filter-header" role="tab">
             <h5 class="mb-0" style="text-align:center">
                   <form action="" method="get">
-                    <input type="submit" class='btn bb-filter-sidenav-btn' value="FILTER"/>
+                    <input type="submit" class='btn bb-filter-sidenav-btn' value="APPLY"/>
                     
               </h5>
     </div>
@@ -152,7 +152,7 @@
                     <div class="col-12 bb-merchant-name">
                         <p class="bb-merchant-name-text">{{ promotion.merchant.name}} - {{ promotion.category}} </p>
                     </div>
-                    {% if promotion.promo_type.name in "Code" %}
+                    {% if "Vouchers" in promotion.promo_type.name %}
                     <div class="col-12 bb-merchant-name">
                       <div class="bb-code-reveal">
                         <p class="bb-form-btn-code-reveal" hidden>HELLO123456</p>
@@ -160,7 +160,7 @@
                          <!--<a class="btn bb-form-btn-code" style='font-weight:500' href="{{ promotion.deeplink }}" target="_blank">CODE</a>-->
                       </div>
                     </div>
-                    {% elif promotion.promo_type.name in "Offer" %}
+                    {% elif "Promotions" in promotion.promo_type.name %}
                     <div class="col-12 bb-merchant-name">
                       <div class="bb-code-reveal">
                           <button class="btn bb-form-btn bb-form-btn-offer" style='font-weight:500'>OFFER</button>

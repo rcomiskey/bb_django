@@ -19,8 +19,9 @@ def view_products(request, hierarchy=None):
         parent = root.get(parent=parent, slug = slug)
     product = Category.objects.get(parent=parent,slug=category_slug[-1])
     filters = ProductFilter(request.GET, queryset=Category.get_all_products(product))
+    total = len(filters.qs)
     page = request.GET.get('page')
-    paginator = Paginator(filters.qs, 20)
+    paginator = Paginator(filters.qs, 100)
     try:
         products = paginator.page(page)
     except PageNotAnInteger:
@@ -28,7 +29,7 @@ def view_products(request, hierarchy=None):
     except EmptyPage:
         products = paginator.page(paginator.num_pages)
 
-    return render(request, "view_products.html", {'product': product, 'filter': filters, 'currency': currency, 'products': products })
+    return render(request, "view_products.html", {'product': product, 'filter': filters, 'currency': currency, 'products': products, 'total': total })
 
     # try:
     #     product = Category.objects.get(parent=parent,slug=category_slug[-1])
@@ -42,11 +43,31 @@ def view_products(request, hierarchy=None):
 
 
 
-
+import urllib.parse as urlparse
 def do_search(request):
     currency = '€'
+    # url = request.META.get('HTTP_REFERER')
+    # print(url)
+    # print(request.GET.get('q'))
+    # if request.GET.get('q') != None:
+    #     print(request.GET['q'])
+    #     q = request.GET['q']
+    # elif url != None:
+    #     print(url)
+    #     parsed = urlparse.urlparse(url)
+    #     print(parsed)
+    #     if urlparse.parse_qs(parsed.query)['q'] != None:
+    #         print(urlparse.parse_qs(parsed.query)['q'])
+    #
+    #         q = 'nike'
+    # else:
+    #     q = 'nike'
+    # q = 'nike'
+    # print('hello')
+    # print(url)
     product = Product.objects.filter(search_vector=request.GET['q'])
     filters = ProductFilter(request.GET, queryset=product)
+    total = len(filters.qs)
     page = request.GET.get('page')
     paginator = Paginator(filters.qs, 20)
     try:
@@ -56,7 +77,7 @@ def do_search(request):
     except EmptyPage:
         products = paginator.page(paginator.num_pages)
 
-    return render(request, "view_products.html", {'product': product, 'filter': filters, 'currency': currency, 'products': products })
+    return render(request, "view_products_search.html", {'product': product, 'filter': filters, 'currency': currency, 'products': products, 'total': total })
 
 def view_product_item(request, id):
     this_product = get_object_or_404(Product, id=id)
